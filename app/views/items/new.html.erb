@@ -1,0 +1,16 @@
+<h1>商品登録</h1>
+
+<div>
+<%= form_with model: [@user, @item], local: true do |f| %>
+
+<%= f.label :item_name, '商品名' %>
+<%= f.text_field :item_name %>
+
+<%= f.label :price, '価格' %>
+<%= f.text_field :price %>
+
+<%= f.submit %>
+
+<% end %>
+
+</div>

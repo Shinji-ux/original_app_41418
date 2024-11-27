@@ -10,9 +10,9 @@
         新規登録
       </div>
       <div class="content">
-        <p><%= link_to '仕入れ先登録', '' %></p>
-        <p><%= link_to '得意先登録', '' %></p>
-        <p><%= link_to '商品登録', '' %></p>
+        <p><%= link_to '仕入れ先登録', new_user_supplier_path(@user_id) %></p>
+        <p><%= link_to '得意先登録', new_user_customer_path(@user_id) %></p>
+        <p><%= link_to '商品登録', new_user_item_path(@user_id) %></p>
       </div>
     </div>
     <div class="contents">

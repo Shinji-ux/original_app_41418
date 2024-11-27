@@ -12,9 +12,9 @@
 - has_one :user_profile
 - has_many :items
 - has_many :suppliers
-- has_many :supplier_records, through :suppliers
+- has_many :supplier_records, through: :suppliers
 - has_many :customers
-- has_many :customer_records, throught :customers
+- has_many :customer_records, through: :customers
 
 ## user_profileテーブル
 
@@ -34,16 +34,16 @@
 | Column    | Type       | Options                        |
 |-----------|------------|--------------------------------|
 | item_name | string     | null: false                    |
-| price     | string     | null: false                    |
+| price     | integer    | null: false                    |
 | user      | references | null: false, foreign_key: true |
 
 ### Associations
 
 - belongs_to :user
 - has_many :item_suppliers
-- has_many :supplier_records, through :item_suppliers
+- has_many :supplier_records, through: :item_suppliers
 - has_many :item_customers
-- has_many :customer_records, through :item_customers
+- has_many :customer_records, through: :item_customers
 
 ## suppliersテーブル
 
@@ -69,7 +69,7 @@
 
 - belongs_to :supplier
 - has_many :item_suppliers
-- has_many :items, throught :item_suppliers
+- has_many :items, through: :item_suppliers
 
 ## item_suppliersテーブル
 
@@ -94,7 +94,7 @@
 ### Associations
 
 - belongs_to :user
-- has_many :supplier_records
+- has_many :customer_records
 
 ## customer_recordsテーブル
 
@@ -106,9 +106,9 @@
 
 ### Associations
 
-- belongs_to :supplier
-- has_many :item_suppliers
-- has_many :items, throught :item_suppliers
+- belongs_to :customer
+- has_many :item_customers
+- has_many :items, through: :item_customers
 
 ## item_customersテーブル
 

@@ -14,8 +14,10 @@
     <div class="header">
       <div class="header-logo"><%= link_to '縄文会計', root_path, class: "btn" %></div>
       <div class="header-list">
+        <% if user_signed_in? %>
         <div class="header-list-li"><%= link_to 'ログアウト', '', class: "btn" %></div>
         <div class="header-list-li"><%= link_to 'マイページ', '', class: "btn" %></div>
+        <% end %>
       </div>
     </div>
     <%= yield %>
