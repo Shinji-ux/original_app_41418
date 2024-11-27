@@ -1,0 +1,58 @@
+<div class="main">
+
+  <!-- サイドバー -->
+  <div class="side-bar">
+    <div class="section-title">
+      ショップメニュー
+    </div>
+    <div class="contents">
+      <div class="content-title">
+        新規登録
+      </div>
+      <div class="content">
+        <p><%= link_to '仕入れ先登録', '' %></p>
+        <p><%= link_to '得意先登録', '' %></p>
+        <p><%= link_to '商品登録', '' %></p>
+      </div>
+    </div>
+    <div class="contents">
+      <div class="content-title">
+        登録済みデータ
+      </div>
+      <div class="content">
+        <p><%= link_to '仕入れ先一覧', '' %></p>
+        <p><%= link_to '得意先一覧', '' %></p>
+        <p><%= link_to '商品一覧', '' %></p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- メイン -->
+  <div class="voucher">
+    <div class="section-title">
+        帳票作成
+    </div>
+    <div class="voucher-contents">
+      <div class="voucher-content">
+        <div class="content-title">
+          仕入れ関連
+        </div>
+        <div class="content">
+          <p><%= link_to '発注書作成', '', class: "btn" %></p>
+          <p><%= link_to '支払い明細書作成', '', class: "btn" %></p>
+        </div>
+      </div>
+      <div class="voucher-content">
+        <div class="content-title">
+          納品関連
+        </div>
+        <div class="content">
+          <p><%= link_to '見積書作成', '', class: "btn" %></p>
+          <p><%= link_to '納品書作成', '', class: "btn" %></p>
+          <p><%= link_to '請求書作成', '', class: "btn" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
