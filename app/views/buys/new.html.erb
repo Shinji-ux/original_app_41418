@@ -1,2 +1,34 @@
 <h1>Buys#new</h1>
 <p>Find me in app/views/buys/new.html.erb</p>
+
+<div>
+</div>
+
+<h1>New Buy for <%= @supplier.company %></h1>
+
+<%= form_with(model: [@supplier, @buy]) do |f| %>
+  <div>
+    <%= f.label :total_price, '合計の値段' %>
+    <%= f.text_field :total_price %>
+  </div>
+  <div>
+    <%= f.label :transaction_date, "納品日" %>
+    <%= f.date_field :transaction_date %>
+  </div>
+
+  <div>
+    <%= f.fields_for :buy_items do |buy_item_form| %>
+      <div>
+        <%= buy_item_form.label :item_id, "商品" %>
+        <%= buy_item_form.collection_select :item_id, @items, :id, :item_name, prompt: "商品を選択" %>
+      </div>
+      <div>
+        <%= buy_item_form.label :quantity, "数量" %>
+        <%= buy_item_form.number_field :quantity %>
+      </div>
+    <% end %>
+  <div>
+    <%= f.submit "Create Buy" %>
+  </div>
+<% end %>
+

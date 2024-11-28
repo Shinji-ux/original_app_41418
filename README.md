@@ -66,9 +66,9 @@
 
 | Column           | Type       | Options                        |
 |------------------|------------|--------------------------------|
-| transaction_date | string     | null: false                    |
-| total_price      | string     | null: false                    |
-| supplier_id      | references | null: false, foreign_key: true |
+| transaction_date | date       | null: false                    |
+| total_price      | integer    | null: false                    |
+| supplier         | references | null: false, foreign_key: true |
 
 ### Associations
 
@@ -81,8 +81,8 @@
 | Column   | Type       | Options                        |
 |----------|------------|--------------------------------|
 | quantity | integer    | null: false                    |
-| buy_id   | references | null: false, foreign_key: true |
-| item_id  | references | null: false, foreign_key: true |
+| buy      | references | null: false, foreign_key: true |
+| item     | references | null: false, foreign_key: true |
 
 ### Associations
 
@@ -108,9 +108,9 @@
 
 | Column           | Type       | Options                        |
 |------------------|------------|--------------------------------|
-| transaction_date | string     | null: false                    |
-| total_price      | string     | null: false                    |
-| customer_id      | references | null: false, foreign_key: true |
+| transaction_date | date       | null: false                    |
+| total_price      | integer    | null: false                    |
+| customer         | references | null: false, foreign_key: true |
 
 ### Associations
 
@@ -123,8 +123,8 @@
 | Column   | Type       | Options                        |
 |----------|------------|--------------------------------|
 | quantity | string     | null: false                    |
-| sell_id  | references | null: false, foreign_key: true |
-| item_id  | references | null: false, foreign_key: true |
+| sell     | references | null: false, foreign_key: true |
+| item     | references | null: false, foreign_key: true |
 
 ### Associations
 

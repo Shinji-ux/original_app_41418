@@ -1,0 +1,14 @@
+<h1>発注書作成</h1>
+<p>業者一覧</p>
+
+<div>
+
+<% @suppliers.each do |supplier| %>
+<div>
+  <%= link_to supplier.company, new_supplier_buy_path(supplier.id) %>
+</div>
+<% end %>
+
+
+
+  </div>

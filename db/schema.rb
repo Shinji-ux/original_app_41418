@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_27_111450) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_28_055132) do
+  create_table "buy_items", charset: "utf8", force: :cascade do |t|
+    t.integer "quantity", null: false
+    t.bigint "buy_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buy_id"], name: "index_buy_items_on_buy_id"
+    t.index ["item_id"], name: "index_buy_items_on_item_id"
+  end
+
+  create_table "buys", charset: "utf8", force: :cascade do |t|
+    t.date "transaction_date", null: false
+    t.integer "total_price", null: false
+    t.bigint "supplier_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["supplier_id"], name: "index_buys_on_supplier_id"
+  end
+
   create_table "items", charset: "utf8", force: :cascade do |t|
     t.string "item_name", null: false
     t.string "unit", null: false
@@ -44,5 +63,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_27_111450) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "buys", "suppliers"
   add_foreign_key "items", "users"
 end
