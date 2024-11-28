@@ -35,7 +35,6 @@
 .side-bar {
   width: 250px;
   padding: 20px;
-  border: 1px solid black;
 }
 
 .section-title {
@@ -59,14 +58,6 @@
   padding: 20px;
 }
 
-.voucher-contents {
-  display: flex;
-}
-
-.voucher-content {
-  margin: 15px 30px 0 25px;
-}
-
 .voucher p {
   background-color: rgb(70, 76, 165);
   font-size: 25px;
@@ -75,6 +66,7 @@
   width: 220px;
   height: 40px;
   text-align: center;
+  margin-bottom: 15px;
 }
 
 .btn {

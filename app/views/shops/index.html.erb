@@ -33,25 +33,23 @@
     <div class="section-title">
         帳票作成
     </div>
-    <div class="voucher-contents">
-      <div class="voucher-content">
-        <div class="content-title">
-          仕入れ関連
-        </div>
-        <div class="content">
-          <p><%= link_to '発注書作成', suppliers_path, class: "btn" %></p>
-          <p><%= link_to '支払い明細書作成', '', class: "btn" %></p>
-        </div>
+    <div class="contents">
+      <div class="content-title">
+        仕入れ関連
       </div>
-      <div class="voucher-content">
-        <div class="content-title">
-          納品関連
-        </div>
-        <div class="content">
-          <p><%= link_to '見積書作成', '', class: "btn" %></p>
-          <p><%= link_to '納品書作成', '', class: "btn" %></p>
-          <p><%= link_to '請求書作成', '', class: "btn" %></p>
-        </div>
+      <div class="content">
+        <p><%= link_to '発注書作成', suppliers_path, class: "btn" %></p>
+        <p><%= link_to '支払い明細書作成', '', class: "btn" %></p>
+      </div>
+    </div>
+    <div class="contents">
+      <div class="content-title">
+        納品関連
+      </div>
+      <div class="content">
+        <p><%= link_to '見積書作成', '', class: "btn" %></p>
+        <p><%= link_to '納品書作成', '', class: "btn" %></p>
+        <p><%= link_to '請求書作成', '', class: "btn" %></p>
       </div>
     </div>
   </div>
