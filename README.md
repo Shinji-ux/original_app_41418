@@ -9,20 +9,21 @@
 
 ### Associations
 
-- has_one :user_profile
+- has_one :profile
 - has_many :items
 - has_many :suppliers
 - has_many :supplier_records, through: :suppliers
 - has_many :customers
 - has_many :customer_records, through: :customers
 
-## user_profileテーブル
+## profileテーブル
 
 | Column  | Type       | Options                        |
 |---------|------------|--------------------------------|
 | company | string     | null: false                    |
-| address | string     | null: false                    |
-| phone   | string     | null: false                    |
+| address | string     |                                |
+| phone   | string     |                                |
+| manager | string     |                                |
 | user    | references | null: false, foreign_key: true |
 
 ### Associations
@@ -34,30 +35,34 @@
 | Column    | Type       | Options                        |
 |-----------|------------|--------------------------------|
 | item_name | string     | null: false                    |
+| unit      | string     | null: false                    |
 | price     | integer    | null: false                    |
 | user      | references | null: false, foreign_key: true |
 
 ### Associations
 
 - belongs_to :user
-- has_many :item_suppliers
-- has_many :supplier_records, through: :item_suppliers
-- has_many :item_customers
-- has_many :customer_records, through: :item_customers
+- has_many :sell_items
+- has_many :sells, through: :sell_items
+- has_many :buy_items
+- has_many :buys, through: :buy_items
 
 ## suppliersテーブル
 
 | Column  | Type       | Options                        |
 |---------|------------|--------------------------------|
 | company | string     | null: false                    |
+| city    | string     |                                |
+| address | string     |                                |
+| phone   | integer    |                                |
 | user    | references | null: false, foreign_key: true |
 
 ### Associations
 
 - belongs_to :user
-- has_many :supplier_records
+- has_many :buys
 
-## supplier_recordsテーブル
+## buysテーブル
 
 | Column           | Type       | Options                        |
 |------------------|------------|--------------------------------|
@@ -68,20 +73,20 @@
 ### Associations
 
 - belongs_to :supplier
-- has_many :item_suppliers
-- has_many :items, through: :item_suppliers
+- has_many :buy_items
+- has_many :items, through: :buy_items
 
-## item_suppliersテーブル
+## buy_itemsテーブル
 
-| Column             | Type       | Options                        |
-|--------------------|------------|--------------------------------|
-| quantity           | string     | null: false                    |
-| supplier_record_id | references | null: false, foreign_key: true |
-| item_id            | references | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+|----------|------------|--------------------------------|
+| quantity | integer    | null: false                    |
+| buy_id   | references | null: false, foreign_key: true |
+| item_id  | references | null: false, foreign_key: true |
 
 ### Associations
 
-- belongs_to :supplier_record
+- belongs_to :buy
 - belongs_to :item
 
 ## customersテーブル
@@ -89,14 +94,17 @@
 | Column  | Type       | Options                        |
 |---------|------------|--------------------------------|
 | company | string     | null: false                    |
+| city    | string     |                                |
+| address | string     |                                |
+| phone   | integer    |                                |
 | user    | references | null: false, foreign_key: true |
 
 ### Associations
 
 - belongs_to :user
-- has_many :customer_records
+- has_many :sells
 
-## customer_recordsテーブル
+## sellsテーブル
 
 | Column           | Type       | Options                        |
 |------------------|------------|--------------------------------|
@@ -107,18 +115,18 @@
 ### Associations
 
 - belongs_to :customer
-- has_many :item_customers
-- has_many :items, through: :item_customers
+- has_many :sell_items
+- has_many :items, through: :sell_items
 
-## item_customersテーブル
+## sell_itemsテーブル
 
-| Column             | Type       | Options                        |
-|--------------------|------------|--------------------------------|
-| quantity           | string     | null: false                    |
-| customer_record_id | references | null: false, foreign_key: true |
-| item_id            | references | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+|----------|------------|--------------------------------|
+| quantity | string     | null: false                    |
+| sell_id  | references | null: false, foreign_key: true |
+| item_id  | references | null: false, foreign_key: true |
 
 ### Associations
 
-- belongs_to :customer_record
+- belongs_to :sell
 - belongs_to :item
