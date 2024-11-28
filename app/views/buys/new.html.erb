@@ -1,22 +1,15 @@
-<h1>Buys#new</h1>
-<p>Find me in app/views/buys/new.html.erb</p>
-
-<div>
-</div>
+<h1>発注書作成</h1>
 
 <h1>New Buy for <%= @supplier.company %></h1>
 
 <%= form_with(model: [@supplier, @buy]) do |f| %>
-  <div>
-    <%= f.label :total_price, '合計の値段' %>
-    <%= f.text_field :total_price %>
-  </div>
+  
   <div>
     <%= f.label :transaction_date, "納品日" %>
     <%= f.date_field :transaction_date %>
   </div>
 
-  <div>
+  <div class="item-form">
     <%= f.fields_for :buy_items do |buy_item_form| %>
       <div>
         <%= buy_item_form.label :item_id, "商品" %>
@@ -27,6 +20,12 @@
         <%= buy_item_form.number_field :quantity %>
       </div>
     <% end %>
+  </div>
+    
+  <div>
+    <%= f.label :total_price, '合計の値段' %>
+    <%= f.text_field :total_price %>
+  </div>
   <div>
     <%= f.submit "Create Buy" %>
   </div>
