@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   validates :price, presence: true
   
   belongs_to :user
+  belongs_to :category
   has_many :sell_items
   has_many :sells, through: :sell_items
   has_many :buy_items

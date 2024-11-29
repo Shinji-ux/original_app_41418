@@ -1,2 +1,13 @@
-<h1>Categories#new</h1>
-<p>Find me in app/views/categories/new.html.erb</p>
+<h1>カテゴリ登録</h1>
+
+<div>
+<%= form_with model: @category, local: true do |f| %>
+
+<%= f.label :category, 'カテゴリ名' %>
+<%= f.text_field :category %>
+
+<%= f.submit %>
+
+<% end %>
+
+</div>
