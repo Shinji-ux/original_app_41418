@@ -5,6 +5,7 @@ class BuysController < ApplicationController
     @buy = Buy.new
     @buy.buy_items.build
     @items = Item.all
+    @categories = Category.all
   end
 
   def create

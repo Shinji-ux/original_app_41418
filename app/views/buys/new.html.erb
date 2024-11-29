@@ -9,15 +9,25 @@
     <%= f.date_field :transaction_date %>
   </div>
 
+  <div>
+      <%= f.label :category_id, "カテゴリ" %>
+      <%= f.collection_select :category_id, @categories, :id, :category, prompt: "カテゴリを選択" %>
+    </div>
+
+
+
   <div class="item-form">
     <%= f.fields_for :buy_items do |buy_item_form| %>
       <div>
-        <%= buy_item_form.label :item_id, "商品" %>
-        <%= buy_item_form.collection_select :item_id, @items, :id, :item_name, prompt: "商品を選択" %>
+        <%# JavaScriptで出現させる %>
+        <%#= buy_item_form.label :item_id, "商品" %>
+        <%#= buy_item_form.collection_select :item_id, @items, :id, :item_name, prompt: "商品を選択" %>
       </div>
       <div>
         <%= buy_item_form.label :quantity, "数量" %>
         <%= buy_item_form.number_field :quantity %>
+        <%# 商品を選択したら仕入れ単位を出現させる %>
+        <%# 数量を選択したら単価を出現させる %>
       </div>
     <% end %>
   </div>
@@ -25,6 +35,7 @@
   <div>
     <%= f.label :total_price, '合計の値段' %>
     <%= f.text_field :total_price %>
+    <%# 数量を選択するごとに合計価格を出現させる %>
   </div>
   <div>
     <%= f.submit "Create Buy" %>
