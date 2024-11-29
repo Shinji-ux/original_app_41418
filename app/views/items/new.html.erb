@@ -3,10 +3,15 @@
 <div>
 <%= form_with model: [@user, @item], local: true do |f| %>
 
+      <div>
+        <%= f.label :category_id, "カテゴリ" %>
+        <%= f.collection_select :category_id, @categories, :id, :category, prompt: "カテゴリを選択" %>
+      </div>
+
 <%= f.label :item_name, '商品名' %>
 <%= f.text_field :item_name %>
 
-<%= f.label :unit, '単位' %>
+<%= f.label :unit, '取り扱い単位' %>
 <%= f.text_field :unit %>
 
 <%= f.label :price, '価格' %>
