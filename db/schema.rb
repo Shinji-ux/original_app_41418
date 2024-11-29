@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_28_055132) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_29_095726) do
   create_table "buy_items", charset: "utf8", force: :cascade do |t|
     t.integer "quantity", null: false
+    t.integer "item_price", null: false
     t.bigint "buy_id", null: false
     t.bigint "item_id", null: false
     t.datetime "created_at", null: false
@@ -30,13 +31,21 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_28_055132) do
     t.index ["supplier_id"], name: "index_buys_on_supplier_id"
   end
 
+  create_table "categories", charset: "utf8", force: :cascade do |t|
+    t.string "category", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "items", charset: "utf8", force: :cascade do |t|
     t.string "item_name", null: false
     t.string "unit", null: false
     t.integer "price", null: false
     t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -64,5 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_28_055132) do
   end
 
   add_foreign_key "buys", "suppliers"
+  add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
 end

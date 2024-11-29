@@ -38,14 +38,26 @@
 | unit      | string     | null: false                    |
 | price     | integer    | null: false                    |
 | user      | references | null: false, foreign_key: true |
+|category|references|null: false, foreign_key: true|
 
 ### Associations
 
 - belongs_to :user
+- belongs_to :categories
 - has_many :sell_items
 - has_many :sells, through: :sell_items
 - has_many :buy_items
 - has_many :buys, through: :buy_items
+
+## categoriesテーブル
+
+| Column    | Type       | Options                        |
+|-----------|------------|--------------------------------|
+| category | string     | null: false                    |
+
+# Associations
+
+- has_many :items
 
 ## suppliersテーブル
 
@@ -81,6 +93,7 @@
 | Column   | Type       | Options                        |
 |----------|------------|--------------------------------|
 | quantity | integer    | null: false                    |
+|item_price|integer|null: false|
 | buy      | references | null: false, foreign_key: true |
 | item     | references | null: false, foreign_key: true |
 

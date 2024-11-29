@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'categories/index'
+  get 'categories/new'
   get 'buys/index'
   get 'buys/new'
   get 'buys/create'
