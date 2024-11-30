@@ -10,11 +10,12 @@
 ### Associations
 
 - has_one :profile
-- has_many :items
+- has_many :categories
+- has_many :items, through: :categories
 - has_many :suppliers
-- has_many :supplier_records, through: :suppliers
+- has_many :buys, through: :suppliers
 - has_many :customers
-- has_many :customer_records, through: :customers
+- has_many :sells, through: :customers
 
 ## profileテーブル
 
@@ -51,13 +52,17 @@
 
 ## categoriesテーブル
 
-| Column   | Type   | Options     |
-|----------|--------|-------------|
-| category | string | null: false |
+| Column   | Type       | Options                        |
+|----------|------------|--------------------------------|
+| category | string     | null: false                    |
+| user     | references | null: false, foreign_key: true |
 
 # Associations
 
+- belongs_to :user
 - has_many :items
+- has_many :buy_items
+- has_many :sell_items
 
 ## suppliersテーブル
 
@@ -96,11 +101,13 @@
 | item_price | integer    | null: false                    |
 | buy        | references | null: false, foreign_key: true |
 | item       | references | null: false, foreign_key: true |
+| category   | references | null: false, foreign_key: true |
 
 ### Associations
 
 - belongs_to :buy
 - belongs_to :item
+- belongs_to :category
 
 ## customersテーブル
 
@@ -138,8 +145,10 @@
 | quantity | string     | null: false                    |
 | sell     | references | null: false, foreign_key: true |
 | item     | references | null: false, foreign_key: true |
+| category | references | null: false, foreign_key: true |
 
 ### Associations
 
 - belongs_to :sell
 - belongs_to :item
+- belongs_to :category

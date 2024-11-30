@@ -1,4 +1,11 @@
 class ItemsController < ApplicationController
+  def filter_by_category
+    @items = Item.where(category_id: params[:category_id])
+    respond_to do |format|
+      format.js
+    end
+  end
+  
   def new
     @user = User.find(params[:user_id])
     @categories = Category.all
