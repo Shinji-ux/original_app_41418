@@ -1,0 +1,17 @@
+<h1>カテゴリ編集</h1>
+
+<%= @category.category %>を編集
+
+<div>
+<%= form_with model: @category, local: true do |f| %>
+
+<%= f.label :category, 'カテゴリ名' %>
+<%= f.text_field :category %>
+
+<%= f.submit '更新'%>
+
+<% end %>
+
+<%= link_to '戻る', categories_path %>
+
+</div>

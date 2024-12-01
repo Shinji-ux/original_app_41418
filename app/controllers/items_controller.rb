@@ -5,6 +5,9 @@ class ItemsController < ApplicationController
   #     format.js
   #   end
   # end
+  def index
+    @items = Item.all
+  end
   
   def new
     @categories = Category.all
@@ -19,6 +22,26 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+    @categories = Category.all
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to items_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to items_path
   end
 
   private

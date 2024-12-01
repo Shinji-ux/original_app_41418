@@ -1,0 +1,10 @@
+<h1>商品一覧</h1>
+
+<% @items.each do |item| %>
+<div>
+  <%= item.category.category %>
+  <%= item.item_name %>
+   <%= link_to '編集', edit_item_path(item.id) %>
+  <%= link_to '削除', item_path(item.id), data: { turbo_method: :delete } %>
+</div>
+<% end %>

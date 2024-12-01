@@ -1,5 +1,8 @@
 class BuysController < ApplicationController
 
+  def index
+  end
+
   def new
     @supplier = Supplier.find(params[:supplier_id])
     @buy = Buy.new

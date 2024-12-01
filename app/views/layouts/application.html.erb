@@ -15,8 +15,8 @@
       <div class="header-logo"><%= link_to '縄文会計', root_path, class: "btn" %></div>
       <div class="header-list">
         <% if user_signed_in? %>
-        <div class="header-list-li"><%= link_to 'ログアウト', destroy_user_session_path, data: {turbo_method: :delete }, class: "btn" %></div>
-        <div class="header-list-li"><%= link_to 'マイページ', '', class: "btn" %></div>
+        <div class="header-list-li"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn" %></div>
+        <div class="header-list-li"><%= link_to 'マイページ', user_path(current_user.id), class: "btn" %></div>
         <% end %>
       </div>
     </div>

@@ -1,11 +1,13 @@
-<h1>発注書作成</h1>
 <p>業者一覧</p>
 
 <div>
 
 <% @suppliers.each do |supplier| %>
 <div>
-  <%= link_to supplier.company, new_supplier_buy_path(supplier.id) %>
+  <%= supplier.company %>
+  <%= link_to '編集', edit_supplier_path(supplier.id) %>
+  <%= link_to '削除', supplier_path(supplier.id), data: { turbo_method: :delete } %>
+  <%= link_to '発注書を作成する', new_supplier_buy_path(supplier.id) %>
 </div>
 <% end %>
 

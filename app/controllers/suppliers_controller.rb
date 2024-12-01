@@ -16,6 +16,25 @@ class SuppliersController < ApplicationController
     end
   end
 
+  def edit
+    @supplier = Supplier.find(params[:id])
+  end
+
+  def update
+    @supplier = Supplier.find(params[:id])
+    if @supplier.update(supplier_params)
+      redirect_to suppliers_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    supplier = Supplier.find(params[:id])
+    supplier.destroy
+    redirect_to suppliers_path
+  end
+
   private
   def supplier_params
     params.require(:supplier).permit(:company, :city, :address, :phone).merge(user_id: current_user.id)

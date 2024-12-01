@@ -1,1 +1,9 @@
 <h1>マイページ</h1>
+<%= @user.company %>
+<%= @user.city %>
+<%= @user.address %>
+<%= @user.phone %>
+<%= @user.manager %>
+
+<%= link_to '編集する', edit_user_registration_path %>
+<%= link_to 'ホームに戻る', root_path %>

@@ -6,22 +6,8 @@
 |--------------------|--------|---------------------------|
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false               |
-
-### Associations
-
-- has_one :profile
-- has_many :categories
-- has_many :items, through: :categories
-- has_many :suppliers
-- has_many :buys, through: :suppliers
-- has_many :customers
-- has_many :sells, through: :customers
-
-## profileテーブル
-
-| Column  | Type       | Options                        |
-|---------|------------|--------------------------------|
 | company | string     | null: false                    |
+| city    | string     | null: false                    |
 | address | string     |                                |
 | phone   | string     |                                |
 | manager | string     |                                |
@@ -29,7 +15,12 @@
 
 ### Associations
 
-- belongs_to :user
+- has_many :categories
+- has_many :items, through: :categories
+- has_many :suppliers
+- has_many :buys, through: :suppliers
+- has_many :customers
+- has_many :sells, through: :customers
 
 ## itemsテーブル
 
