@@ -1,10 +1,24 @@
 <h1>商品一覧</h1>
 
-<% @items.each do |item| %>
 <div>
-  <%= item.category.category %>
-  <%= item.item_name %>
-   <%= link_to '編集', edit_item_path(item.id) %>
-  <%= link_to '削除', item_path(item.id), data: { turbo_method: :delete } %>
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>カテゴリ</th>
+        <th>商品名</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td><%= item.category.category %></td>
+          <td><%= item.item_name %></td>
+          <td><%= link_to '編集', edit_item_path(item.id) %></td>
+          <td><%= link_to '削除', item_path(item.id), data: { turbo_method: :delete, confirm: '削除してもよろしいですか？' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-<% end %>

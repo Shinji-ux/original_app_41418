@@ -1,16 +1,24 @@
-<p>業者一覧</p>
+<h1>仕入れ先一覧</h2>
 
 <div>
-
-<% @suppliers.each do |supplier| %>
-<div>
-  <%= supplier.company %>
-  <%= link_to '編集', edit_supplier_path(supplier.id) %>
-  <%= link_to '削除', supplier_path(supplier.id), data: { turbo_method: :delete } %>
-  <%= link_to '発注書を作成する', new_supplier_buy_path(supplier.id) %>
-</div>
-<% end %>
-
-
-
-  </div>
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>会社名</th>
+        <th>発注</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @suppliers.each do |supplier| %>
+        <tr>
+          <td><%= supplier.company %></td>
+          <td><%= link_to '発注書を作成する', new_supplier_buy_path(supplier.id) %></td>
+          <td><%= link_to '編集', edit_supplier_path(supplier.id) %></td>
+          <td><%= link_to '削除', supplier_path(supplier.id), data: { turbo_method: :delete, confirm: '削除してもよろしいですか？' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+ </div>

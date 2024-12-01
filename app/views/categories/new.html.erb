@@ -1,13 +1,11 @@
 <h1>カテゴリ登録</h1>
 
-<div>
 <%= form_with model: @category, local: true do |f| %>
-
-<%= f.label :category, 'カテゴリ名' %>
-<%= f.text_field :category %>
-
-<%= f.submit %>
-
+  <div>
+    <%= f.label :category, 'カテゴリ名' %>
+    <%= f.text_field :category %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
 <% end %>
-
-</div>

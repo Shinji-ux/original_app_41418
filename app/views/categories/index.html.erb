@@ -1,9 +1,22 @@
 <h1>カテゴリ一覧</h1>
 
-<% @categories.each do |category| %>
 <div>
-  <%= category.category %>
-  <%= link_to '編集', edit_category_path(category.id) %>
-  <%= link_to '削除', category_path(category.id), data: { turbo_method: :delete } %>
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>カテゴリー</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.category %></td>
+          <td><%= link_to '編集', edit_category_path(category.id) %></td>
+          <td><%= link_to '削除', category_path(category.id), data: { turbo_method: :delete, confirm: '削除してもよろしいですか？' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-<% end %>

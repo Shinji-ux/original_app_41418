@@ -1,52 +1,43 @@
 <h1>発注書作成</h1>
-
-<h1>New Buy for <%= @supplier.company %></h1>
-
-
+<h1><%= @supplier.company %></h1>
 
 <%= form_with(model: [@supplier, @buy]) do |f| %>
-  
   <div>
     <%= f.label :transaction_date, "納品日" %>
     <%= f.date_field :transaction_date %>
   </div>
 
-  <div id="form-sets-container">
+  <div>
     <%= f.fields_for :buy_items do |buy_item_form| %>
-      <div class="form-set">
-        <div>
-          <%= buy_item_form.label :category_id, "カテゴリ" %>
-          <%= buy_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "category-select" } %>
-        </div>
+      <div>
+        <%= buy_item_form.label :category_id, "カテゴリ" %>
+        <%= buy_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "category-select" } %>
+      </div>
 
-        <div>
-          <%= buy_item_form.label :item_id, "商品" %>
-          <%= buy_item_form.collection_select :item_id, @items, :id, :item_name, { prompt: "商品を選択" }, { class: "category-select" } %>
+      <div>
+        <%= buy_item_form.label :item_id, "商品" %>
+        <%= buy_item_form.collection_select :item_id, @items, :id, :item_name, { prompt: "商品を選択" }, { class: "category-select" } %>
+      </div>
 
-          <%# <div id="item-error-#{buy_item_form.index}"></div> %>
-        </div>
-
-        <div>
-          <%= buy_item_form.label :item_price, "単価" %>
-          <%= buy_item_form.text_field :item_price %>
-        </div>
-
-        <div>
-          <%= buy_item_form.label :quantity, "数量" %>
-          <%= buy_item_form.number_field :quantity %>
-        </div>
+      <div>
+        <%= buy_item_form.label :item_price, "単価" %>
+        <%= buy_item_form.text_field :item_price %>
+      </div>
+      
+      <div>
+        <%= buy_item_form.label :quantity, "数量" %>
+        <%= buy_item_form.number_field :quantity %>
       </div>
     <% end %>
   </div>
 
   <%# 追加ボタン %>
-  <%# <button type="button" id="add-form-set">フォームセットを追加</button> %>
+  <%# <button type="button" id="add-form-set">商品を追加</button> %>
 
   <div>
-    <%= f.label :total_price, '合計の値段' %>
+    <%= f.label :total_price, '合計' %>
     <%= f.text_field :total_price %>
   </div>
-
   <div>
     <%= f.submit "Create Buy" %>
   </div>
