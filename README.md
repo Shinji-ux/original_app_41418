@@ -38,7 +38,6 @@
 | item_name | string     | null: false                    |
 | unit      | string     | null: false                    |
 | price     | integer    | null: false                    |
-| user      | references | null: false, foreign_key: true |
 | category  | references | null: false, foreign_key: true |
 
 ### Associations

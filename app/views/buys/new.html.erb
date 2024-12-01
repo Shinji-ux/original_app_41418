@@ -21,11 +21,14 @@
 
         <div>
           <%= buy_item_form.label :item_id, "商品" %>
-          <select class="item-select" name="buy[buy_items_attributes][#{buy_item_form.index}][item_id]" id="item-select-#{buy_item_form.index}">
-            <option>商品を選択</option>
-          </select>
+          <%= buy_item_form.collection_select :item_id, @items, :id, :item_name, { prompt: "商品を選択" }, { class: "category-select" } %>
 
-          <div id="item-error-#{buy_item_form.index}"></div>
+          <%# <div id="item-error-#{buy_item_form.index}"></div> %>
+        </div>
+
+        <div>
+          <%= buy_item_form.label :item_price, "単価" %>
+          <%= buy_item_form.text_field :item_price %>
         </div>
 
         <div>
@@ -37,7 +40,7 @@
   </div>
 
   <%# 追加ボタン %>
-  <button type="button" id="add-form-set">フォームセットを追加</button>
+  <%# <button type="button" id="add-form-set">フォームセットを追加</button> %>
 
   <div>
     <%= f.label :total_price, '合計の値段' %>

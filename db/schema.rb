@@ -45,12 +45,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_29_095726) do
     t.string "item_name", null: false
     t.string "unit", null: false
     t.integer "price", null: false
-    t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "suppliers", charset: "utf8", force: :cascade do |t|
@@ -82,5 +80,4 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_29_095726) do
   add_foreign_key "buys", "suppliers"
   add_foreign_key "categories", "users"
   add_foreign_key "items", "categories"
-  add_foreign_key "items", "users"
 end
