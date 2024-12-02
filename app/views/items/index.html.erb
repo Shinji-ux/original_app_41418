@@ -6,6 +6,8 @@
       <tr>
         <th>カテゴリ</th>
         <th>商品名</th>
+        <th>単位</th>
+        <th>単価</th>
         <th>編集</th>
         <th>削除</th>
       </tr>
@@ -15,6 +17,8 @@
         <tr>
           <td><%= item.category.category %></td>
           <td><%= item.item_name %></td>
+          <td><%= item.unit %></td>
+          <td><%= item.price %></td>
           <td><%= link_to '編集', edit_item_path(item.id) %></td>
           <td><%= link_to '削除', item_path(item.id), data: { turbo_method: :delete, confirm: '削除してもよろしいですか？' } %></td>
         </tr>
@@ -22,3 +26,5 @@
     </tbody>
   </table>
 </div>
+
+<%= link_to 'ホームに戻る', root_path %>

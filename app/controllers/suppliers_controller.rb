@@ -7,6 +7,10 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.new
   end
 
+  def show
+    @supplier = Supplier.find(params[:id])
+  end
+
   def create
     @supplier = Supplier.new(supplier_params)
     if @supplier.save
@@ -34,6 +38,11 @@ class SuppliersController < ApplicationController
     supplier.destroy
     redirect_to suppliers_path
   end
+
+  def order_index
+    @suppliers = Supplier.all
+  end
+
 
   private
   def supplier_params

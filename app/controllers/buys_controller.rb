@@ -24,6 +24,9 @@ class BuysController < ApplicationController
     end
   end
 
+  def order_index
+  end
+
   private 
   def buy_params
     params.require(:buy).permit(:transaction_date, :total_price, buy_items_attributes: [:item_price, :quantity, :category_id, :item_id])
