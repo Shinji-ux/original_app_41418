@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :company, presence: true
   validates :city, presence: true
   validates :address, presence: true
-  validates :phone, presence: true
+  validates :phone, presence: true, format: { with: /\A0\d{9,10}\z/, message: "must be a valid phone number" }
   validates :manager, presence: true
 
   has_one :profile

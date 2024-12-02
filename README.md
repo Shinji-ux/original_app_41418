@@ -61,7 +61,7 @@
 | company | string     | null: false                    |
 | city    | string     |                                |
 | address | string     |                                |
-| phone   | integer    |                                |
+| phone   | string     |                                |
 | user    | references | null: false, foreign_key: true |
 
 ### Associations
@@ -106,7 +106,7 @@
 | company | string     | null: false                    |
 | city    | string     |                                |
 | address | string     |                                |
-| phone   | integer    |                                |
+| phone   | string     |                                |
 | user    | references | null: false, foreign_key: true |
 
 ### Associations
