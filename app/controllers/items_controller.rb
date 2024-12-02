@@ -1,10 +1,5 @@
 class ItemsController < ApplicationController
-  # def filter_by_category
-  #   @items = Item.where(category_id: params[:category_id])
-  #   respond_to do |format|
-  #     format.js
-  #   end
-  # end
+
   def index
     @items = Item.all
   end
@@ -44,7 +39,10 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
-
+  def details
+    @item = Item.find(params[:id])
+    render json: { unit: @item.unit, price: @item.price }
+  end
 
   private
   def item_params

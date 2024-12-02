@@ -8,40 +8,47 @@
   </div>
 
   <div>
-    <%= f.fields_for :buy_items do |buy_item_form| %>
-      <div>
-        <%= buy_item_form.label :category_id, "カテゴリ" %>
-        <%= buy_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "category-select" } %>
-      </div>
+    <table class="table-bordered">
+      <thead>
+        <tr>
+          <th>カテゴリ</th>
+          <th>商品</th>
+          <th>数量</th>
+          <th>単位</th>
+          <th>合計</th>
+        </tr>
+      </thead>
+      <tbody id="buy-item-forms">
+        <%= f.fields_for :buy_items do |buy_item_form| %>
+          <tr class="buy-item">
+            <td>
+              <%= buy_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "category-select" } %>
+            </td>
 
-      <div>
-        <%= buy_item_form.label :item_id, "商品" %>
-        <%= buy_item_form.collection_select :item_id, [], :id, :item_name, { prompt: "商品を選択" }, { class: "item-select" } %>
-      </div>
+            <td>
+              <%= buy_item_form.collection_select :item_id, [], :id, :item_name, { prompt: "商品を選択" }, { class: "item-select" } %>
+            </td>
 
-      <div>
-        <%= buy_item_form.label :item_price, "単価" %>
-        <%= buy_item_form.text_field :item_price %><p>ここに単位を表示したい</p>
-      </div>
-      
-      <div>
-        <%= buy_item_form.label :quantity, "数量" %>
-        <%= buy_item_form.number_field :quantity %>
-      </div>
-    <% end %>
-  </div>
+            <td>
+              <%= buy_item_form.number_field :quantity, class: 'quantity-input' %>
+            </td>
+            <td id="unit">--</td>
 
-  <%# 追加ボタン %>
-  <%# <button type="button" id="add-form-set">商品を追加</button> %>
+            <td>
+              <%= buy_item_form.text_field :item_price, class: 'item-price' %>
+            </td>
+          </tr>
+        <% end %>  
+      </tbody>
+    </table>
 
-  <div>
+    <%# 追加ボタン %>
+    <button type="button" id="add-form-set">商品を追加</button>
     <%= f.label :total_price, '合計' %>
     <%= f.text_field :total_price %>
-  </div>
-  <div>
+
     <%= f.submit "Create Buy" %>
   </div>
 <% end %>
 
 <%= link_to '戻る', suppliers_order_index_path %>
-
