@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: :show
-  resources :categories
+  resources :categories do
+    get 'items', to: 'categories#items'
+  end
   resources :items
   resources :suppliers do
     resources :buys

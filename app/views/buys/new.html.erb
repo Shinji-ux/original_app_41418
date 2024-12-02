@@ -16,12 +16,12 @@
 
       <div>
         <%= buy_item_form.label :item_id, "商品" %>
-        <%= buy_item_form.collection_select :item_id, @items, :id, :item_name, { prompt: "商品を選択" }, { class: "category-select" } %>
+        <%= buy_item_form.collection_select :item_id, [], :id, :item_name, { prompt: "商品を選択" }, { class: "item-select" } %>
       </div>
 
       <div>
         <%= buy_item_form.label :item_price, "単価" %>
-        <%= buy_item_form.text_field :item_price %>
+        <%= buy_item_form.text_field :item_price %><p>ここに単位を表示したい</p>
       </div>
       
       <div>

@@ -35,6 +35,11 @@ class CategoriesController < ApplicationController
     redirect_to categories_path
   end
 
+  def items
+    @items = Item.where(category_id: params[:category_id])
+    render json: { items: @items }
+  end
+
   private
   def category_params
     params.require(:category).permit(:category)
