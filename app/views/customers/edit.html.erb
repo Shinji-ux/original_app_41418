@@ -1,0 +1,28 @@
+<h1>得意先の編集</h1>
+
+
+<div>
+<div>
+<%= form_with model: @customer, local: true do |f| %>
+
+<%= f.label :company, '仕入れ先会社名' %>
+<%= f.text_field :company %>
+
+<%= f.label :city, '市区町村' %>
+<%= f.text_field :city %>
+
+<%= f.label :address, '住所' %>
+<%= f.text_field :address %>
+
+<%= f.label :phone, '電話番号' %>
+<%= f.text_field :phone %>
+
+<%= f.submit '更新' %>
+
+<% end %>
+
+<%= link_to '戻る', customers_path %>
+
+</div>
+
+</div>

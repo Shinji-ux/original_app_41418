@@ -1,0 +1,24 @@
+<h1>得意先一覧</h2>
+
+<div>
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>会社名</th>
+        <th>電話番号</th>
+        <th>詳細</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.company %></td>
+          <td><%= customer.phone %></td>
+          <td><%= link_to '詳細', customer_path(customer.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to 'ホームに戻る', root_path %>

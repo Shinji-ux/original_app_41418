@@ -1,0 +1,23 @@
+<h1>納品するときの業者一覧</h1>
+<h1>得意先一覧</h2>
+
+<div>
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>会社名</th>
+        <th>発注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.company %></td>
+          <td><%= link_to '納品書を作成する', new_customer_buy_path(customer.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to 'ホームに戻る', root_path %>

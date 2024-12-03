@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_28_055132) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_03_014854) do
   create_table "buy_items", charset: "utf8", force: :cascade do |t|
     t.integer "quantity", null: false
     t.integer "item_price", null: false
@@ -39,6 +39,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_28_055132) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "customers", charset: "utf8", force: :cascade do |t|
+    t.string "company", null: false
+    t.string "city"
+    t.string "address"
+    t.string "phone"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
   create_table "items", charset: "utf8", force: :cascade do |t|
