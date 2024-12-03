@@ -74,7 +74,7 @@
 | Column           | Type       | Options                        |
 |------------------|------------|--------------------------------|
 | transaction_date | date       | null: false                    |
-| total_price      | integer    | null: false                    |
+| total_price      | integer    |                                |
 | supplier         | references | null: false, foreign_key: true |
 
 ### Associations
@@ -88,7 +88,7 @@
 | Column     | Type       | Options                        |
 |------------|------------|--------------------------------|
 | quantity   | integer    | null: false                    |
-| item_price | integer    | null: false                    |
+| item_price | integer    |                                |
 | buy        | references | null: false, foreign_key: true |
 | item       | references | null: false, foreign_key: true |
 | category   | references | null: false, foreign_key: true |

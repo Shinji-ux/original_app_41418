@@ -9,8 +9,8 @@ class SellsController < ApplicationController
   end
 
   def create
-    @customer = Customer.find(params[:supplier_id])
-    @sell = @Customer.sells.new(sell_params)
+    @customer = Customer.find(params[:customer_id])
+    @sell = @customer.sells.new(sell_params)
     @categories = Category.all
     if @sell.save
       redirect_to root_path, notice: 'Sell was successfully created.'

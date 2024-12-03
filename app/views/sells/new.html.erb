@@ -18,15 +18,15 @@
           <th>合計</th>
         </tr>
       </thead>
-      <tbody id="buy-item-forms">
+      <tbody id="sell-item-forms">
         <%= f.fields_for :sell_items do |sell_item_form| %>
-          <tr class="buy-item">
+          <tr class="sell-item">
             <td>
-              <%= sell_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "category-select" } %>
+              <%= sell_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "sell-category-select" } %>
             </td>
 
             <td>
-              <%= sell_item_form.collection_select :item_id, [], :id, :item_name, { prompt: "商品を選択" }, { class: "item-select" } %>
+              <%= sell_item_form.collection_select :item_id, [], :id, :item_name, { prompt: "商品を選択" }, { class: "sell-item-select" } %>
             </td>
 
             <td>

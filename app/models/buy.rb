@@ -1,6 +1,5 @@
 class Buy < ApplicationRecord
   validates :transaction_date, presence: true
-  validates :total_price, presence: true
 
   belongs_to :supplier
   has_many :buy_items, inverse_of: :buy, dependent: :destroy
