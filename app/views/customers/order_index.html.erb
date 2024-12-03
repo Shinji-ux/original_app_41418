@@ -13,7 +13,7 @@
       <% @customers.each do |customer| %>
         <tr>
           <td><%= customer.company %></td>
-          <td><%= link_to '納品書を作成する', new_customer_buy_path(customer.id) %></td>
+          <td><%= link_to '納品書を作成する', new_customer_sell_path(customer.id) %></td>
         </tr>
       <% end %>
     </tbody>

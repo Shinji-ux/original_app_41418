@@ -21,6 +21,6 @@
 </div>
 
 <%= link_to '編集', edit_supplier_path(@supplier.id) %>
-<%= link_to '削除', supplier_path(@supplier.id), data: { turbo_method: :delete, confirm: '削除してもよろしいですか？' } %>
+<%= link_to '削除', supplier_path(@supplier.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
 
 <%= link_to '戻る', suppliers_path %>

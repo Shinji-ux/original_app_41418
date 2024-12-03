@@ -1,8 +1,5 @@
 class BuysController < ApplicationController
 
-  def index
-  end
-
   def new
     @supplier = Supplier.find(params[:supplier_id])
     @buy = Buy.new
@@ -18,15 +15,11 @@ class BuysController < ApplicationController
     if @buy.save
       redirect_to root_path, notice: 'Buy was successfully created.'
     else
-      Rails.logger.debug(@buy.errors.full_messages.join(", "))  # エラーメッセージをログに出力
-    flash.now[:alert] = "保存に失敗しました: " + @buy.errors.full_messages.join(", ")
       @items = Item.all
       @categories = Category.all
       render :new
     end
   end
-
- 
 
   def order_index
   end

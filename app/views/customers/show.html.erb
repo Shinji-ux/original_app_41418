@@ -21,6 +21,5 @@
 </div>
 
 <%= link_to '編集', edit_customer_path(@customer.id) %>
-<%= link_to '削除', customer_path(@customer.id), data: { turbo_method: :delete, confirm: '削除してもよろしいですか？' } %>
-
+<%= link_to '削除', customer_path(@customer.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
 <%= link_to '戻る', customers_path %>

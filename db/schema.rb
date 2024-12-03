@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_03_014854) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_03_042655) do
   create_table "buy_items", charset: "utf8", force: :cascade do |t|
     t.integer "quantity", null: false
     t.integer "item_price", null: false
@@ -62,6 +62,28 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_03_014854) do
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 
+  create_table "sell_items", charset: "utf8", force: :cascade do |t|
+    t.integer "quantity", null: false
+    t.integer "item_price", null: false
+    t.bigint "sell_id", null: false
+    t.bigint "item_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_sell_items_on_category_id"
+    t.index ["item_id"], name: "index_sell_items_on_item_id"
+    t.index ["sell_id"], name: "index_sell_items_on_sell_id"
+  end
+
+  create_table "sells", charset: "utf8", force: :cascade do |t|
+    t.date "transaction_date", null: false
+    t.integer "total_price", null: false
+    t.bigint "customer_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_sells_on_customer_id"
+  end
+
   create_table "suppliers", charset: "utf8", force: :cascade do |t|
     t.string "company", null: false
     t.string "city"
@@ -96,4 +118,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_03_014854) do
   add_foreign_key "buys", "suppliers"
   add_foreign_key "categories", "users"
   add_foreign_key "items", "categories"
+  add_foreign_key "sell_items", "categories"
+  add_foreign_key "sell_items", "items"
+  add_foreign_key "sell_items", "sells"
+  add_foreign_key "sells", "customers"
 end
