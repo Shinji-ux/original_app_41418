@@ -46,7 +46,18 @@ class BuysController < ApplicationController
     redirect_to buys_order_index_path
   end
 
-  def recept
+  def search
+    @suppliers = Supplier.all
+  end
+  
+  def receipt
+    @supplier_id = params[:supplier_id]
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
+
+    @receipts = Buy.where(supplier_id: @supplier_id)
+                    .where("transaction_date >= ?", @start_date)
+                    .where("transaction_date <= ?", @end_date)
   end
 
 
