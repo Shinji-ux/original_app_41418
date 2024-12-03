@@ -29,7 +29,7 @@
     </div>
     <div class="contents">
       <div class="content-title">
-        取引履歴(実装予定)
+        集計(未実装)
       </div>
     </div>
   </div>
@@ -46,7 +46,8 @@
       </div>
       <div class="content">
         <p><%= link_to '発注書作成', suppliers_order_index_path, class: "btn" %></p>
-        <p><%= link_to '支払い明細書作成', buys_order_index_path, class: "btn" %></p>
+        <p><%= link_to '発注金額入力', buys_order_index_path, class: "btn" %></p>
+        <p><%= link_to '支払い明細書作成', buys_recept_path, class: "btn" %></p>
       </div>
     </div>
     <div class="contents">
@@ -55,7 +56,7 @@
       </div>
       <div class="content">
         <p><%= link_to '納品書作成', customers_order_index_path, class: "btn" %></p>
-        <p><%= link_to '請求書作成', sells_order_index_path, class: "btn" %></p>
+        <p><%= link_to '請求書作成', sells_recept_path, class: "btn" %></p>
       </div>
     </div>
   </div>

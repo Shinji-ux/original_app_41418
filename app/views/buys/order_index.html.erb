@@ -1,17 +1,28 @@
-<div>明細書作成画面<div>
-  <div>
-    業者のプルダウンを設置
-  </div>
 
-  <form>
-    <label for="date">開始日</label>
-    <input type="date">
-  </form>
-  <form>
-    <label for="date">終了日</label>
-    <input type="date">
-  </form>
 
-  <button>明細表示ボタン</button>
-  JavaScriptで動的に表示<br>
-  印刷用PDFを表示<br>
+  <h1>発注一覧</h1>
+
+<div>
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>発注日</th>
+        <th>発注先</th>
+        <th>金額</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @buys.each do |buy| %>
+        <tr>
+          <td><%= buy.transaction_date %></td>
+          <td><%= buy.supplier.company %></td>
+          <td><%= buy.total_price %></td>
+          <td><%= link_to '金額を入力', edit_supplier_buy_path(supplier_id: buy.supplier_id, id: buy.id) %></td>
+          <td><%= link_to '削除', supplier_buy_path(supplier_id: buy.supplier_id, id: buy.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

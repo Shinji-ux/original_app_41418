@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   get 'shops/index'
   get 'suppliers/order_index', to: 'suppliers#order_index'
   get 'buys/order_index', to: 'buys#order_index'
+  get 'buys/recept', to: 'buys#recept'
   get 'customers/order_index', to: 'customers#order_index'
   get 'sells/order_index', to: 'sells#order_index'
+  get 'sells/recept', to: 'sells#recept'
+
 
   devise_for :users
   resources :users, only: :show

@@ -21,7 +21,8 @@ class SellsController < ApplicationController
     end
   end
 
-  def order_index
+  def recept
+    @customers = Customer.all
   end
 
   private 

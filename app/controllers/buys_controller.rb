@@ -21,7 +21,37 @@ class BuysController < ApplicationController
     end
   end
 
+  def edit
+    @buy = Buy.find(params[:id])
+    @supplier = @buy.supplier
+    @categories = Category.all
+    @items = Item.all
+  end
+
+  def update
+    @buy = Buy.find(params[:id])
+    @supplier = @buy.supplier
+    @categories = Category.all
+    @items = Item.all
+    if @buy.update(buy_params)
+      redirect_to buys_order_index_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    buy = Buy.find(params[:id])
+    buy.destroy
+    redirect_to buys_order_index_path
+  end
+
+  def recept
+  end
+
+
   def order_index
+    @buys = Buy.all
   end
 
   private 
