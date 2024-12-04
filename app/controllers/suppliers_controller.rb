@@ -1,6 +1,6 @@
 class SuppliersController < ApplicationController
   def index
-    @suppliers = Supplier.all
+    @suppliers = current_user.suppliers
   end
   
   def new
@@ -40,7 +40,7 @@ class SuppliersController < ApplicationController
   end
 
   def order_index
-    @suppliers = Supplier.all
+    @suppliers = current_user.suppliers
   end
 
 

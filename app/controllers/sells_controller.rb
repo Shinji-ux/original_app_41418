@@ -22,7 +22,7 @@ class SellsController < ApplicationController
   end
 
   def search
-    @customers = Customer.all
+    @customers = current_user.customers
   end
 
   def receipt

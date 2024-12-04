@@ -47,7 +47,7 @@ class BuysController < ApplicationController
   end
 
   def search
-    @suppliers = Supplier.all
+    @suppliers = current_user.suppliers
   end
   
   def receipt
@@ -64,7 +64,7 @@ class BuysController < ApplicationController
 
 
   def order_index
-    @buys = Buy.all
+    @buys = current_user.buys
   end
 
   private 

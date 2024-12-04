@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.all
+    @categories = current_user.categories
   end
 
   def new
@@ -41,7 +41,7 @@ class CategoriesController < ApplicationController
   end
 
   def search
-    @categories = Category.all
+    @categories = current_user.categories
   end
 
   def buy_receipt

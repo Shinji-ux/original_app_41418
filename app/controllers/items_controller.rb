@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.all
+    @items = current_user.items
   end
   
   def new
@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.all
+    @items = current_user.items
   end
 
   def buy_receipt

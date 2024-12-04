@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   def index
-    @customers = Customer.all
+    @customers = current_user.customers
   end
   
   def new
@@ -40,7 +40,7 @@ class CustomersController < ApplicationController
   end
 
   def order_index
-    @customers = Customer.all
+    @customers = current_user.customers
   end
 
 
