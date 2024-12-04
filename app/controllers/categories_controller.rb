@@ -40,6 +40,13 @@ class CategoriesController < ApplicationController
     render json: { items: @items }
   end
 
+  def import
+    def import
+      Category.import_from_csv(params[:file], current_user)
+      redirect_to categories_path, notice: "Categories imported."
+    end
+  end
+
   def search
     @categories = current_user.categories
   end

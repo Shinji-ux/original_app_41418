@@ -10,4 +10,14 @@
   </div>
 <% end %>
 
+<%= form_with(url: import_categories_path, local: true, multipart: true) do |form| %>
+  <div class="form-group">
+    <%= form.label :file, "CSVファイルを選択" %>
+    <%= form.file_field :file %>
+  </div>
+  <div class="actions">
+    <%= form.submit "インポート" %>
+  </div>
+<% end %>
+
 <%= link_to 'ホームに戻る', root_path %>

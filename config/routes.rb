@@ -24,11 +24,17 @@ Rails.application.routes.draw do
 
   resources :categories do
     get 'items', to: 'categories#items'
+    collection do
+      post 'import', to: 'categories#import'
+    end
   end
 
   resources :items do
     member do
       get 'details'
+    end
+    collection do
+      post 'import'
     end
   end
   resources :suppliers do

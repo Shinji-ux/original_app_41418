@@ -44,6 +44,11 @@ class ItemsController < ApplicationController
     render json: { unit: @item.unit, price: @item.price }
   end
 
+  def import
+    Item.import_items_from_csv(params[:file], current_user)
+    redirect_to items_path, notice: "Items imported."
+  end
+
   def search
     @items = current_user.items
   end
