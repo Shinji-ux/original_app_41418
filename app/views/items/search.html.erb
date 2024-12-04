@@ -1,0 +1,50 @@
+<h1>アイテム別検索</h1>
+
+
+<p>buy_receiptへのフォーム</p>
+<%= form_with url: items_buy_receipt_path, method: :get, local: true do %>
+  <div>
+    <%= label_tag :item_id, "仕入れ商品" %>
+    <%= select_tag :item_id, options_from_collection_for_select(@items, :id, :item_name, params[:item_id]), prompt: "仕入れ商品を選択" %>
+  </div>
+
+  <div>
+    <%= label_tag :start_date, "開始日" %>
+    <%= date_field_tag :start_date, params[:start_date] %>
+  </div>
+
+  <div>
+    <%= label_tag :end_date, "終了日" %>
+    <%= date_field_tag :end_date, params[:end_date] %>
+  </div>
+
+  <div>
+    <%= submit_tag "検索" %>
+  </div>
+<% end %>
+
+
+
+
+
+<p>sell_receiptへのフォーム</p>
+<%= form_with url: items_sell_receipt_path, method: :get, local: true do %>
+  <div>
+    <%= label_tag :item_id, "販売商品" %>
+    <%= select_tag :item_id, options_from_collection_for_select(@items, :id, :item_name, params[:item_id]), prompt: "販売商品を選択" %>
+  </div>
+
+  <div>
+    <%= label_tag :start_date, "開始日" %>
+    <%= date_field_tag :start_date, params[:start_date] %>
+  </div>
+
+  <div>
+    <%= label_tag :end_date, "終了日" %>
+    <%= date_field_tag :end_date, params[:end_date] %>
+  </div>
+
+  <div>
+    <%= submit_tag "検索" %>
+  </div>
+<% end %>

@@ -44,6 +44,34 @@ class ItemsController < ApplicationController
     render json: { unit: @item.unit, price: @item.price }
   end
 
+  def search
+    @items = Item.all
+  end
+
+  def buy_receipt
+    @item_id = params[:item_id]
+    @item = Item.find(@item_id)
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
+    @buy_receipts = Buy.joins(:buy_items)
+                    .where(buy_items: { item_id: @item_id })
+                    .where("transaction_date >= ?", @start_date)
+                    .where("transaction_date <= ?", @end_date)
+                    .order("buys.transaction_date ASC")
+  end
+
+  def sell_receipt
+    @item_id = params[:item_id]
+    @item = Item.find(@item_id)
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
+    @sell_receipts = Sell.joins(:sell_items)
+                    .where(sell_items: { item_id: @item_id })
+                    .where("transaction_date >= ?", @start_date)
+                    .where("transaction_date <= ?", @end_date)
+                    .order("sells.transaction_date ASC")
+  end
+
   private
   def item_params
     params.require(:item).permit(:item_name, :unit, :price, :category_id)

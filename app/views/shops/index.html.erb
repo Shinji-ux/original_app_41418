@@ -18,7 +18,7 @@
     </div>
     <div class="contents">
       <div class="content-title">
-        登録済みデータ
+        登録済みリスト
       </div>
       <div class="content">
         <p><%= link_to '仕入れ先一覧', suppliers_path %></p>
@@ -29,7 +29,11 @@
     </div>
     <div class="contents">
       <div class="content-title">
-        集計(未実装)
+        集計
+      </div>
+      <div class="content">
+        <p><%= link_to 'カテゴリ別', categories_search_path %></p>
+        <p><%= link_to '商品別', items_search_path %></p>
       </div>
     </div>
   </div>

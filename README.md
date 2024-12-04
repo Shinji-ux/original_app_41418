@@ -2,16 +2,16 @@
 
 ## usersテーブル
 
-| Column             | Type   | Options                   |
-|--------------------|--------|---------------------------|
-| email              | string | null: false, unique: true |
-| encrypted_password | string | null: false               |
-| company | string     | null: false                    |
-| city    | string     | null: false                    |
-| address | string     |                                |
-| phone   | string     |                                |
-| manager | string     |                                |
-| user    | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+|--------------------|------------|--------------------------------|
+| email              | string     | null: false, unique: true      |
+| encrypted_password | string     | null: false                    |
+| company            | string     | null: false                    |
+| city               | string     | null: false                    |
+| address            | string     |                                |
+| phone              | string     |                                |
+| manager            | string     |                                |
+| user               | references | null: false, foreign_key: true |
 
 ### Associations
 
@@ -130,12 +130,13 @@
 
 ## sell_itemsテーブル
 
-| Column   | Type       | Options                        |
-|----------|------------|--------------------------------|
-| quantity | string     | null: false                    |
-| sell     | references | null: false, foreign_key: true |
-| item     | references | null: false, foreign_key: true |
-| category | references | null: false, foreign_key: true |
+| Column     | Type       | Options                        |
+|------------|------------|--------------------------------|
+| quantity   | string     | null: false                    |
+| item_price | integer    | null: false                    |
+| sell       | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true |
+| category   | references | null: false, foreign_key: true |
 
 ### Associations
 

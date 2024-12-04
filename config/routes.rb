@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   get 'sells/order_index', to: 'sells#order_index'
   get 'sells/search', to: 'sells#search'
   get 'sells/receipt', to: 'sells#receipt'
+  get 'items/search', to: 'items#search'
+  get 'items/buy_receipt', to: 'items#buy_receipt'
+  get 'items/sell_receipt', to: 'items#sell_receipt'
+  get 'categories/search', to: 'categories#search'
+  get 'categories/buy_receipt', to: 'categories#buy_receipt'
+  get 'categories/sell_receipt', to: 'categories#sell_receipt'
 
 
   devise_for :users
