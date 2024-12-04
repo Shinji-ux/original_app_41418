@@ -40,6 +40,34 @@ class CategoriesController < ApplicationController
     render json: { items: @items }
   end
 
+  def search
+    @categories = Category.all
+  end
+
+  def buy_receipt
+    @category_id = params[:category_id]
+    @category = Category.find(@category_id)
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
+    @buy_receipts = Buy.joins(buy_items: :item)
+                        .where(items: { category_id: @category_id })
+                        .where("transaction_date >= ?", @start_date)
+                        .where("transaction_date <= ?", @end_date)
+                        .order("buys.transaction_date ASC")
+  end
+
+  def sell_receipt
+    @category_id = params[:category_id]
+    @category = Category.find(@category_id)
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
+    @sell_receipts = Sell.joins(sell_items: :item)
+                        .where(items: { category_id: @category_id })
+                        .where("transaction_date >= ?", @start_date)
+                        .where("transaction_date <= ?", @end_date)
+                        .order("sells.transaction_date ASC")
+  end
+
   private
   def category_params
     params.require(:category).permit(:category)

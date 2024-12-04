@@ -1,0 +1,44 @@
+<h1>仕入れカテゴリ別の集計</h1>
+<%= @start_date %>～<%= @end_date %>
+<%= @category.category %>の集計
+
+<table class="table-bordered">
+  <thead>
+    <tr>
+      <th>日付</th>
+      <th>商品名</th>
+      <th>数量</th>
+      <th>単位</th>
+      <th>金額</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @buy_receipts.each do |buy_receipt| %>
+      <% buy_receipt.buy_items.each do |buy_item| %>
+        <% if buy_item.item.category_id == @category_id.to_i %>
+          <tr>
+            <td><%= buy_receipt.transaction_date %></td>
+            <td><%= buy_item.item.item_name %></td>
+            <td><%= buy_item.quantity %></td>
+            <td><%= buy_item.item.unit %></td>
+            <td><%= buy_item.item_price %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>合計</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        <%= @buy_receipts.joins(:buy_items)
+                .joins("INNER JOIN items ON buy_items.item_id = items.id")
+                .where(items: { category_id: @category_id })
+                .sum('buy_items.item_price') %>
+      </td>
+    </tr>
+  </tfoot>
+</table>

@@ -3,7 +3,47 @@
 
 
 <h1>category.buy_receiptへのフォーム</h1>
+<%= form_with url: categories_buy_receipt_path, method: :get, local: true do %>
+  <div>
+    <%= label_tag :category_id, "仕入れカテゴリ" %>
+    <%= select_tag :category_id, options_from_collection_for_select(@categories, :id, :category, params[:category_id]), prompt: "仕入れカテゴリを選択" %>
+  </div>
+
+  <div>
+    <%= label_tag :start_date, "開始日" %>
+    <%= date_field_tag :start_date, params[:start_date] %>
+  </div>
+
+  <div>
+    <%= label_tag :end_date, "終了日" %>
+    <%= date_field_tag :end_date, params[:end_date] %>
+  </div>
+
+  <div>
+    <%= submit_tag "検索" %>
+  </div>
+<% end %>
 
 
 
 <h1>category.sell_receiptへのフォーム</h1>
+<%= form_with url: categories_sell_receipt_path, method: :get, local: true do %>
+  <div>
+    <%= label_tag :category_id, "販売カテゴリ" %>
+    <%= select_tag :category_id, options_from_collection_for_select(@categories, :id, :category, params[:category_id]), prompt: "販売カテゴリを選択" %>
+  </div>
+
+  <div>
+    <%= label_tag :start_date, "開始日" %>
+    <%= date_field_tag :start_date, params[:start_date] %>
+  </div>
+
+  <div>
+    <%= label_tag :end_date, "終了日" %>
+    <%= date_field_tag :end_date, params[:end_date] %>
+  </div>
+
+  <div>
+    <%= submit_tag "検索" %>
+  </div>
+<% end %>

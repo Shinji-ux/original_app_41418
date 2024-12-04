@@ -22,6 +22,20 @@
 - has_many :customers
 - has_many :sells, through: :customers
 
+## categoriesテーブル
+
+| Column   | Type       | Options                        |
+|----------|------------|--------------------------------|
+| category | string     | null: false                    |
+| user     | references | null: false, foreign_key: true |
+
+# Associations
+
+- belongs_to :user
+- has_many :items
+- has_many :buy_items
+- has_many :sell_items
+
 ## itemsテーブル
 
 | Column    | Type       | Options                        |
@@ -39,20 +53,6 @@
 - has_many :sells, through: :sell_items
 - has_many :buy_items
 - has_many :buys, through: :buy_items
-
-## categoriesテーブル
-
-| Column   | Type       | Options                        |
-|----------|------------|--------------------------------|
-| category | string     | null: false                    |
-| user     | references | null: false, foreign_key: true |
-
-# Associations
-
-- belongs_to :user
-- has_many :items
-- has_many :buy_items
-- has_many :sell_items
 
 ## suppliersテーブル
 
