@@ -54,6 +54,7 @@ class CategoriesController < ApplicationController
                         .where("transaction_date >= ?", @start_date)
                         .where("transaction_date <= ?", @end_date)
                         .order("buys.transaction_date ASC")
+                        .distinct
   end
 
   def sell_receipt
@@ -66,6 +67,7 @@ class CategoriesController < ApplicationController
                         .where("transaction_date >= ?", @start_date)
                         .where("transaction_date <= ?", @end_date)
                         .order("sells.transaction_date ASC")
+                        .distinct
   end
 
   private

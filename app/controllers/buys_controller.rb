@@ -59,6 +59,7 @@ class BuysController < ApplicationController
                     .where("transaction_date >= ?", @start_date)
                     .where("transaction_date <= ?", @end_date)
                     .order("buys.transaction_date ASC")
+                    .distinct
   end
 
 
@@ -68,7 +69,7 @@ class BuysController < ApplicationController
 
   private 
   def buy_params
-    params.require(:buy).permit(:transaction_date, :total_price, buy_items_attributes: [:id, :item_price, :quantity, :category_id, :item_id, :destroy])
+    params.require(:buy).permit(:transaction_date, :total_price, buy_items_attributes: [:id, :item_price, :quantity, :category_id, :item_id, :destroy]).merge(user_id: current_user.id)
   end
 
 end

@@ -27,10 +27,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_03_042655) do
   create_table "buys", charset: "utf8", force: :cascade do |t|
     t.date "transaction_date", null: false
     t.integer "total_price"
+    t.bigint "user_id", null: false
     t.bigint "supplier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["supplier_id"], name: "index_buys_on_supplier_id"
+    t.index ["user_id"], name: "index_buys_on_user_id"
   end
 
   create_table "categories", charset: "utf8", force: :cascade do |t|
@@ -56,10 +58,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_03_042655) do
     t.string "item_name", null: false
     t.string "unit", null: false
     t.integer "price", null: false
+    t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "sell_items", charset: "utf8", force: :cascade do |t|
@@ -78,10 +82,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_03_042655) do
   create_table "sells", charset: "utf8", force: :cascade do |t|
     t.date "transaction_date", null: false
     t.integer "total_price", null: false
+    t.bigint "user_id", null: false
     t.bigint "customer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_sells_on_customer_id"
+    t.index ["user_id"], name: "index_sells_on_user_id"
   end
 
   create_table "suppliers", charset: "utf8", force: :cascade do |t|
@@ -116,10 +122,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_03_042655) do
   add_foreign_key "buy_items", "categories"
   add_foreign_key "buy_items", "items"
   add_foreign_key "buys", "suppliers"
+  add_foreign_key "buys", "users"
   add_foreign_key "categories", "users"
   add_foreign_key "items", "categories"
+  add_foreign_key "items", "users"
   add_foreign_key "sell_items", "categories"
   add_foreign_key "sell_items", "items"
   add_foreign_key "sell_items", "sells"
   add_foreign_key "sells", "customers"
+  add_foreign_key "sells", "users"
 end

@@ -43,6 +43,7 @@
 | item_name | string     | null: false                    |
 | unit      | string     | null: false                    |
 | price     | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 | category  | references | null: false, foreign_key: true |
 
 ### Associations
@@ -75,10 +76,12 @@
 |------------------|------------|--------------------------------|
 | transaction_date | date       | null: false                    |
 | total_price      | integer    |                                |
+| user               | references | null: false, foreign_key: true |
 | supplier         | references | null: false, foreign_key: true |
 
 ### Associations
 
+- belongs_to :user
 - belongs_to :supplier
 - has_many :buy_items
 - has_many :items, through: :buy_items
@@ -120,10 +123,12 @@
 |------------------|------------|--------------------------------|
 | transaction_date | date       | null: false                    |
 | total_price      | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 | customer         | references | null: false, foreign_key: true |
 
 ### Associations
 
+- belongs_to :user
 - belongs_to :customer
 - has_many :sell_items
 - has_many :items, through: :sell_items

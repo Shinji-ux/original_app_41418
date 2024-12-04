@@ -58,6 +58,7 @@ class ItemsController < ApplicationController
                     .where("transaction_date >= ?", @start_date)
                     .where("transaction_date <= ?", @end_date)
                     .order("buys.transaction_date ASC")
+                    .distinct
   end
 
   def sell_receipt
@@ -70,10 +71,11 @@ class ItemsController < ApplicationController
                     .where("transaction_date >= ?", @start_date)
                     .where("transaction_date <= ?", @end_date)
                     .order("sells.transaction_date ASC")
+                    .distinct
   end
 
   private
   def item_params
-    params.require(:item).permit(:item_name, :unit, :price, :category_id)
+    params.require(:item).permit(:item_name, :unit, :price, :category_id).merge(user_id: current_user.id)
   end
 end

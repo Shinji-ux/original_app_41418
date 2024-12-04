@@ -3,6 +3,7 @@ class CreateBuys < ActiveRecord::Migration[7.0]
     create_table :buys do |t|
       t.date :transaction_date, null: false
       t.integer :total_price
+      t.references :user, null: false, foreign_key: true
       t.references :supplier, null: false, foreign_key: true
       t.timestamps
     end
