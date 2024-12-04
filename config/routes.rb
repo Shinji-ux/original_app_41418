@@ -38,9 +38,17 @@ Rails.application.routes.draw do
     end
   end
   resources :suppliers do
-    resources :buys
+    collection do
+      post 'import'
+    end
+    resources :buys do
+    end
   end
   resources :customers do
-    resources :sells
+    collection do
+      post 'import'
+    end
+    resources :sells do
+    end
   end
 end

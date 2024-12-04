@@ -43,6 +43,11 @@ class CustomersController < ApplicationController
     @customers = current_user.customers
   end
 
+  def import
+    Customer.import_from_csv(params[:file], current_user)
+    redirect_to customers_path, notice: "Customers imported."
+  end
+
   private
   def customer_params
     params.require(:customer).permit(:company, :city, :address, :phone).merge(user_id: current_user.id)

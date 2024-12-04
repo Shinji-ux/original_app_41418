@@ -43,6 +43,11 @@ class SuppliersController < ApplicationController
     @suppliers = current_user.suppliers
   end
 
+  def import
+    Supplier.import_from_csv(params[:file], current_user)
+    redirect_to suppliers_path, notice: "Suppliers imported."
+  end
+
   private
   def supplier_params
     params.require(:supplier).permit(:company, :city, :address, :phone).merge(user_id: current_user.id)

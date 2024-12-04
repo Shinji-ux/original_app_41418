@@ -1,3 +1,5 @@
+require 'csv'
+
 class Item < ApplicationRecord
   validates :item_name, presence: true
   validates :unit, presence: true
