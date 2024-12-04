@@ -1,38 +1,38 @@
 class BuysController < ApplicationController
 
   def new
-    @supplier = Supplier.find(params[:supplier_id])
-    @buy = Buy.new
+    @supplier = current_user.suppliers.find(params[:supplier_id])
+    @buy = current_user.buys.new
     @buy.buy_items.build
-    @items = Item.all
-    @categories = Category.all
+    @items = current_user.items
+    @categories = current_user.categories
   end
 
   def create
-    @supplier = Supplier.find(params[:supplier_id])
-    @buy = @supplier.buys.new(buy_params)
-    @categories = Category.all
+    @supplier = current_user.suppliers.find(params[:supplier_id])
+    @buy = current_user.buys.new(buy_params.merge(supplier_id: @supplier.id))
+    @categories = current_user.categories
     if @buy.save
       redirect_to root_path, notice: 'Buy was successfully created.'
     else
-      @items = Item.all
-      @categories = Category.all
+      @items = current_user.items
+      @categories = current_user.categories
       render :new
     end
   end
 
   def edit
-    @buy = Buy.find(params[:id])
+    @buy = current_user.buys.find(params[:id])
     @supplier = @buy.supplier
-    @categories = Category.all
-    @items = Item.all
+    @categories = current_user.categories
+    @items = current_user.items
   end
 
   def update
-    @buy = Buy.find(params[:id])
+    @buy = current_user.buys.find(params[:id])
     @supplier = @buy.supplier
-    @categories = Category.all
-    @items = Item.all
+    @categories = current_user.categories
+    @items = current_user.items
     if @buy.update(buy_params)
       redirect_to buys_order_index_path
     else
@@ -41,7 +41,7 @@ class BuysController < ApplicationController
   end
 
   def destroy
-    buy = Buy.find(params[:id])
+    buy = current_user.buys.find(params[:id])
     buy.destroy
     redirect_to buys_order_index_path
   end
@@ -55,13 +55,12 @@ class BuysController < ApplicationController
     @start_date = params[:start_date]
     @end_date = params[:end_date]
 
-    @receipts = Buy.where(supplier_id: @supplier_id)
-                    .where("transaction_date >= ?", @start_date)
-                    .where("transaction_date <= ?", @end_date)
-                    .order("buys.transaction_date ASC")
-                    .distinct
+    @receipts = current_user.buys.where(supplier_id: @supplier_id)
+                                .where("transaction_date >= ?", @start_date)
+                                .where("transaction_date <= ?", @end_date)
+                                .order("buys.transaction_date ASC")
+                                .distinct
   end
-
 
   def order_index
     @buys = current_user.buys

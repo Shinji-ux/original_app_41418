@@ -4,15 +4,15 @@ class CustomersController < ApplicationController
   end
   
   def new
-    @customer = Customer.new
+    @customer = current_user.customers.new
   end
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = current_user.customers.find(params[:id])
   end
 
   def create
-    @customer = Customer.new(customer_params)
+    @customer = current_user.customers.new(customer_params)
     if @customer.save
       redirect_to new_customer_path
     else
@@ -21,11 +21,11 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_user.customers.find(params[:id])
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = current_user.customers.find(params[:id])
     if @customer.update(customer_params)
       redirect_to customers_path
     else
@@ -34,7 +34,7 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    customer = Customer.find(params[:id])
+    customer = current_user.customers.find(params[:id])
     customer.destroy
       redirect_to customers_path
   end
@@ -42,7 +42,6 @@ class CustomersController < ApplicationController
   def order_index
     @customers = current_user.customers
   end
-
 
   private
   def customer_params

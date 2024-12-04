@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    @category = Category.new
+    @category = current_user.categories.new
   end
 
   def create
@@ -17,11 +17,11 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
+    @category = current_user.categories.find(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
+    @category = current_user.categories.find(params[:id])
     if @category.update(category_params)
       redirect_to categories_path
     else
@@ -30,13 +30,13 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    category = Category.find(params[:id])
+    category = current_user.categories.find(params[:id])
     category.destroy
     redirect_to categories_path
   end
 
   def items
-    @items = Item.where(category_id: params[:category_id])
+    @items = current_user.items.where(category_id: params[:category_id])
     render json: { items: @items }
   end
 
@@ -46,23 +46,23 @@ class CategoriesController < ApplicationController
 
   def buy_receipt
     @category_id = params[:category_id]
-    @category = Category.find(@category_id)
+    @category = current_user.categories.find(@category_id)
     @start_date = params[:start_date]
     @end_date = params[:end_date]
-    @buy_receipts = Buy.joins(buy_items: :item)
-                        .where(items: { category_id: @category_id })
-                        .where("transaction_date >= ?", @start_date)
-                        .where("transaction_date <= ?", @end_date)
-                        .order("buys.transaction_date ASC")
-                        .distinct
+    @buy_receipts = current_user.buys.joins(buy_items: :item)
+                                    .where(items: { category_id: @category_id })
+                                    .where("transaction_date >= ?", @start_date)
+                                    .where("transaction_date <= ?", @end_date)
+                                    .order("buys.transaction_date ASC")
+                                    .distinct
   end
 
   def sell_receipt
     @category_id = params[:category_id]
-    @category = Category.find(@category_id)
+    @category = current_user.categories.find(@category_id)
     @start_date = params[:start_date]
     @end_date = params[:end_date]
-    @sell_receipts = Sell.joins(sell_items: :item)
+    @sell_receipts = current_user.sells.joins(sell_items: :item)
                         .where(items: { category_id: @category_id })
                         .where("transaction_date >= ?", @start_date)
                         .where("transaction_date <= ?", @end_date)

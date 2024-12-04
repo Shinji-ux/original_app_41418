@@ -4,15 +4,15 @@ class SuppliersController < ApplicationController
   end
   
   def new
-    @supplier = Supplier.new
+    @supplier = current_user.suppliers.new
   end
 
   def show
-    @supplier = Supplier.find(params[:id])
+    @supplier = current_user.suppliers.find(params[:id])
   end
 
   def create
-    @supplier = Supplier.new(supplier_params)
+    @supplier = current_user.supplier.new(supplier_params)
     if @supplier.save
       redirect_to new_supplier_path
     else
@@ -21,11 +21,11 @@ class SuppliersController < ApplicationController
   end
 
   def edit
-    @supplier = Supplier.find(params[:id])
+    @supplier = current_user.suppliers.find(params[:id])
   end
 
   def update
-    @supplier = Supplier.find(params[:id])
+    @supplier = current_user.suppliers.find(params[:id])
     if @supplier.update(supplier_params)
       redirect_to suppliers_path
     else
@@ -34,7 +34,7 @@ class SuppliersController < ApplicationController
   end
 
   def destroy
-    supplier = Supplier.find(params[:id])
+    supplier = current_user.suppliers.find(params[:id])
     supplier.destroy
     redirect_to suppliers_path
   end
@@ -42,7 +42,6 @@ class SuppliersController < ApplicationController
   def order_index
     @suppliers = current_user.suppliers
   end
-
 
   private
   def supplier_params
