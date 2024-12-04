@@ -33,6 +33,7 @@ class SellsController < ApplicationController
     @receipts = Sell.where(customer_id: @customer_id)
                     .where("transaction_date >= ?", @start_date)
                     .where("transaction_date <= ?", @end_date)
+                    .order("sells.transaction_date ASC")
   end
 
   private 

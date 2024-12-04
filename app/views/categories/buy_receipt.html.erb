@@ -13,6 +13,7 @@
     </tr>
   </thead>
   <tbody>
+    <% total = 0 %>
     <% @buy_receipts.each do |buy_receipt| %>
       <% buy_receipt.buy_items.each do |buy_item| %>
         <% if buy_item.item.category_id == @category_id.to_i %>
@@ -23,6 +24,7 @@
             <td><%= buy_item.item.unit %></td>
             <td><%= buy_item.item_price %></td>
           </tr>
+          <% total += buy_item.item_price %>
         <% end %>
       <% end %>
     <% end %>
@@ -34,10 +36,7 @@
       <td></td>
       <td></td>
       <td>
-        <%= @buy_receipts.joins(:buy_items)
-                .joins("INNER JOIN items ON buy_items.item_id = items.id")
-                .where(items: { category_id: @category_id })
-                .sum('buy_items.item_price') %>
+        <%= total %>
       </td>
     </tr>
   </tfoot>

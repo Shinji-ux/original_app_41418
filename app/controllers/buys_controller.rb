@@ -58,6 +58,7 @@ class BuysController < ApplicationController
     @receipts = Buy.where(supplier_id: @supplier_id)
                     .where("transaction_date >= ?", @start_date)
                     .where("transaction_date <= ?", @end_date)
+                    .order("buys.transaction_date ASC")
   end
 
 
