@@ -1,13 +1,16 @@
 <div class="table_container">
   <div class="section-title">
-    納品書の作成
+    <%= @customer.company %>への納品書
   </div>
 
-  <%= @customer.company %>
+  <div class="sub-title">
+    
+  </div>
+
   <%= form_with(model: [@customer, @sell]) do |f| %>
     <div>
       <%= f.label :transaction_date, "納品日" %>
-      <%= f.date_field :transaction_date %>
+      <%= f.date_field :transaction_date, class: "form-group" %>
     </div>
 
     <table class="table-bordered">
@@ -42,16 +45,21 @@
           </tr>
         <% end %>  
       </tbody>
+      <tfoot>
+        <td><%= f.label :total_price, '総計' %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><%= f.text_field :total_price %></td>
+      </tfoot>
     </table>
 
     <%# 追加ボタン %>
-    <button type="button" id="add-form-set">商品を追加</button>
-    <%= f.label :total_price, '合計' %>
-    <%= f.text_field :total_price %>
+    <button type="button" id="add-form-set" class="add-form">商品を追加</button>
 
-    <%= f.submit "Create Sell" %>
+    <div class="box-wrap-btn">
+      <%= f.submit "作成", class: "box-search" %>
+    </div>
 
   <% end %>
 </div>
-
-<%= link_to '戻る', customers_order_index_path %>

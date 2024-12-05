@@ -1,52 +1,53 @@
 <div class="table_container">
   <div class="section-title">
-    発注書の作成
+    <%= @supplier.company %>への発注書
   </div>
 
-  <h1><%= @supplier.company %></h1>
+  <div class="sub-title">
+    
+  </div>
 
   <%= form_with(model: [@supplier, @buy]) do |f| %>
     <div>
       <%= f.label :transaction_date, "納品日" %>
-      <%= f.date_field :transaction_date %>
+      <%= f.date_field :transaction_date, class: "form-group" %>
     </div>
 
-    <div>
-      <table class="table-bordered">
-        <thead>
-          <tr>
-            <th>カテゴリ</th>
-            <th>商品</th>
-            <th>数量</th>
-            <th>単位</th>
+    <table class="table-bordered">
+      <thead>
+        <tr>
+          <th>カテゴリ</th>
+          <th>商品</th>
+          <th>数量</th>
+          <th>単位</th>
+        </tr>
+      </thead>
+      <tbody id="buy-item-forms">
+        <%= f.fields_for :buy_items do |buy_item_form| %>
+          <tr class="buy-item">
+            <td>
+              <%= buy_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "buy-category-select" } %>
+            </td>
+
+            <td>
+              <%= buy_item_form.collection_select :item_id, [], :id, :item_name, { prompt: "商品を選択" }, { class: "buy-item-select" } %>
+            </td>
+
+            <td>
+              <%= buy_item_form.number_field :quantity, class: 'quantity-input' %>
+            </td>
+            <td id="unit">--</td>
           </tr>
-        </thead>
-        <tbody id="buy-item-forms">
-          <%= f.fields_for :buy_items do |buy_item_form| %>
-            <tr class="buy-item">
-              <td>
-                <%= buy_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "buy-category-select" } %>
-              </td>
+        <% end %>  
+      </tbody>
+    </table>
 
-              <td>
-                <%= buy_item_form.collection_select :item_id, [], :id, :item_name, { prompt: "商品を選択" }, { class: "buy-item-select" } %>
-              </td>
+    <%# 追加ボタン %>
+    <button type="button" id="add-form-set" class="add-form">商品を追加</button>
 
-              <td>
-                <%= buy_item_form.number_field :quantity, class: 'quantity-input' %>
-              </td>
-              <td id="unit">--</td>
-            </tr>
-          <% end %>  
-        </tbody>
-      </table>
-
-      <%# 追加ボタン %>
-      <button type="button" id="add-form-set">商品を追加</button>
-
-      <%= f.submit "Create Buy" %>
+    <div class="box-wrap-btn">
+      <%= f.submit "作成", class: "box-search" %>
     </div>
-  <% end %>
 
-  <%= link_to '戻る', suppliers_order_index_path %>
+  <% end %>
 </div>

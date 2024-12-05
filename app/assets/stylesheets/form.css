@@ -1,22 +1,3 @@
-.input_container {
-  margin: 0 auto;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  padding-top: 32px;
-}
-
-.section-title {
-  text-align: center;
-  height: 64px;
-  font-size: 32px;
-}
-
-.sub-title {
-  font-size: 24px;
-  margin-bottom: 16px;
-}
-
 .form_wrap {
   width: 100%;
   padding-bottom: 24px;
@@ -49,6 +30,11 @@
   border-radius: 4px;
 }
 
+.add-form {
+  margin-top: 16px;
+  padding: 8px;
+}
+
 .btn_wrap {
   text-align: center;
   width: 100%;
@@ -66,4 +52,43 @@
 
 .form-group {
   margin-bottom: 16px;
+}
+
+.box-side {
+  display: flex;
+}
+
+.box-center {
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.box-wrap {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.box-label {
+  font-size: 20px;
+}
+
+.box-pull {
+  width: 200px;
+  height: 40px;
+}
+
+.box-calender{
+  width: 200px;
+  height: 40px;
+}
+
+
+.box-search{
+  width: 200px;
+  height: 40px;
+}
+
+.box-wrap-btn {
+  margin-top: 40px;
+  text-align: center;
 }

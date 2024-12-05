@@ -1,0 +1,85 @@
+/* ヘッダー */
+
+.header {
+  background-color: rgb(55, 60, 133);
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  padding: 24px;
+  font-size: 32px;
+}
+
+.header-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-list-li {
+  padding: 16px;
+  font-size: 16px;
+}
+
+/* 各ページのコンテナ */
+
+.body_container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  width: 100%;
+  max-width: 800px; /* PCでも一定の大きさを保つ */
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.top-page-container {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.input_container {
+  margin: 0 auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 32px;
+}
+
+.table_container {
+  margin: 0 auto;
+  padding-top: 32px;
+  width: 100%;
+}
+
+.box_container {
+  margin: 0 auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 32px;
+}
+
+/* 共通の見出し */
+
+.section-title {
+  text-align: center;
+  height: 64px;
+  font-size: 32px;
+}
+
+.sub-title {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.top-menu {
+  font-size: 24px;
+}
+
+
