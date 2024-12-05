@@ -2,16 +2,20 @@
 
 ## usersテーブル
 
-| Column             | Type       | Options                        |
-|--------------------|------------|--------------------------------|
-| email              | string     | null: false, unique: true      |
-| encrypted_password | string     | null: false                    |
-| company            | string     | null: false                    |
-| city               | string     | null: false                    |
-| address            | string     |                                |
-| phone              | string     |                                |
-| manager            | string     |                                |
-| user               | references | null: false, foreign_key: true |
+| Column             | Type   | Options                   |
+|--------------------|--------|---------------------------|
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| company            | string | null: false               |
+| city               | string |                           |
+| address            | string |                           |
+| phone              | string |                           |
+| manager            | string |                           |
+| bank               | string |                           |
+| branch             | string |                           |
+| account_type       | string |                           |
+| number             | string |                           |
+| name               | string |                           |
 
 ### Associations
 
@@ -21,6 +25,13 @@
 - has_many :buys, through: :suppliers
 - has_many :customers
 - has_many :sells, through: :customers
+
+## profilesテーブル
+
+| Column         | Type   | Options     |
+|----------------|--------|-------------|
+
+
 
 ## categoriesテーブル
 
@@ -57,13 +68,18 @@
 
 ## suppliersテーブル
 
-| Column  | Type       | Options                        |
-|---------|------------|--------------------------------|
-| company | string     | null: false                    |
-| city    | string     |                                |
-| address | string     |                                |
-| phone   | string     |                                |
-| user    | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+|--------------|------------|--------------------------------|
+| company      | string     | null: false                    |
+| city         | string     |                                |
+| address      | string     |                                |
+| phone        | string     |                                |
+| user         | references | null: false, foreign_key: true |
+| bank         | string     |                                |
+| branch       | string     |                                |
+| account_type | string     |                                |
+| number       | string     |                                |
+| name         | string     |                                |
 
 ### Associations
 
@@ -104,13 +120,18 @@
 
 ## customersテーブル
 
-| Column  | Type       | Options                        |
-|---------|------------|--------------------------------|
-| company | string     | null: false                    |
-| city    | string     |                                |
-| address | string     |                                |
-| phone   | string     |                                |
-| user    | references | null: false, foreign_key: true |
+| Column       | Type       | Options                        |
+|--------------|------------|--------------------------------|
+| company      | string     | null: false                    |
+| city         | string     |                                |
+| address      | string     |                                |
+| phone        | string     |                                |
+| user         | references | null: false, foreign_key: true |
+| bank         | string     |                                |
+| branch       | string     |                                |
+| account_type | string     |                                |
+| number       | string     |                                |
+| name         | string     |                                |
 
 ### Associations
 

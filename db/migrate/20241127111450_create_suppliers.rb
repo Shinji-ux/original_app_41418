@@ -6,6 +6,11 @@ class CreateSuppliers < ActiveRecord::Migration[7.0]
       t.string :address
       t.string :phone
       t.references :user
+      t.string :bank
+      t.string :branch
+      t.string :account_type
+      t.string :number
+      t.string :name
 
       t.timestamps
     end

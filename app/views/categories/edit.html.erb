@@ -1,17 +1,17 @@
-<h1>カテゴリ編集</h1>
+<div class="input_container">
+  <div class="section-title">
+    カテゴリの編集
+  </div>
 
-<%= @category.category %>を編集
+  <%= form_with model: @category, local: true do |f| %>
 
-<div>
-<%= form_with model: @category, local: true do |f| %>
-
-<%= f.label :category, 'カテゴリ名' %>
-<%= f.text_field :category %>
-
-<%= f.submit '更新'%>
-
-<% end %>
-
-<%= link_to '戻る', categories_path %>
-
+    <div>
+      <%= f.label :category, 'カテゴリ名', class: "foorm_wrap_text" %>
+      <span class="attension">必須</span><br>
+      <%= f.text_field :category, class: "form_wrap_field" %>
+    </div>
+    <div class="btn_wrap">
+      <%= f.submit "更新", class: "form_btn" %>
+    </div>
+  <% end %>
 </div>

@@ -1,46 +1,41 @@
-<h1>販売商品別の集計</h1>
-  <%= @start_date %>～<%= @end_date %>
-  <%= @item.item_name %>の集計
+<div class="table_container">
+  <div class="section-title">
+    商品別集計（販売）
+  </div>
 
-    <table class="table-bordered">
-      <thead>
+  <div class="sub-title">
+    <%= @item.item_name %><br>
+    <%= @start_date %> ～ <%= @end_date %>
+  </div>
+
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>日付</th>
+        <th>得意先</th>
+        <th>数量</th>
+        <th>単位</th>
+        <th>金額</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sell_receipts.each do |sell_receipt| %>
+        <% sell_item = sell_receipt.sell_items.find_by(item_id: @item_id) %>
         <tr>
-          <th>日付</th>
-          <th>得意先</th>
-          <th>数量</th>
-          <th>単位</th>
-          <th>金額</th>
+          <td><%= sell_receipt.transaction_date %></td>
+          <td><%= sell_receipt.customer.company %></td>
+          <td><%= sell_item.quantity %></td>
+          <td><%= @item.unit %></td>
+          <td><%= sell_item.item_price %></td>
         </tr>
-      </thead>
-      <tbody>
-        <% @sell_receipts.each do |sell_receipt| %>
-          <% sell_item = sell_receipt.sell_items.find_by(item_id: @item_id) %>
-          <tr>
-            <td>
-              <%= sell_receipt.transaction_date %>
-            </td>
-            <td>
-              <%= sell_receipt.customer.company %>
-            </td>
-            <td>
-              <%= sell_item.quantity %>
-            </td>
-            <td>
-              <%= @item.unit %>
-            </td>
-
-            <td>
-              <%= sell_item.item_price %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-      <tfoot>
-        <td>合計</td>
-        <td></td>
-        <td><%= @sell_receipts.joins(:sell_items).where(sell_items: { item_id: @item_id }).sum('sell_items.quantity') %></td>
-        
-        <td><%= @item.unit %></td>
-        <td><%= @sell_receipts.joins(:sell_items).where(sell_items: { item_id: @item_id }).sum('sell_items.item_price') %></td>
-      </tfoot>
-    </table>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <td>合計</td>
+      <td></td>
+      <td><%= @sell_receipts.joins(:sell_items).where(sell_items: { item_id: @item_id }).sum('sell_items.quantity') %></td>
+      <td><%= @item.unit %></td>
+      <td><%= @sell_receipts.joins(:sell_items).where(sell_items: { item_id: @item_id }).sum('sell_items.item_price') %></td>
+    </tfoot>
+  </table>
+</div>

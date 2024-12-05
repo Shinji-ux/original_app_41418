@@ -4,11 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :company, presence: true
-  validates :city, presence: true
-  validates :address, presence: true
-  validates :phone, presence: true, format: { with: /\A0\d{9,10}\z/, message: "must be a valid phone number" }
-  validates :manager, presence: true
+  validates :phone, format: { with: /\A0\d{9,10}\z/, message: "must be a valid phone number" }
 
   has_one :profile
   has_many :categories

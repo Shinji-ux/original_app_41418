@@ -1,32 +1,35 @@
-<h1>請求書発行</h1>
+<div class="table_container">
+  <div class="section-title">
+    請求書の作成
+  </div>
 
-<%= @start_date %>～<%= @end_date %>
+  <%= @start_date %>～<%= @end_date %>
 
-    <table class="table-bordered">
-      <thead>
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>日付</th>
+        <th>金額</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @receipts.each do |receipt| %>
         <tr>
-          <th>日付</th>
-          <th>金額</th>
+          <td>
+            <%= receipt.transaction_date %>
+          </td>
+
+          <td>
+            <%= receipt.total_price %>              
+          </td>
         </tr>
-      </thead>
-      <tbody>
-        <% @receipts.each do |receipt| %>
-          <tr>
-            <td>
-              <%= receipt.transaction_date %>
-            </td>
-
-            <td>
-              <%= receipt.total_price %>              
-            </td>
-          </tr>
-        <% end %>  
-      </tbody>
-      <tfoot>
-        <td>合計</td>
-        <td><%= @receipts.sum(&:total_price) %></td>
-      </tfoot>
-    </table>
-
+      <% end %>  
+    </tbody>
+    <tfoot>
+      <td>合計</td>
+      <td><%= @receipts.sum(&:total_price) %></td>
+    </tfoot>
+  </table>
+</div>
 
 PDF

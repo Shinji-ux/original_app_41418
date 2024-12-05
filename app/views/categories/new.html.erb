@@ -1,23 +1,34 @@
-<h1>カテゴリ登録</h1>
+<div class="input_container">
+  <div class="section-title">
+    カテゴリの登録
+  </div>
 
-<%= form_with model: @category, local: true do |f| %>
-  <div>
-    <%= f.label :category, 'カテゴリ名' %>
-    <%= f.text_field :category %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+  <%= form_with model: @category, local: true do |f| %>
 
-<%= form_with(url: import_categories_path, local: true, multipart: true) do |form| %>
-  <div class="form-group">
-    <%= form.label :file, "CSVファイルを選択" %>
-    <%= form.file_field :file %>
-  </div>
-  <div class="actions">
-    <%= form.submit "インポート" %>
-  </div>
-<% end %>
+    <div class="sub-title">
+        直接入力で登録
+    </div>
 
-<%= link_to 'ホームに戻る', root_path %>
+    <div>
+      <%= f.label :category, 'カテゴリ名', class: "foorm_wrap_text" %>
+      <span class="attension">必須</span><br>
+      <%= f.text_field :category, class: "form_wrap_field" %>
+    </div>
+    <div class="btn_wrap">
+      <%= f.submit "登録", class: "form_btn" %>
+    </div>
+  <% end %>
+
+  <div class="sub-title">
+      CSVで登録
+  </div>
+
+  <%= form_with(url: import_categories_path, local: true, multipart: true) do |form| %>
+    <div class="form-group">
+      <%= form.file_field :file %>
+    </div>
+    <div class="actions">
+      <%= form.submit "インポート" %>
+    </div>
+  <% end %>
+</div>

@@ -1,8 +1,8 @@
+<div class="table_container">
+  <div class="section-title">
+    発注履歴
+  </div>
 
-
-  <h1>発注一覧</h1>
-
-<div>
   <table class="table-bordered">
     <thead>
       <tr>
@@ -19,7 +19,7 @@
           <td><%= buy.transaction_date %></td>
           <td><%= buy.supplier.company %></td>
           <td><%= buy.total_price %></td>
-          <td><%= link_to '金額を入力', edit_supplier_buy_path(supplier_id: buy.supplier_id, id: buy.id) %></td>
+          <td><%= link_to '編集（金額入力）', edit_supplier_buy_path(supplier_id: buy.supplier_id, id: buy.id) %></td>
           <td><%= link_to '削除', supplier_buy_path(supplier_id: buy.supplier_id, id: buy.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
         </tr>
       <% end %>

@@ -1,23 +1,61 @@
-<h1><%= @supplier.company %>の詳細</h1>
+<div class="input_container">
+  <div class="section-title">
+    <%= @supplier.company %>の詳細
+  </div>
 
-<div>
-  <label>会社名</label>
-  <%= @supplier.company %>
+ <div class="sub-title">
+      仕入れ先基本情報
+  </div>
+
+
+<div class="form_wrap">
+  <label class="form_wrap_text">会社名</label>
+  <p class="form_wrap_field"><%= @supplier.company %></p>
+</div>
+<div class="form_wrap">
+  <label class="form_wrap_text">電話番号</label>
+  <p class="form_wrap_field"><%= @supplier.phone %></p>
 </div>
 
-<div>
-  <label>市区町村</label>
-  <%= @supplier.city %>
+<div class="form_wrap">
+  <label class="form_wrap_text">市区町村</label>
+  <p class="form_wrap_field"><%= @supplier.city %></p>
 </div>
 
-<div>
-  <label>住所</label>
-  <%= @supplier.address %>
+<div class="form_wrap">
+  <label class="form_wrap_text">住所</label>
+  <p class="form_wrap_field"><%= @supplier.address %></p>
 </div>
 
-<div>
-  <label>電話番号</label>
-  <%= @supplier.phone %>
+
+
+<div class="sub-title">
+      振込先情報
+    </div>
+
+
+<div class="form_wrap">
+  <label class="form_wrap_text">銀行名</label>
+  <p class="form_wrap_field"><%= @supplier.bank %></p>
+</div>
+
+<div class="form_wrap">
+  <label class="form_wrap_text">支店名</label>
+  <p class="form_wrap_field"><%= @supplier.branch %></p>
+</div>
+
+<div class="form_wrap">
+  <label class="form_wrap_text">口座種別</label>
+  <p class="form_wrap_field"><%= @supplier.account_type %></p>
+</div>
+
+<div class="form_wrap">
+  <label class="form_wrap_text">口座番号</label>
+  <p class="form_wrap_field"><%= @supplier.number %></p>
+</div>
+<div class="form_wrap">
+  <label class="form_wrap_text">名義人（カナ）</label>
+  <p class="form_wrap_field"><%= @supplier.name %></p>
 </div>
 
 <%= link_to '編集', edit_supplier_path(@supplier.id) %>

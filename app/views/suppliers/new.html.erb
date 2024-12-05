@@ -1,35 +1,73 @@
-<h1>仕入れ先の登録</h1>
+<div class="input_container">
+  <div class="section-title">
+    仕入れ先の登録
+  </div>
 
-<%= form_with model: @supplier, local: true do |f| %>
-  <div>
-    <%= f.label :company, '仕入れ先会社名' %>
-    <%= f.text_field :company %>
-  </div>
-  <div>
-    <%= f.label :city, '市区町村' %>
-    <%= f.text_field :city %>
-  </div>
-  <div>
-    <%= f.label :address, '住所' %>
-    <%= f.text_field :address %>
-  </div>
-  <div>
-    <%= f.label :phone, '電話番号' %>
-    <%= f.text_field :phone %>
-  </div>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+  <%= form_with model: @supplier, local: true do |f| %>
 
-<%= form_with(url: import_suppliers_path, local: true, multipart: true) do |form| %>
-  <div class="form-group">
-    <%= form.label :file, "CSVファイルを選択" %>
-    <%= form.file_field :file %>
-  </div>
-  <div class="actions">
-    <%= form.submit "インポート" %>
-  </div>
-<% end %>
+    <div class="sub-title">
+      仕入れ先基本情報
+    </div>
+    
+    <div class="form_wrap">
+      <%= f.label :company, '会社名', class: "form_wrap_text" %>
+      <span class="attension">必須</span><br>
+      <%= f.text_field :company, class: "form_wrap_field" %>
+    </div>
+    <div class="form_wrap">
+      <%= f.label :phone, '電話番号', class: "form_wrap_text" %>
+      <span class="attension">必須</span><br>
+      <%= f.text_field :phone, class: "form_wrap_field" %>
+    </div>
+    <div class="form_wrap">
+      <%= f.label :city, '市区町村', class: "form_wrap_text" %><br>
+      <%= f.text_field :city, class: "form_wrap_field" %>
+    </div>
+    <div class="form_wrap">
+      <%= f.label :address, '住所', class: "form_wrap_text" %><br>
+      <%= f.text_field :address, class: "form_wrap_field" %>
+    </div>
 
-<%= link_to 'ホームに戻る', root_path %>
+    <div class="sub-title">
+      振込先情報
+    </div>
+
+    <div class="form_wrap">
+      <%= f.label :bank, '銀行名', class: "form_wrap_text" %><br>
+      <%= f.text_field :bank, class: "form_wrap_field" %>
+    </div>
+    <div class="form_wrap">
+      <%= f.label :branch, '支店名', class: "form_wrap_text" %><br>
+      <%= f.text_field :branch, class: "form_wrap_field" %>
+    </div>
+    <div class="form_wrap">
+      <%= f.label :account_type, '口座種別', class: "form_wrap_text" %><br>
+      <%= f.text_field :account_type, class: "form_wrap_field" %>
+    </div>
+    <div class="form_wrap">
+      <%= f.label :number, '口座番号', class: "form_wrap_text" %><br>
+      <%= f.text_field :number, class: "form_wrap_field" %>
+    </div>
+    <div class="form_wrap">
+      <%= f.label :name, '名義人（カナ）', class: "form_wrap_text" %><br>
+      <%= f.text_field :name, class: "form_wrap_field" %>
+    </div>
+
+    <div class="btn_wrap">
+      <%= f.submit "登録", class: "form_btn" %>
+    </div>
+  <% end %>
+
+  <div class="sub-title">
+      CSVで登録
+  </div>
+
+  <%= form_with(url: import_suppliers_path, local: true, multipart: true) do |form| %>
+    <div class="form-group">
+      <%= form.file_field :file %>
+    </div>
+    <div class="actions">
+      <%= form.submit "インポート" %>
+    </div>
+  <% end %>
+</div>

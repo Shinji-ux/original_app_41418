@@ -1,56 +1,49 @@
-<h1>新規登録</h1>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :company, "会社名" %><br />
-    <%= f.text_field :company, autofocus: true, autocomplete: "company" %>
+<div class="input_container">
+  <div class="section-title">
+    新規登録
   </div>
 
-  <div class="field">
-    <%= f.label :city, "市町村" %><br />
-    <%= f.text_field :city, autofocus: true, autocomplete: "city" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :address, "住所" %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-  </div>
+    <div class="form_wrap">
+      <%= f.label :company, "会社名", class: "form_wrap_text" %>
+      <span class="attension">必須</span><br />
+      <%= f.text_field :company, autofocus: true, autocomplete: "company", class: "form_wrap_field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :phone, "電話番号" %><br />
-    <%= f.text_field :phone, autofocus: true, autocomplete: "phone" %>
-  </div>
+    <div class="form_wrap">
+      <%= f.label :phone, "電話番号", class: "form_wrap_text" %>
+      <span class="attension">必須</span><br />
+      <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: "form_wrap_field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :manager, "担当者名" %><br />
-    <%= f.text_field :manager, autofocus: true, autocomplete: "manager" %>
-  </div>
+    <div class="form_wrap">
+      <%= f.label :email, "メールアドレス", class: "form_wrap_text" %>
+      <span class="attension">必須</span><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form_wrap_field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="form_wrap">
+      <%= f.label :password, "パスワード", class: "form_wrap_text" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %>文字以上)</em>
+      <% end %><span class="attension">必須</span><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "form_wrap_field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="form_wrap">
+      <%= f.label :password_confirmation, "パスワード再入力", class: "form_wrap_text" %>
+      <span class="attension">必須</span><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form_wrap_field" %>
+    </div>
+    
+    <div class="btn_wrap">
+      <%= f.submit "登録", class: "form_btn" %>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード再入力" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="btn_wrap">
+    <%= render "devise/shared/links" %>
   </div>
-  
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
-<% end %>
-
-<div>
-  <%= render "devise/shared/links" %>
 </div>

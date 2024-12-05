@@ -1,38 +1,48 @@
-<h1>アイテムの登録</h1>
-
-<div>
+<div class="input_container">
+  <div class="section-title">
+    商品の登録
+  </div>
   <%= form_with model: @item, local: true do |f| %>
 
-    <div>
-      <%= f.label :category_id, "カテゴリ" %>
+    <div class="sub-title">
+        直接入力で登録
+    </div>
+
+    <div class="form_wrap">
+      <%= f.label :category_id, "カテゴリ", class: "form_wrap_text" %>
+      <span class="attension">必須</span><br>
       <%= f.collection_select :category_id, @categories, :id, :category, prompt: "カテゴリを選択" %>
     </div>
-    <div>
-      <%= f.label :item_name, '商品名' %>
-      <%= f.text_field :item_name %>
+    <div class="form_wrap">
+      <%= f.label :item_name, '商品名', class: "form_wrap_text" %>
+      <span class="attension">必須</span><br>
+      <%= f.text_field :item_name, class: "form_wrap_field" %>
     </div>
-    <div>
-      <%= f.label :unit, '取り扱い単位' %>
-      <%= f.text_field :unit %>
+    <div class="form_wrap">
+      <%= f.label :unit, '取り扱い単位', class: "form_wrap_text" %>
+      <span class="attension">必須</span><br>
+      <%= f.text_field :unit, class: "form_wrap_field" %>
     </div>
-    <div>
-      <%= f.label :price, '価格' %>
-      <%= f.text_field :price %>
+    <div class="form_wrap">
+      <%= f.label :price, '価格', class: "form_wrap_text" %>
+      <span class="attension">必須</span><br>
+      <%= f.text_field :price, class: "form_wrap_field" %>
     </div>
-    <div> 
-      <%= f.submit %>
+    <div class="btn_wrap">
+      <%= f.submit "登録", class: "form_btn" %>
+    </div>
+  <% end %>
+
+  <div class="sub-title">
+      CSVで登録
+  </div>
+
+  <%= form_with(url: import_items_path, local: true, multipart: true) do |form| %>
+    <div class="form-group">
+      <%= form.file_field :file %>
+    </div>
+    <div class="actions">
+      <%= form.submit "インポート" %>
     </div>
   <% end %>
 </div>
-
-<%= form_with(url: import_items_path, local: true, multipart: true) do |form| %>
-  <div class="form-group">
-    <%= form.label :file, "CSVファイルを選択" %>
-    <%= form.file_field :file %>
-  </div>
-  <div class="actions">
-    <%= form.submit "インポート" %>
-  </div>
-<% end %>
-
-<%= link_to 'ホームに戻る', root_path %>

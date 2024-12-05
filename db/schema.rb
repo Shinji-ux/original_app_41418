@@ -49,6 +49,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_03_042655) do
     t.string "address"
     t.string "phone"
     t.bigint "user_id"
+    t.string "bank"
+    t.string "branch"
+    t.string "account_type"
+    t.string "number"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_customers_on_user_id"
@@ -96,6 +101,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_03_042655) do
     t.string "address"
     t.string "phone"
     t.bigint "user_id"
+    t.string "bank"
+    t.string "branch"
+    t.string "account_type"
+    t.string "number"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_suppliers_on_user_id"
@@ -105,10 +115,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_03_042655) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "company", null: false
-    t.string "city", null: false
-    t.string "address", null: false
-    t.string "phone", null: false
-    t.string "manager", null: false
+    t.string "city"
+    t.string "address"
+    t.string "phone"
+    t.string "manager"
+    t.string "bank"
+    t.string "branch"
+    t.string "account_type"
+    t.string "number"
+    t.string "name"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

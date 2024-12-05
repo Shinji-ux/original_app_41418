@@ -63,7 +63,7 @@ class BuysController < ApplicationController
   end
 
   def order_index
-    @buys = current_user.buys
+    @buys = current_user.buys.order("buys.transaction_date DESC")
   end
 
   private 

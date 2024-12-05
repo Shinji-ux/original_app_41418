@@ -3,73 +3,108 @@
 .header {
   background-color: rgb(55, 60, 133);
   width: 100%;
-  height: 100px;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .header-logo {
-  padding: 20px;
-  font-size: 40px;
+  padding: 24px;
+  font-size: 32px;
 }
 
 .header-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 20px;
 }
 
 .header-list-li {
-  padding: 20px;
-  font-size: 20px;
+  padding: 16px;
+  font-size: 16px;
 }
 
-/* トップページ */
-.main {
+/* トップページ共通 */
+
+.body_container {
   display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  width: 100%;
+  max-width: 800px; /* PCでも一定の大きさを保つ */
+  margin: 0 auto;
+  min-height: 100vh;
 }
 
+.top-page-container {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.top-menu {
+  font-size: 24px;
+}
+
+
+/* サイドバー */
 
 .side-bar {
-  width: 250px;
-  padding: 20px;
-}
-
-.section-title {
-  font-size: 25px;
-}
-
-.contents {
-  margin: 15px 0 0 30px;
-}
-
-.content-title {
-  font-size: 22px;
+  width: 200px;
+  padding: 8px;
 }
 
 .side-bar p {
-  margin-left: 30px;
+  margin-left: 32px;
   font-size: 20px;
 }
 
-.voucher {
-  padding: 20px;
+/* メイン */
+
+.top-main {
+  display: flex;
+  padding: 8px;
 }
 
-.voucher p {
+
+.contents {
+  margin: 16px 0 0 32px;
+}
+
+.top-main p {
   background-color: rgb(70, 76, 165);
-  font-size: 25px;
-  border-radius: 10px;
-  padding: 5px;
-  width: 220px;
+  font-size: 24px;
+  border-radius: 8px;
+  padding: 4px;
+  width: 200px;
   height: 40px;
   text-align: center;
-  margin-bottom: 15px;
+  margin-top: 16px;
 }
 
 .btn {
   text-decoration: none;
   color: white;
+}
+
+@media (max-width: 700px) {
+  .top-main {
+    display: block;
+  }
+  .top-menu {
+    font-size: 20px;
+  }
+  .contents {
+    margin: 8px 0 0 16px;
+  }
+  .side-bar p {
+    margin-left: 24px;
+    font-size: 16px;
+  }
+  .top-main p {
+    font-size: 20px;
+    width: 180px;
+    height: 32px;
+  }
 }

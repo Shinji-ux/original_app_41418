@@ -1,24 +1,58 @@
-<h1><%= @customer.company %>の詳細</h1>
+<div class="input_container">
+  <div class="section-title">
+    <%= @customer.company %>の詳細
+  </div>
 
-<div>
-  <label>会社名</label>
-  <%= @customer.company %>
+   <div class="sub-title">
+      得意先基本情報
+  </div>
+
+<div class="form_wrap">
+  <label class="form_wrap_text">会社名</label>
+  <p class="form_wrap_field"><%= @customer.company %></p>
+</div>
+<div class="form_wrap">
+  <label class="form_wrap_text">電話番号</label>
+  <p class="form_wrap_field"><%= @customer.phone %></p>
+</div>
+<div class="form_wrap">
+  <label class="form_wrap_text">市区町村</label>
+  <p class="form_wrap_field"><%= @customer.city %></p>
 </div>
 
-<div>
-  <label>市区町村</label>
-  <%= @customer.city %>
+<div class="form_wrap">
+  <label class="form_wrap_text">住所</label>
+  <p class="form_wrap_field"><%= @customer.address %></p>
 </div>
 
-<div>
-  <label>住所</label>
-  <%= @customer.address %>
+<div class="sub-title">
+    銀行情報
+    </div>
+
+<div class="form_wrap">
+  <label class="form_wrap_text">銀行名</label>
+  <p class="form_wrap_field"><%= @customer.bank %></p>
 </div>
 
-<div>
-  <label>電話番号</label>
-  <%= @customer.phone %>
+<div class="form_wrap">
+  <label class="form_wrap_text">支店名</label>
+  <p class="form_wrap_field"><%= @customer.branch %></p>
 </div>
+
+<div class="form_wrap">
+  <label class="form_wrap_text">口座種別</label>
+  <p class="form_wrap_field"><%= @customer.account_type %></p>
+</div>
+
+<div class="form_wrap">
+  <label class="form_wrap_text">口座番号</label>
+  <p class="form_wrap_field"><%= @customer.number %></p>
+</div>
+<div class="form_wrap">
+  <label class="form_wrap_text">名義人（カナ）</label>
+  <p class="form_wrap_field"><%= @customer.name %></p>
+</div>
+
 
 <%= link_to '編集', edit_customer_path(@customer.id) %>
 <%= link_to '削除', customer_path(@customer.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %>

@@ -1,0 +1,28 @@
+<div class="table_container">
+  <div class="section-title">
+    納品履歴
+  </div>
+
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>納品日</th>
+        <th>発注先</th>
+        <th>金額</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @sells.each do |sell| %>
+        <tr>
+          <td><%= sell.transaction_date %></td>
+          <td><%= sell.supplier.company %></td>
+          <td><%= sell.total_price %></td>
+          <td><%= link_to '編集', edit_customer_sell_path(customer_id: sell.customer_id, id: sell.id) %></td>
+          <td><%= link_to '削除', customer_sell_path(customer_id: sell.customer_id, id: sell.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

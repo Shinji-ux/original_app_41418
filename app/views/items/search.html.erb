@@ -1,50 +1,60 @@
-<h1>アイテム別検索</h1>
-
-
-<p>buy_receiptへのフォーム</p>
-<%= form_with url: items_buy_receipt_path, method: :get, local: true do %>
-  <div>
-    <%= label_tag :item_id, "仕入れ商品" %>
-    <%= select_tag :item_id, options_from_collection_for_select(@items, :id, :item_name, params[:item_id]), prompt: "仕入れ商品を選択" %>
+<div class="box_container">
+  <div class="section-title">
+    商品別の集計
   </div>
 
-  <div>
-    <%= label_tag :start_date, "開始日" %>
-    <%= date_field_tag :start_date, params[:start_date] %>
+  <div class="box-side">
+    <div class="box-center">
+      <div class="sub-title">
+        仕入れから検索
+      </div>
+      <%= form_with url: items_buy_receipt_path, method: :get, local: true do %>
+        <div class="box-wrap">
+          <%= label_tag :item_id, "商品名", class: "box-label" %><br>
+          <%= select_tag :item_id, options_from_collection_for_select(@items, :id, :item_name, params[:item_id]), prompt: "商品を選択", class: "box-pull" %>
+        </div>
+
+        <div class="box-wrap">
+          <%= label_tag :start_date, "開始日", class: "box-label" %><br>
+          <%= date_field_tag :start_date, params[:start_date], class: "box-calender" %>
+        </div>
+
+        <div class="box-wrap">
+          <%= label_tag :end_date, "終了日", class: "box-label" %><br>
+          <%= date_field_tag :end_date, params[:end_date], class: "box-calender" %>
+        </div>
+
+        <div class="box-wrap-btn">
+          <%= submit_tag "検索", class: "box-search" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="box-center">
+      <div class="sub-title">
+        販売から検索
+      </div>
+
+      <%= form_with url: items_sell_receipt_path, method: :get, local: true do %>
+        <div class="box-wrap">
+          <%= label_tag :item_id, "販売商品", class: "box-label" %><br>
+          <%= select_tag :item_id, options_from_collection_for_select(@items, :id, :item_name, params[:item_id]), prompt: "商品を選択", class: "box-pull" %>
+        </div>
+
+        <div class="box-wrap">
+          <%= label_tag :start_date, "開始日", class: "box-label" %><br>
+          <%= date_field_tag :start_date, params[:start_date], class: "box-calender" %>
+        </div>
+
+        <div class="box-wrap">
+          <%= label_tag :end_date, "終了日", class: "box-label" %><br>
+          <%= date_field_tag :end_date, params[:end_date], class: "box-calender" %>
+        </div>
+
+        <div class="box-wrap-btn">
+          <%= submit_tag "検索", class: "box-search" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div>
-    <%= label_tag :end_date, "終了日" %>
-    <%= date_field_tag :end_date, params[:end_date] %>
-  </div>
-
-  <div>
-    <%= submit_tag "検索" %>
-  </div>
-<% end %>
-
-
-
-
-
-<p>sell_receiptへのフォーム</p>
-<%= form_with url: items_sell_receipt_path, method: :get, local: true do %>
-  <div>
-    <%= label_tag :item_id, "販売商品" %>
-    <%= select_tag :item_id, options_from_collection_for_select(@items, :id, :item_name, params[:item_id]), prompt: "販売商品を選択" %>
-  </div>
-
-  <div>
-    <%= label_tag :start_date, "開始日" %>
-    <%= date_field_tag :start_date, params[:start_date] %>
-  </div>
-
-  <div>
-    <%= label_tag :end_date, "終了日" %>
-    <%= date_field_tag :end_date, params[:end_date] %>
-  </div>
-
-  <div>
-    <%= submit_tag "検索" %>
-  </div>
-<% end %>
+</div>

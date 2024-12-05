@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   def index
-    @customers = current_user.customers
+    @customers = current_user.customers.order("customers.company ASC")
   end
   
   def new
