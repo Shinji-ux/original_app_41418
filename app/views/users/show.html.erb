@@ -1,18 +1,65 @@
-<h1>マイページ</h1>
-<div>
-  <%= @user.company %>
+<div class="input_container">
+  <div class="section-title">
+    マイページ
+  </div>
+  
+  <div class="sub-title">
+    基本情報
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">会社名</label>
+    <p class="form_wrap_field"><%= @user.company %></p>
+  </div>
+  <div class="form_wrap">
+    <label class="form_wrap_text">電話番号</label>
+    <p class="form_wrap_field"><%= @user.phone %></p>
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">市区町村</label>
+    <p class="form_wrap_field"><%= @user.city %></p>
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">住所</label>
+    <p class="form_wrap_field"><%= @user.address %></p>
+  </div>
+
+  <div class="sub-title">
+    銀行情報
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">銀行名</label>
+    <p class="form_wrap_field"><%= @user.bank %></p>
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">支店名</label>
+    <p class="form_wrap_field"><%= @user.branch %></p>
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">口座種別</label>
+    <p class="form_wrap_field"><%= @user.account_type %></p>
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">口座番号</label>
+    <p class="form_wrap_field"><%= @user.number %></p>
+  </div>
+  <div class="form_wrap">
+    <label class="form_wrap_text">名義人（カナ）</label>
+    <p class="form_wrap_field"><%= @user.name %></p>
+  </div>
+
+  <div class="box-wrap-btn">
+    <%= link_to "編集する", edit_user_registration_path, class: "box-search" %>
+  </div>
+
+
+  <div class="back">
+    <%= link_to  '前のページに戻る', :back %>
+  </div>
 </div>
-<div>
-  <%= @user.city %>
-</div>
-<div>
-  <%= @user.address %>
-</div>
-<div>
-  <%= @user.phone %>
-</div>
-<div>
-  <%= @user.manager %>
-</div>
-<%= link_to '編集する', edit_user_registration_path %>
-<%= link_to 'ホームに戻る', root_path %>

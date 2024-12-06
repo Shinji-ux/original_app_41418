@@ -1,92 +1,99 @@
 <div class="input_container">
-  
-  <%= resource_name.to_s.humanize %>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  
-  <div class="field">
-    <%= f.label :company, "会社名" %><br />
-    <%= f.text_field :company, autofocus: true, autocomplete: "company" %>
+  <div class="section-title">
+    マイページの編集
   </div>
 
-  <div class="field">
-    <%= f.label :city, "市町村" %><br />
-    <%= f.text_field :city, autofocus: true, autocomplete: "city" %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    
+    <div class="sub-title">
+      基本情報
+    </div>
 
-  <div class="field">
-    <%= f.label :address, "住所" %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-  </div>
+    <div class="form_wrap">
+      <%= f.label :company, "会社名", class: "form_wrap_text" %><br />
+      <%= f.text_field :company, autofocus: true, autocomplete: "company", class: "form_wrap_field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :phone, "電話番号" %><br />
-    <%= f.text_field :phone, autofocus: true, autocomplete: "phone" %>
-  </div>
+    <div class="form_wrap">
+      <%= f.label :city, "市町村", class: "form_wrap_text" %><br />
+      <%= f.text_field :city, autofocus: true, autocomplete: "city", class: "form_wrap_field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :manager, "担当者名" %><br />
-    <%= f.text_field :manager, autofocus: true, autocomplete: "manager" %>
-  </div>
+    <div class="form_wrap">
+      <%= f.label :address, "住所", class: "form_wrap_text" %><br />
+      <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form_wrap_field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="form_wrap">
+      <%= f.label :phone, "電話番号", class: "form_wrap_text" %><br />
+      <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: "form_wrap_field" %>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div class="form_wrap">
+      <%= f.label :manager, "担当者名", class: "form_wrap_text" %><br />
+      <%= f.text_field :manager, autofocus: true, autocomplete: "manager", class: "form_wrap_field" %>
+    </div>
+
+    <div class="sub-title">
+      銀行情報
+    </div>
+
+    <div class="form_wrap">
+      <%= f.label :bank, '銀行名', class: "form_wrap_text" %><br>
+      <%= f.text_field :bank, class: "form_wrap_field" %>
+    </div>
+    <div class="form_wrap">
+      <%= f.label :branch, '支店名', class: "form_wrap_text" %><br>
+      <%= f.text_field :branch, class: "form_wrap_field" %>
+    </div>
+    <div class="form_wrap">
+      <%= f.label :account_type, '口座種別', class: "form_wrap_text" %><br>
+      <%= f.text_field :account_type, class: "form_wrap_field" %>
+    </div>
+    <div class="form_wrap">
+      <%= f.label :number, '口座番号', class: "form_wrap_text" %><br>
+      <%= f.text_field :number, class: "form_wrap_field" %>
+    </div>
+    <div class="form_wrap">
+      <%= f.label :name, '名義人', class: "form_wrap_text" %><br>
+      <%= f.text_field :name, class: "form_wrap_field" %>
+    </div>
+
+      <div class="form_wrap">
+      <%= f.label :email, 'メールアドレス', class: "form_wrap_text" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form_wrap_field" %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="form_wrap">
+      <%= f.label :password, class: "form_wrap_text" %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "form_wrap_field" %>
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
+
+    <div class="form_wrap">
+      <%= f.label :password_confirmation, class: "form_wrap_text" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form_wrap_field" %>
+    </div>
+
+    <div class="form_wrap">
+      <%= f.label :current_password, '現在のパスワード', class: "form_wrap_text" %><br />
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "form_wrap_field" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "更新" %>
+    </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+  <div class="back">
+    <%= link_to "Back", :back %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-  <div>
-  <%= f.label :bank, '銀行名' %>
-    <%= f.text_field :bank %>
-  </div>
-  <div>
-    <%= f.label :branch, '支店名' %>
-    <%= f.text_field :branch %>
-  </div>
-  <div>
-    <%= f.label :account_type, '口座種別' %>
-    <%= f.text_field :account_type %>
-  </div>
-  <div>
-    <%= f.label :number, '口座番号' %>
-    <%= f.text_field :number %>
-  </div>
-  <div>
-    <%= f.label :name, '名義人' %>
-    <%= f.text_field :name %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
-
 </div>
