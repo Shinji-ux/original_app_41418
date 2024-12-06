@@ -28,21 +28,11 @@
       <tbody>
         <%= f.fields_for :buy_items do |buy_item_form| %>
           <tr>
-            <td>
-              <%= buy_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "" } %>
-            </td>
-            <td>
-              <%= buy_item_form.collection_select :item_id, @items, :id, :item_name, { prompt: "商品を選択" }, { class: "" } %>
-            </td>
-            <td>
-              <%= buy_item_form.number_field :quantity, class: 'quantity-edit', 'data-id': buy_item_form.index %>
-            </td>
-            <td id="unit">
-              <%= @items.find { |item| item.id == buy_item_form.object.item_id }&.unit || "--" %>
-            </td>
-            <td>
-              <%= buy_item_form.text_field :item_price, class: 'item-price-edit', 'data-id': buy_item_form.index %>
-            </td>
+            <td><%= buy_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "" } %></td>
+            <td><%= buy_item_form.collection_select :item_id, @items, :id, :item_name, { prompt: "商品を選択" }, { class: "" } %></td>
+            <td><%= buy_item_form.number_field :quantity, class: 'quantity-edit', 'data-id': buy_item_form.index %></td>
+            <td id="unit"><%= @items.find { |item| item.id == buy_item_form.object.item_id }&.unit || "--" %></td>
+            <td><%= buy_item_form.text_field :item_price, class: 'item-price-edit', 'data-id': buy_item_form.index %></td>
           </tr>
         <% end %>  
       </tbody>
@@ -59,4 +49,9 @@
       <%= f.submit "更新", class: "box-search" %>
     </div>
   <% end %>
+
+  <div class="back">
+    <%= link_to  '前のページに戻る', buys_order_index_path %>
+  </div>
 </div>
+

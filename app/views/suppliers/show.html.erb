@@ -7,58 +7,54 @@
       仕入れ先基本情報
   </div>
 
+  <div class="form_wrap">
+    <label class="form_wrap_text">会社名</label>
+    <p class="form_wrap_field"><%= @supplier.company %></p>
+  </div>
+  <div class="form_wrap">
+    <label class="form_wrap_text">電話番号</label>
+    <p class="form_wrap_field"><%= @supplier.phone %></p>
+  </div>
 
-<div class="form_wrap">
-  <label class="form_wrap_text">会社名</label>
-  <p class="form_wrap_field"><%= @supplier.company %></p>
+  <div class="form_wrap">
+    <label class="form_wrap_text">市区町村</label>
+    <p class="form_wrap_field"><%= @supplier.city %></p>
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">住所</label>
+    <p class="form_wrap_field"><%= @supplier.address %></p>
+  </div>
+
+  <div class="sub-title">
+    振込先情報
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">銀行名</label>
+    <p class="form_wrap_field"><%= @supplier.bank %></p>
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">支店名</label>
+    <p class="form_wrap_field"><%= @supplier.branch %></p>
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">口座種別</label>
+    <p class="form_wrap_field"><%= @supplier.account_type %></p>
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">口座番号</label>
+    <p class="form_wrap_field"><%= @supplier.number %></p>
+  </div>
+  <div class="form_wrap">
+    <label class="form_wrap_text">名義人（カナ）</label>
+    <p class="form_wrap_field"><%= @supplier.name %></p>
+  </div>
+
+  <div class="back">
+    <%= link_to  '前のページに戻る', suppliers_path %>
+  </div>
 </div>
-<div class="form_wrap">
-  <label class="form_wrap_text">電話番号</label>
-  <p class="form_wrap_field"><%= @supplier.phone %></p>
-</div>
-
-<div class="form_wrap">
-  <label class="form_wrap_text">市区町村</label>
-  <p class="form_wrap_field"><%= @supplier.city %></p>
-</div>
-
-<div class="form_wrap">
-  <label class="form_wrap_text">住所</label>
-  <p class="form_wrap_field"><%= @supplier.address %></p>
-</div>
-
-
-
-<div class="sub-title">
-      振込先情報
-    </div>
-
-
-<div class="form_wrap">
-  <label class="form_wrap_text">銀行名</label>
-  <p class="form_wrap_field"><%= @supplier.bank %></p>
-</div>
-
-<div class="form_wrap">
-  <label class="form_wrap_text">支店名</label>
-  <p class="form_wrap_field"><%= @supplier.branch %></p>
-</div>
-
-<div class="form_wrap">
-  <label class="form_wrap_text">口座種別</label>
-  <p class="form_wrap_field"><%= @supplier.account_type %></p>
-</div>
-
-<div class="form_wrap">
-  <label class="form_wrap_text">口座番号</label>
-  <p class="form_wrap_field"><%= @supplier.number %></p>
-</div>
-<div class="form_wrap">
-  <label class="form_wrap_text">名義人（カナ）</label>
-  <p class="form_wrap_field"><%= @supplier.name %></p>
-</div>
-
-<%= link_to '編集', edit_supplier_path(@supplier.id) %>
-<%= link_to '削除', supplier_path(@supplier.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
-
-<%= link_to '戻る', suppliers_path %>

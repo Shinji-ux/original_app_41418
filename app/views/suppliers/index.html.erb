@@ -8,6 +8,8 @@
         <th>会社名</th>
         <th>電話番号</th>
         <th>詳細</th>
+        <th>編集</th>
+        <th>削除</th>
       </tr>
     </thead>
     <tbody>
@@ -16,8 +18,15 @@
           <td><%= supplier.company %></td>
           <td><%= supplier.phone %></td>
           <td><%= link_to '詳細', supplier_path(supplier.id) %></td>
+          <td><%= link_to '編集', edit_supplier_path(supplier.id) %></td>
+          <td><%= link_to '削除', supplier_path(supplier.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+
+  <div class="back">
+    <%= link_to  '前のページに戻る', root_path %>
+  </div>
 </div>
+

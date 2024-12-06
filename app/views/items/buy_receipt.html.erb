@@ -38,4 +38,8 @@
       <td><%= @buy_receipts.joins(:buy_items).where(buy_items: { item_id: @item_id }).sum('buy_items.item_price') %></td>
     </tfoot>
   </table>
+
+  <div class="back">
+    <%= link_to  '前のページに戻る', items_search_path %>
+  </div>
 </div>

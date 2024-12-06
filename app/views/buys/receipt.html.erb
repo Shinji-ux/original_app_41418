@@ -30,6 +30,10 @@
       <td><%= @receipts.sum(&:total_price) %></td>
     </tfoot>
   </table>
+
+  <div class="back">
+    <%= link_to  '前のページに戻る', buys_search_path %>
+  </div>
 </div>
 
   PDF

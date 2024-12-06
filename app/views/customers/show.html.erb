@@ -7,53 +7,53 @@
       得意先基本情報
   </div>
 
-<div class="form_wrap">
-  <label class="form_wrap_text">会社名</label>
-  <p class="form_wrap_field"><%= @customer.company %></p>
-</div>
-<div class="form_wrap">
-  <label class="form_wrap_text">電話番号</label>
-  <p class="form_wrap_field"><%= @customer.phone %></p>
-</div>
-<div class="form_wrap">
-  <label class="form_wrap_text">市区町村</label>
-  <p class="form_wrap_field"><%= @customer.city %></p>
-</div>
+  <div class="form_wrap">
+    <label class="form_wrap_text">会社名</label>
+    <p class="form_wrap_field"><%= @customer.company %></p>
+  </div>
+  <div class="form_wrap">
+    <label class="form_wrap_text">電話番号</label>
+    <p class="form_wrap_field"><%= @customer.phone %></p>
+  </div>
+  <div class="form_wrap">
+    <label class="form_wrap_text">市区町村</label>
+    <p class="form_wrap_field"><%= @customer.city %></p>
+  </div>
 
-<div class="form_wrap">
-  <label class="form_wrap_text">住所</label>
-  <p class="form_wrap_field"><%= @customer.address %></p>
+  <div class="form_wrap">
+    <label class="form_wrap_text">住所</label>
+    <p class="form_wrap_field"><%= @customer.address %></p>
+  </div>
+
+  <div class="sub-title">
+      銀行情報
+      </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">銀行名</label>
+    <p class="form_wrap_field"><%= @customer.bank %></p>
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">支店名</label>
+    <p class="form_wrap_field"><%= @customer.branch %></p>
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">口座種別</label>
+    <p class="form_wrap_field"><%= @customer.account_type %></p>
+  </div>
+
+  <div class="form_wrap">
+    <label class="form_wrap_text">口座番号</label>
+    <p class="form_wrap_field"><%= @customer.number %></p>
+  </div>
+  <div class="form_wrap">
+    <label class="form_wrap_text">名義人（カナ）</label>
+    <p class="form_wrap_field"><%= @customer.name %></p>
+  </div>
+
+  <div class="back">
+    <%= link_to  '前のページに戻る', customers_path %>
+  </div>
 </div>
-
-<div class="sub-title">
-    銀行情報
-    </div>
-
-<div class="form_wrap">
-  <label class="form_wrap_text">銀行名</label>
-  <p class="form_wrap_field"><%= @customer.bank %></p>
-</div>
-
-<div class="form_wrap">
-  <label class="form_wrap_text">支店名</label>
-  <p class="form_wrap_field"><%= @customer.branch %></p>
-</div>
-
-<div class="form_wrap">
-  <label class="form_wrap_text">口座種別</label>
-  <p class="form_wrap_field"><%= @customer.account_type %></p>
-</div>
-
-<div class="form_wrap">
-  <label class="form_wrap_text">口座番号</label>
-  <p class="form_wrap_field"><%= @customer.number %></p>
-</div>
-<div class="form_wrap">
-  <label class="form_wrap_text">名義人（カナ）</label>
-  <p class="form_wrap_field"><%= @customer.name %></p>
-</div>
-
-
-<%= link_to '編集', edit_customer_path(@customer.id) %>
-<%= link_to '削除', customer_path(@customer.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
-<%= link_to '戻る', customers_path %>
