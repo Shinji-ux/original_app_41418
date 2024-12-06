@@ -17,7 +17,7 @@
       <% @sells.each do |sell| %>
         <tr>
           <td><%= sell.transaction_date %></td>
-          <td><%= sell.supplier.company %></td>
+          <td><%= sell.customer.company %></td>
           <td><%= sell.total_price %></td>
           <td><%= link_to '編集', edit_customer_sell_path(customer_id: sell.customer_id, id: sell.id) %></td>
           <td><%= link_to '削除', customer_sell_path(customer_id: sell.customer_id, id: sell.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>

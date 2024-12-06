@@ -21,6 +21,13 @@ class SellsController < ApplicationController
     end
   end
 
+  def edit
+    @sell = current_user.sells.find(params[:id])
+    @customer = @sell.customer
+    @categories = current_user.categories
+    @items = current_user.items
+  end
+
   def search
     @customers = current_user.customers.order("customers.company ASC")
   end
