@@ -47,7 +47,7 @@ class BuysController < ApplicationController
   end
 
   def search
-    @suppliers = current_user.suppliers
+    @suppliers = current_user.suppliers.order("suppliers.company ASC")
   end
   
   def receipt

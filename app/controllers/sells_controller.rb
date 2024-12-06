@@ -22,7 +22,7 @@ class SellsController < ApplicationController
   end
 
   def search
-    @customers = current_user.customers
+    @customers = current_user.customers.order("customers.company ASC")
   end
 
   def receipt
