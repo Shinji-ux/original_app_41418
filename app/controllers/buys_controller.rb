@@ -54,6 +54,7 @@ class BuysController < ApplicationController
     @supplier_id = params[:supplier_id]
     @start_date = params[:start_date]
     @end_date = params[:end_date]
+    @supplier = current_user.suppliers.find(@supplier_id)
 
     @receipts = current_user.buys.where(supplier_id: @supplier_id)
                                 .where("transaction_date >= ?", @start_date)

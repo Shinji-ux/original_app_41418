@@ -29,6 +29,7 @@ class SellsController < ApplicationController
     @customer_id = params[:customer_id]
     @start_date = params[:start_date]
     @end_date = params[:end_date]
+    @customer = current_user.customers.find(@customer_id)
 
     @receipts = current_user.sells.where(customer_id: @customer_id)
                                   .where("transaction_date >= ?", @start_date)

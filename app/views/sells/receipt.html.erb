@@ -3,7 +3,9 @@
     請求書の作成
   </div>
 
-  <%= @start_date %>～<%= @end_date %>
+  <div class="sub-title">
+    <%= @customer.company %><br>
+    <%= @start_date %> ～ <%= @end_date %>
 
   <table class="table-bordered">
     <thead>

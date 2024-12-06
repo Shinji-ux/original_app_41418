@@ -3,7 +3,10 @@
     支払い明細書の作成
   </div>
 
-  <%= @start_date %>～<%= @end_date %>
+  <div class="sub-title">
+    <%= @supplier.company %><br>
+    <%= @start_date %> ～ <%= @end_date %>
+  </div>
 
   <table class="table-bordered">
     <thead>
@@ -15,13 +18,8 @@
     <tbody>
       <% @receipts.each do |receipt| %>
         <tr>
-          <td>
-            <%= receipt.transaction_date %>
-          </td>
-
-          <td>
-            <%= receipt.total_price %>              
-          </td>
+          <td><%= receipt.transaction_date %></td>
+          <td><%= receipt.total_price %></td>
         </tr>
       <% end %>
     </tbody>
