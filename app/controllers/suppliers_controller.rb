@@ -40,7 +40,7 @@ class SuppliersController < ApplicationController
   end
 
   def order_index
-    @suppliers = current_user.suppliers
+    @suppliers = current_user.suppliers.order("suppliers.company ASC")
   end
 
   def import

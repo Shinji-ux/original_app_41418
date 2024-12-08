@@ -18,9 +18,9 @@
         <tr>
           <td><%= customer.company %></td>
           <td><%= customer.phone %></td>
-          <td><%= link_to '詳細', customer_path(customer.id) %></td>
-          <td><%= link_to '編集', edit_customer_path(customer.id) %></td>
-          <td><%= link_to '削除', customer_path(customer.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+          <td class="table-link"><%= link_to '詳細', customer_path(customer.id) %></td>
+          <td class="table-link"><%= link_to '編集', edit_customer_path(customer.id) %></td>
+          <td class="table-link"><%= link_to '削除', customer_path(customer.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
         </tr>
       <% end %>
     </tbody>

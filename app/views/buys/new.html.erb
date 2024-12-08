@@ -25,18 +25,10 @@
       <tbody id="buy-item-forms">
         <%= f.fields_for :buy_items do |buy_item_form| %>
           <tr class="buy-item">
-            <td>
-              <%= buy_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "buy-category-select" } %>
-            </td>
-
-            <td>
-              <%= buy_item_form.collection_select :item_id, [], :id, :item_name, { prompt: "商品を選択" }, { class: "buy-item-select" } %>
-            </td>
-
-            <td>
-              <%= buy_item_form.number_field :quantity, class: 'quantity-input' %>
-            </td>
-            <td id="unit">--</td>
+            <td><%= buy_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "buy-category-select" } %></td>
+            <td><%= buy_item_form.collection_select :item_id, [], :id, :item_name, { prompt: "商品を選択" }, { class: "buy-item-select" } %></td>
+            <td class="table-unit"><%= buy_item_form.number_field :quantity, class: 'quantity-input' %></td>
+            <td class="table-unit" id="unit">--</td>
           </tr>
         <% end %>  
       </tbody>

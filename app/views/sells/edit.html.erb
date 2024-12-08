@@ -30,18 +30,18 @@
           <tr>
             <td><%= sell_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "" } %></td>
             <td><%= sell_item_form.collection_select :item_id, @items, :id, :item_name, { prompt: "商品を選択" }, { class: "" } %></td>
-            <td><%= sell_item_form.number_field :quantity, class: 'quantity-edit', 'data-id': sell_item_form.index %></td>
-            <td id="unit"><%= @items.find { |item| item.id == sell_item_form.object.item_id }&.unit || "--" %></td>
-            <td><%= sell_item_form.text_field :item_price, class: 'item-price-edit', 'data-id': sell_item_form.index %></td>
+            <td class="table-quantity"><%= sell_item_form.number_field :quantity, class: 'quantity-edit', 'data-id': sell_item_form.index %></td>
+            <td class="table-unit" id="unit"><%= @items.find { |item| item.id == sell_item_form.object.item_id }&.unit || "--" %></td>
+            <td class="table-price"><%= sell_item_form.text_field :item_price, class: 'item-price-edit', 'data-id': sell_item_form.index %></td>
           </tr>
         <% end %>  
       </tbody>
       <tfoot>
-        <td><%= f.label :total_price, '合計' %></td>
+        <td class="table-total-text"><%= f.label :total_price, '合計' %></td>
         <td></td>
         <td></td>
         <td></td>
-        <td><%= f.text_field :total_price, id: 'total_price_edit' %></td>
+        <td class="table-price"><%= f.text_field :total_price, id: 'total_price_edit' %></td>
       </tfoot>
     </table>
 

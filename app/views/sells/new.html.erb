@@ -26,31 +26,20 @@
       <tbody id="sell-item-forms">
         <%= f.fields_for :sell_items do |sell_item_form| %>
           <tr class="sell-item">
-            <td>
-              <%= sell_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "sell-category-select" } %>
-            </td>
-
-            <td>
-              <%= sell_item_form.collection_select :item_id, [], :id, :item_name, { prompt: "商品を選択" }, { class: "sell-item-select" } %>
-            </td>
-
-            <td>
-              <%= sell_item_form.number_field :quantity, class: 'quantity-input' %>
-            </td>
-            <td id="unit">--</td>
-
-            <td>
-              <%= sell_item_form.text_field :item_price, class: 'item-price' %>
-            </td>
+            <td><%= sell_item_form.collection_select :category_id, @categories, :id, :category, { prompt: "カテゴリを選択" }, { class: "sell-category-select" } %></td>
+            <td><%= sell_item_form.collection_select :item_id, [], :id, :item_name, { prompt: "商品を選択" }, { class: "sell-item-select" } %></td>
+            <td class="table-quantity"><%= sell_item_form.number_field :quantity, class: 'quantity-input' %></td>
+            <td class="table-unit" id="unit">--</td>
+            <td class="table-price"><%= sell_item_form.text_field :item_price, class: 'item-price' %></td>
           </tr>
         <% end %>  
       </tbody>
       <tfoot>
-        <td><%= f.label :total_price, '総計' %></td>
+        <td class="table-total-text"><%= f.label :total_price, '総計' %></td>
         <td></td>
         <td></td>
         <td></td>
-        <td><%= f.text_field :total_price %></td>
+        <td class="table-price"><%= f.text_field :total_price %></td>
       </tfoot>
     </table>
 

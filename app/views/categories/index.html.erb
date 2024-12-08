@@ -15,8 +15,8 @@
       <% @categories.each do |category| %>
         <tr>
           <td><%= category.category %></td>
-          <td><%= link_to '編集', edit_category_path(category.id) %></td>
-          <td><%= link_to '削除', category_path(category.id), data: { turbo_method: :delete, confirm: '削除してもよろしいですか？' } %></td>
+          <td class="table-link"><%= link_to '編集', edit_category_path(category.id) %></td>
+          <td class="table-link"><%= link_to '削除', category_path(category.id), data: { turbo_method: :delete, confirm: '削除してもよろしいですか？' } %></td>
         </tr>
       <% end %>
     </tbody>

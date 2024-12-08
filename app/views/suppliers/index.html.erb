@@ -17,9 +17,9 @@
         <tr>
           <td><%= supplier.company %></td>
           <td><%= supplier.phone %></td>
-          <td><%= link_to '詳細', supplier_path(supplier.id) %></td>
-          <td><%= link_to '編集', edit_supplier_path(supplier.id) %></td>
-          <td><%= link_to '削除', supplier_path(supplier.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+          <td class="table-link"><%= link_to '詳細', supplier_path(supplier.id) %></td>
+          <td class="table-link"><%= link_to '編集', edit_supplier_path(supplier.id) %></td>
+          <td class="table-link"><%= link_to '削除', supplier_path(supplier.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
         </tr>
       <% end %>
     </tbody>

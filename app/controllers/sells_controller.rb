@@ -28,6 +28,24 @@ class SellsController < ApplicationController
     @items = current_user.items
   end
 
+  def update
+    @sell = current_user.sells.find(params[:id])
+    @customer = @sell.customer
+    @categories = current_user.categories
+    @items = current_user.items
+    if @sell.update(sell_params)
+      redirect_to sells_order_index_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    sell = current_user.sells.find(params[:id])
+    sell.destroy
+    redirect_to sells_order_index_path
+  end
+
   def search
     @customers = current_user.customers.order("customers.company ASC")
   end

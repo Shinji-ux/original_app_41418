@@ -16,11 +16,11 @@
     <tbody>
       <% @buys.each do |buy| %>
         <tr>
-          <td><%= buy.transaction_date %></td>
+          <td class="table-day"><%= buy.transaction_date %></td>
           <td><%= buy.supplier.company %></td>
-          <td><%= buy.total_price %></td>
-          <td><%= link_to '編集（金額入力）', edit_supplier_buy_path(supplier_id: buy.supplier_id, id: buy.id) %></td>
-          <td><%= link_to '削除', supplier_buy_path(supplier_id: buy.supplier_id, id: buy.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+          <td class="table-price"><%= buy.total_price %></td>
+          <td class="table-link"><%= link_to '編集', edit_supplier_buy_path(supplier_id: buy.supplier_id, id: buy.id) %></td>
+          <td class="table-link"><%= link_to '削除', supplier_buy_path(supplier_id: buy.supplier_id, id: buy.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
         </tr>
       <% end %>
     </tbody>

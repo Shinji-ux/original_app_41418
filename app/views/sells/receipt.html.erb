@@ -17,19 +17,14 @@
     <tbody>
       <% @receipts.each do |receipt| %>
         <tr>
-          <td>
-            <%= receipt.transaction_date %>
-          </td>
-
-          <td>
-            <%= receipt.total_price %>              
-          </td>
+          <td class="table-day"><%= receipt.transaction_date %></td>
+          <td class="table-price"><%= receipt.total_price %></td>
         </tr>
       <% end %>  
     </tbody>
     <tfoot>
-      <td>合計</td>
-      <td><%= @receipts.sum(&:total_price) %></td>
+      <td class="table-total-text">合計</td>
+      <td class="table-price"><%= @receipts.sum(&:total_price) %></td>
     </tfoot>
   </table>
 

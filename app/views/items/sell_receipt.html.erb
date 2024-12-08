@@ -22,20 +22,20 @@
       <% @sell_receipts.each do |sell_receipt| %>
         <% sell_item = sell_receipt.sell_items.find_by(item_id: @item_id) %>
         <tr>
-          <td><%= sell_receipt.transaction_date %></td>
+          <td class="table-day"><%= sell_receipt.transaction_date %></td>
           <td><%= sell_receipt.customer.company %></td>
-          <td><%= sell_item.quantity %></td>
-          <td><%= @item.unit %></td>
-          <td><%= sell_item.item_price %></td>
+          <td class="table-quantity"><%= sell_item.quantity %></td>
+          <td class="table-unit"><%= @item.unit %></td>
+          <td class="table-price"><%= sell_item.item_price %></td>
         </tr>
       <% end %>
     </tbody>
     <tfoot>
-      <td>合計</td>
+      <td class="table-total-text">合計</td>
       <td></td>
-      <td><%= @sell_receipts.joins(:sell_items).where(sell_items: { item_id: @item_id }).sum('sell_items.quantity') %></td>
-      <td><%= @item.unit %></td>
-      <td><%= @sell_receipts.joins(:sell_items).where(sell_items: { item_id: @item_id }).sum('sell_items.item_price') %></td>
+      <td class="table-quantity"><%= @sell_receipts.joins(:sell_items).where(sell_items: { item_id: @item_id }).sum('sell_items.quantity') %></td>
+      <td class="table-unit"><%= @item.unit %></td>
+      <td class="table-price"><%= @sell_receipts.joins(:sell_items).where(sell_items: { item_id: @item_id }).sum('sell_items.item_price') %></td>
     </tfoot>
   </table>
 

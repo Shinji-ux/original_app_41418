@@ -69,6 +69,7 @@
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
 
+    <!--
     <div class="form_wrap">
       <%= f.label :password, class: "form_wrap_text" %> <i>(leave blank if you don't want to change it)</i><br />
       <%= f.password_field :password, autocomplete: "new-password", class: "form_wrap_field" %>
@@ -83,13 +84,15 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form_wrap_field" %>
     </div>
 
+    -->
+
     <div class="form_wrap">
       <%= f.label :current_password, '現在のパスワード', class: "form_wrap_text" %><br />
       <%= f.password_field :current_password, autocomplete: "current-password", class: "form_wrap_field" %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "更新" %>
+    <div class="box-wrap-btn">
+      <%= f.submit "更新", class: "box-search" %>
     </div>
   <% end %>
 

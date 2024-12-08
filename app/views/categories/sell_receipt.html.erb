@@ -25,12 +25,12 @@
         <% sell_receipt.sell_items.each do |sell_item| %>
           <% if sell_item.item.category_id == @category_id.to_i %>
             <tr>
-              <td><%= sell_receipt.transaction_date %></td>
+              <td class="table-day"><%= sell_receipt.transaction_date %></td>
               <td><%= sell_receipt.customer.company %></td>
               <td><%= sell_item.item.item_name %></td>
-              <td><%= sell_item.quantity %></td>
-              <td><%= sell_item.item.unit %></td>
-              <td><%= sell_item.item_price %></td>
+              <td class="table-quantity"><%= sell_item.quantity %></td>
+              <td class="table-unit"><%= sell_item.item.unit %></td>
+              <td class="table-price"><%= sell_item.item_price %></td>
             </tr>
             <% total += sell_item.item_price %>
           <% end %>
@@ -39,12 +39,12 @@
     </tbody>
     <tfoot>
       <tr>
-        <td>合計</td>
+        <td class="table-total-text">合計</td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
-        <td><%= total %></td>
+        <td class="table-price"><%= total %></td>
       </tr>
     </tfoot>
   </table>

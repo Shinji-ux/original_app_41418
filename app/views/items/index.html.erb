@@ -19,10 +19,10 @@
         <tr>
           <td><%= item.category.category %></td>
           <td><%= item.item_name %></td>
-          <td><%= item.unit %></td>
-          <td><%= item.price %></td>
-          <td><%= link_to '編集', edit_item_path(item.id) %></td>
-          <td><%= link_to '削除', item_path(item.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
+          <td class="table-unit"><%= item.unit %></td>
+          <td class="table-price"><%= item.price %></td>
+          <td class="table-link"><%= link_to '編集', edit_item_path(item.id) %></td>
+          <td class="table-link"><%= link_to '削除', item_path(item.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
         </tr>
       <% end %>
     </tbody>
