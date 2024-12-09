@@ -1,0 +1,40 @@
+/* ヘッダー */
+
+.header {
+  background-color: rgb(55, 60, 133);
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  padding: 24px;
+  font-size: 32px;
+}
+
+.header-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-list-li {
+  padding: 16px;
+  font-size: 16px;
+}
+
+
+@media (max-width: 700px) {
+  .header-logo {
+    padding: 8px;
+    font-size: 24px;
+  }
+
+  .header-list-li {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+}

@@ -20,12 +20,12 @@
       </div>
 
       <div class="box-wrap">
-        <%= label_tag :end_date, "振込予定日", class: "box-label" %><br>
+        <%= label_tag :end_date, "支払い予定日", class: "box-label" %><br>
         <%= date_field_tag :pay_date, params[:pay_date], class: "box-calender" %>
       </div>
 
       <div class="box-wrap-btn">
-        <%= submit_tag "検索", class: "box-search" %>
+        <%= submit_tag "作成", class: "box-search" %>
       </div>
     <% end %>
   </div>

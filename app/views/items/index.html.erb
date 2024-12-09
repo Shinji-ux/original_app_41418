@@ -17,8 +17,8 @@
     <tbody>
       <% @items.each do |item| %>
         <tr>
-          <td><%= item.category.category %></td>
-          <td><%= item.item_name %></td>
+          <td class="table-name"><%= item.category.category %></td>
+          <td class="table-name"><%= item.item_name %></td>
           <td class="table-unit"><%= item.unit %></td>
           <td class="table-price"><%= item.price %></td>
           <td class="table-link"><%= link_to '編集', edit_item_path(item.id) %></td>

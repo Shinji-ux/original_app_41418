@@ -13,7 +13,7 @@
     <tbody>
       <% @suppliers.each do |supplier| %>
         <tr>
-          <td><%= supplier.company %></td>
+          <td class="table-name"><%= supplier.company %></td>
           <td><%= link_to '発注書を作成する', new_supplier_buy_path(supplier.id) %></td>
         </tr>
       <% end %>
