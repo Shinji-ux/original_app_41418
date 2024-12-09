@@ -63,6 +63,23 @@ class SellsController < ApplicationController
                                   .distinct
   end
 
+  def show
+    @user = current_user
+    @sell = current_user.sells.find(params[:id])
+    @customer = @sell.customer
+    @categories = current_user.categories
+    @items = current_user.items
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'show', # 出力されるPDFのファイル名
+               template: 'sells/show', # テンプレートファイルの指定
+               layout: 'layouts/pdf',
+               encoding: 'UTF-8' # エンコーディングを指定
+      end
+    end
+  end
+
   def order_index
     @sells = current_user.sells.order("sells.transaction_date DESC")
   end

@@ -1,0 +1,68 @@
+<div class="a5_container"> 
+
+  <div class="pdf-title">
+    納品書
+  </div>
+
+  <div class="pdf-header">
+    <div class="pdf-header-left">
+      <div class="pdf-left-company">
+        <%= @customer.company %>    御中
+      </div>
+      <div class="pdf-pay-content">
+        <div class="pdf-pay-menu">
+          納品日
+        </div>
+        <div class="pdf-pay-text">
+          <%= @sell.transaction_date %>
+        </div>
+      </div>
+      <div class="pdf-pay-content">
+        <div class="pdf-pay-menu">
+          合計金額
+        </div>
+        <div class="pdf-pay-text">
+          <%= @sell.total_price %>円
+        </div>
+      </div>
+    </div>
+
+    <div class="pdf-header-right">
+      <div class="pdf-right-date">
+        作成日：<%= Date.today %>
+      </div>
+      <div class="pdf-right-company">
+        <%= @user.company %><br><br>
+        住所：<%= @user.city %><%= @user.address %><br>
+        電話番号：<%= @user.phone %><br>
+        担当：<%= @user.manager %>
+      </div>
+    </div>
+  </div>
+
+  <div class="">
+    <table class="pdf-table">
+      <thead class="pdf-table-header">
+        <tr>
+          <th>商品名</th>
+          <th>数量</th>
+          <th>単位</th>
+          <th>金額</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sell.sell_items.each do |sell_item| %>
+          <tr>
+            <td><%= @items.find { |item| item.id == sell_item.item_id }&.item_name || "不明" %></td>
+            <td class="pdf-table-quantity"><%= sell_item.quantity %></td>
+            <td class="pdf-table-unit"><%= @items.find { |item| item.id == sell_item.item_id }&.unit || "不明" %></td>
+            <td class="pdf-table-price"><%= sell_item.item_price %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="back">
+    <%= link_to '前のページに戻る', sells_order_index_path %>
+  </div>
