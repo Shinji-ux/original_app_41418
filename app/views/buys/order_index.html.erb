@@ -9,6 +9,7 @@
         <th>発注日</th>
         <th>発注先</th>
         <th>金額</th>
+        <th>詳細</th>
         <th>編集</th>
         <th>削除</th>
       </tr>
@@ -19,6 +20,8 @@
           <td class="table-day"><%= buy.transaction_date %></td>
           <td><%= buy.supplier.company %></td>
           <td class="table-price"><%= buy.total_price %></td>
+          <td class="table-link"><%= link_to '詳細 (HTML)', supplier_buy_path(supplier_id: buy.supplier_id, id: buy.id) %></td>
+          <td class="table-link"><%= link_to '詳細 (PDF)', supplier_buy_path(supplier_id: buy.supplier_id, id: buy.id, format: :pdf), target: '_blank' %></td>
           <td class="table-link"><%= link_to '編集', edit_supplier_buy_path(supplier_id: buy.supplier_id, id: buy.id) %></td>
           <td class="table-link"><%= link_to '削除', supplier_buy_path(supplier_id: buy.supplier_id, id: buy.id), method: :delete, data: { confirm: '削除してもよろしいですか？' } %></td>
         </tr>

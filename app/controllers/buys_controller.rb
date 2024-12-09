@@ -67,6 +67,23 @@ class BuysController < ApplicationController
     @buys = current_user.buys.order("buys.transaction_date DESC")
   end
 
+  def show
+    @user = current_user
+    @buy = current_user.buys.find(params[:id])
+    @supplier = @buy.supplier
+    @categories = current_user.categories
+    @items = current_user.items
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'show', # 出力されるPDFのファイル名
+               template: 'buys/show', # テンプレートファイルの指定
+               layout: 'layouts/pdf',
+               encoding: 'UTF-8' # エンコーディングを指定
+      end
+    end
+  end
+
   private 
   def buy_params
     params.require(:buy).permit(:transaction_date, :total_price, buy_items_attributes: [:id, :item_price, :quantity, :category_id, :item_id, :destroy]).merge(user_id: current_user.id)
