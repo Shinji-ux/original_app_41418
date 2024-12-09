@@ -1,12 +1,12 @@
 <div class="box_container">
   <div class="section-title">
-    仕入れ情報の検索
+    請求書の作成
   </div>
   <div class="box-center">
-    <%= form_with url: buys_search_result_path, method: :get, local: true do %>
+    <%= form_with url: sells_receipt_path, method: :get, local: true do %>
       <div class="box-wrap">
-        <%= label_tag :supplier_id, "仕入れ先", class: "box-label" %><br>
-        <%= select_tag :supplier_id, options_from_collection_for_select(@suppliers, :id, :company, params[:supplier_id]), prompt: "仕入れ先を選択", class: "box-pull" %>
+        <%= label_tag :customer_id, "得意先", class: "box-label" %><br>
+        <%= select_tag :customer_id, options_from_collection_for_select(@customers, :id, :company, params[:supplier_id]), prompt: "仕入れ先を選択", class: "box-pull" %>
       </div>
 
       <div class="box-wrap">
@@ -17,6 +17,11 @@
       <div class="box-wrap">
         <%= label_tag :end_date, "終了日", class: "box-label" %><br>
         <%= date_field_tag :end_date, params[:end_date], class: "box-calender" %>
+      </div>
+
+      <div class="box-wrap">
+        <%= label_tag :end_date, "振込予定日", class: "box-label" %><br>
+        <%= date_field_tag :pay_date, params[:pay_date], class: "box-calender" %>
       </div>
 
       <div class="box-wrap-btn">

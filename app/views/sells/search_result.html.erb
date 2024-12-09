@@ -1,0 +1,36 @@
+<div class="table_container">
+  <div class="section-title">
+    得意先別、検索結果
+  </div>
+
+  <div class="sub-title">
+    <%= @customer.company %><br>
+    <%= @start_date %> ～ <%= @end_date %>
+
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>日付</th>
+        <th>金額</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @receipts.each do |receipt| %>
+        <tr>
+          <td class="table-day"><%= receipt.transaction_date %></td>
+          <td class="table-price"><%= receipt.total_price %></td>
+        </tr>
+      <% end %>  
+    </tbody>
+    <tfoot>
+      <td class="table-total-text">合計</td>
+      <td class="table-price"><%= @receipts.sum(&:total_price) %></td>
+    </tfoot>
+  </table>
+
+  <div class="back">
+    <%= link_to  '前のページに戻る', sells_search_path %>
+  </div>
+</div>
+
+PDF

@@ -1,36 +1,79 @@
-<div class="table_container">
-  <div class="section-title">
-    請求書の作成
+
+<div class="a5_container"> 
+
+  <div class="pdf-title">
+    PDF請求書
   </div>
 
-  <div class="sub-title">
-    <%= @customer.company %><br>
-    <%= @start_date %> ～ <%= @end_date %>
+  <div class="pdf-header">
+    <div class="pdf-header-left">
+      <div class="pdf-left-company">
+        <div class="pdf-company-name">
+          <%= @customer.company %>
+        </div>
+        <div class="pdf-company-tag">
+          御中
+        </div>
+      </div>
+      <div class="pdf-pay-content">
+        <div class="pdf-pay-menu">
+          対象期間
+        </div>
+        <div class="pdf-pay-text">
+          <%= @start_date %> ～ <%= @end_date %>
+        </div>
+      </div>
+      <div class="pdf-pay-content">
+        <div class="pdf-pay-menu">
+          お支払い期日
+        </div>
+        <div class="pdf-pay-text">
+          <%= @pay_date %>
+        </div>
+      </div>
+      <div class="pdf-pay-content">
+        <div class="pdf-pay-menu">
+          合計金額
+        </div>
+        <div class="pdf-pay-text">
+          <%= @receipts.sum(&:total_price) %>円
+        </div>
+      </div>
+    </div>
 
-  <table class="table-bordered">
-    <thead>
-      <tr>
-        <th>日付</th>
-        <th>金額</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @receipts.each do |receipt| %>
+    <div class="pdf-header-right">
+      <div class="pdf-right-date">
+        作成日：<%= Date.today %>
+      </div>
+      <div class="pdf-right-company">
+        <%= @user.company %><br><br>
+        住所：<%= @user.city %><%= @user.address %><br>
+        電話番号：<%= @user.phone %><br>
+        担当：<%= @user.manager %>
+      </div>
+    </div>
+  </div>
+
+  <div class="">
+    <table class="pdf-table">
+      <thead class="pdf-table-header">
         <tr>
-          <td class="table-day"><%= receipt.transaction_date %></td>
-          <td class="table-price"><%= receipt.total_price %></td>
+          <th>取引日</th>
+          <th>金額</th>
         </tr>
-      <% end %>  
-    </tbody>
-    <tfoot>
-      <td class="table-total-text">合計</td>
-      <td class="table-price"><%= @receipts.sum(&:total_price) %></td>
-    </tfoot>
-  </table>
+      </thead>
+      <tbody>
+        <% @receipts.each do |receipt| %>
+          <tr>
+            <td class="table-day"><%= receipt.transaction_date %></td>
+            <td class="table-price"><%= receipt.total_price %></td>
+          </tr>
+        <% end %>  
+      </tbody>
+    </table>
+  </div>
 
   <div class="back">
-    <%= link_to  '前のページに戻る', sells_search_path %>
+    <%= link_to '前のページに戻る', sells_order_index_path %>
   </div>
 </div>
-
-PDF

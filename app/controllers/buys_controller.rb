@@ -49,8 +49,8 @@ class BuysController < ApplicationController
   def search
     @suppliers = current_user.suppliers.order("suppliers.company ASC")
   end
-  
-  def receipt
+
+  def search_result
     @supplier_id = params[:supplier_id]
     @start_date = params[:start_date]
     @end_date = params[:end_date]
@@ -61,6 +61,34 @@ class BuysController < ApplicationController
                                 .where("transaction_date <= ?", @end_date)
                                 .order("buys.transaction_date ASC")
                                 .distinct
+  end
+
+  def issue_receipt
+    @suppliers = current_user.suppliers.order("suppliers.company ASC")
+  end
+  
+  def receipt
+    @user = current_user
+    @supplier_id = params[:supplier_id]
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
+    @pay_date = params[:pay_date]
+    @supplier = current_user.suppliers.find(@supplier_id)
+
+    @receipts = current_user.buys.where(supplier_id: @supplier_id)
+                                .where("transaction_date >= ?", @start_date)
+                                .where("transaction_date <= ?", @end_date)
+                                .order("buys.transaction_date ASC")
+                                .distinct
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'receipt', # 出力されるPDFのファイル名
+                template: 'buys/receipt', # テンプレートファイルの指定
+                layout: 'layouts/pdf',
+                encoding: 'UTF-8' # エンコーディングを指定
+      end
+    end
   end
 
   def order_index

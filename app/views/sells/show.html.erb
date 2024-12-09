@@ -7,7 +7,12 @@
   <div class="pdf-header">
     <div class="pdf-header-left">
       <div class="pdf-left-company">
-        <%= @customer.company %>    御中
+        <div class="pdf-company-name">
+          <%= @customer.company %>
+        </div>
+        <div class="pdf-company-tag">
+          御中
+        </div>
       </div>
       <div class="pdf-pay-content">
         <div class="pdf-pay-menu">

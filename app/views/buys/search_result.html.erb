@@ -1,0 +1,35 @@
+<div class="table_container">
+  <div class="section-title">
+    仕入れ先別の検索結果
+  </div>
+
+  <div class="sub-title">
+    <%= @supplier.company %><br>
+    <%= @start_date %> ～ <%= @end_date %>
+  </div>
+
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>日付</th>
+        <th>金額</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @receipts.each do |receipt| %>
+        <tr>
+          <td class="table-day"><%= receipt.transaction_date %></td>
+          <td class="table-price"><%= receipt.total_price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <td class="table-total-text">合計</td>
+      <td class="table-price"><%= number_with_precision(@receipts.compact.sum { |r| r.total_price.to_f }, precision: 0) %></td>
+    </tfoot>
+  </table>
+
+  <div class="back">
+    <%= link_to  '前のページに戻る', buys_search_path %>
+  </div>
+</div>

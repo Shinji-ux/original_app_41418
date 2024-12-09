@@ -50,10 +50,29 @@ class SellsController < ApplicationController
     @customers = current_user.customers.order("customers.company ASC")
   end
 
-  def receipt
+  def search_result
     @customer_id = params[:customer_id]
     @start_date = params[:start_date]
     @end_date = params[:end_date]
+    @customer = current_user.customers.find(@customer_id)
+
+    @receipts = current_user.sells.where(customer_id: @customer_id)
+                                  .where("transaction_date >= ?", @start_date)
+                                  .where("transaction_date <= ?", @end_date)
+                                  .order("sells.transaction_date ASC")
+                                  .distinct
+  end
+
+  def issue_receipt
+    @customers = current_user.customers.order("customers.company ASC")
+  end
+
+  def receipt
+    @user = current_user
+    @customer_id = params[:customer_id]
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
+    @pay_date = params[:pay_date]
     @customer = current_user.customers.find(@customer_id)
 
     @receipts = current_user.sells.where(customer_id: @customer_id)

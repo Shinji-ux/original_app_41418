@@ -1,49 +1,62 @@
-  <div class="section-title">
+<div class="a5_container"> 
+
+  <div class="pdf-title">
     発注書
   </div>
 
-  <p class="pdf-p">本日の日時: <%= Date.today %></p>
+  <div class="pdf-header">
+    <div class="pdf-header-left">
+      <div class="pdf-left-company">
+        <div class="pdf-company-name">
+          <%= @supplier.company %>
+        </div>
+        <div class="pdf-company-tag">
+          御中
+        </div>
+      </div>
+      <div class="pdf-pay-content">
+        <div class="pdf-pay-menu">
+          納品希望日
+        </div>
+        <div class="pdf-pay-text">
+          <%= @buy.transaction_date %>
+        </div>
+      </div>
+    </div>
 
-  <%= @user.company %>
-  <%= @user.phone %>
-  <%= @user.manager %>
-  
-  <div class="sub-title">
-    <%= @supplier.company %>御中
+    <div class="pdf-header-right">
+      <div class="pdf-right-date">
+        作成日：<%= Date.today %>
+      </div>
+      <div class="pdf-right-company">
+        <%= @user.company %><br><br>
+        住所：<%= @user.city %><%= @user.address %><br>
+        電話番号：<%= @user.phone %><br>
+        担当：<%= @user.manager %>
+      </div>
+    </div>
   </div>
 
-    <div class="sub-title">
-    納品希望日: <%= @buy.transaction_date %>
-  </div>
-
-  <table class="table-bordered">
-    <thead>
-      <tr>
-        <th>カテゴリ</th>
-        <th>商品</th>
-        <th>数量</th>
-        <th>単位</th>
-        <th>金額</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @buy.buy_items.each do |buy_item| %>
+  <div class="">
+    <table class="pdf-table">
+      <thead class="pdf-table-header">
         <tr>
-          <td><%= @categories.find { |category| category.id == buy_item.category_id }&.category || "不明" %></td>
-          <td><%= @items.find { |item| item.id == buy_item.item_id }&.item_name || "不明" %></td>
-          <td class="table-quantity"><%= buy_item.quantity %></td>
-          <td class="table-unit"><%= @items.find { |item| item.id == buy_item.item_id }&.unit || "不明" %></td>
-          <td class="table-price"><%= buy_item.item_price %></td>
+          <th>商品名</th>
+          <th>数量</th>
+          <th>単位</th>
         </tr>
-      <% end %>
-    </tbody>
-    <tfoot>
-      <tr>
-        <td class="table-total-text" colspan="4">合計</td>
-        <td class="table-price"><%= @buy.total_price %></td>
-      </tr>
-    </tfoot>
-  </table>
+      </thead>
+      <tbody>
+        <% @buy.buy_items.each do |buy_item| %>
+          <tr>
+            <td><%= @items.find { |item| item.id == buy_item.item_id }&.item_name || "不明" %></td>
+            <td class="pdf-table-quantity"><%= buy_item.quantity %></td>
+            <td class="pdf-table-unit"><%= @items.find { |item| item.id == buy_item.item_id }&.unit || "不明" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 
   <div class="back">
     <%= link_to '前のページに戻る', buys_order_index_path %>
