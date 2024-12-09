@@ -64,17 +64,11 @@
   margin-top: 16px;
 }
 
-/* フラッシュメッセージ */
+@media (max-width: 700px) {
+  .section-title {
+    height: 40px;
+    font-size: 24px;
+  }
 
-.flash-notice {
-  font-size: 24px;
-  color: green;
-  text-align: center;
-}
-
-.flash-alert {
-  font-size: 24px;
-  color: red;
-  text-align: center;
 }
 

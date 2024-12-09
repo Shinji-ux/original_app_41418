@@ -15,9 +15,7 @@ class ItemsController < ApplicationController
     @item = current_user.items.new(item_params)
     if @item.save
       redirect_to new_item_path
-      flash[:notice] = "商品を登録しました"
     else
-      flash[:alert] = "商品の登録に失敗しました"
       render :new
     end
   end
@@ -49,7 +47,7 @@ class ItemsController < ApplicationController
 
   def import
     Item.import_items_from_csv(params[:file], current_user)
-    redirect_to items_path, notice: "Items imported."
+    redirect_to items_path
   end
 
   def search

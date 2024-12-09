@@ -10,10 +10,8 @@ class CategoriesController < ApplicationController
   def create
     @category = current_user.categories.new(category_params)
     if @category.save
-      flash[:notice] = "カテゴリを登録しました"
       redirect_to new_category_path
     else
-      flash[:alert] = "カテゴリの登録に失敗しました"
       render :new
     end
   end
@@ -45,7 +43,7 @@ class CategoriesController < ApplicationController
   def import
     def import
       Category.import_from_csv(params[:file], current_user)
-      redirect_to categories_path, notice: "Categories imported."
+      redirect_to categories_path
     end
   end
 

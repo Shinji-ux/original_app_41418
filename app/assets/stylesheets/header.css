@@ -3,6 +3,8 @@
 .header {
   background-color: rgb(55, 60, 133);
   width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
   height: 80px;
   display: flex;
   justify-content: space-between;

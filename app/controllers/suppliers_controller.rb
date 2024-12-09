@@ -14,10 +14,8 @@ class SuppliersController < ApplicationController
   def create
     @supplier = current_user.suppliers.new(supplier_params)
     if @supplier.save
-      flash[:notice] = "仕入れ先を登録しました"
       redirect_to new_supplier_path
     else
-      flash[:alert] = "仕入れ先の登録に失敗しました"
       render :new
     end
   end
@@ -47,7 +45,7 @@ class SuppliersController < ApplicationController
 
   def import
     Supplier.import_from_csv(params[:file], current_user)
-    redirect_to suppliers_path, notice: "Suppliers imported."
+    redirect_to suppliers_path
   end
 
   private

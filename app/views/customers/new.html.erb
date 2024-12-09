@@ -3,18 +3,6 @@
     得意先の登録
   </div>
 
-  <% if flash[:notice] %>
-    <div class="flash flash-notice">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
-
-  <% if flash[:alert] %>
-    <div class="flash flash-alert">
-      <%= flash[:alert] %>
-    </div>
-  <% end %>
-
   <%= form_with model: @customer, local: true do |f| %>
 
     <div class="sub-title">
