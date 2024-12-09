@@ -3,10 +3,6 @@
     <%= @supplier.company %>への発注書
   </div>
 
-  <div class="sub-title">
-    
-  </div>
-
   <%= form_with(model: [@supplier, @buy]) do |f| %>
     <div>
       <%= f.label :transaction_date, "納品日" %>

@@ -16,6 +16,7 @@
         <th>商品名</th>
         <th>数量</th>
         <th>単位</th>
+        <th>単価</th>
         <th>金額</th>
       </tr>
     </thead>
@@ -31,8 +32,9 @@
               <td class="table-quantity"><%= sell_item.quantity %></td>
               <td class="table-unit"><%= sell_item.item.unit %></td>
               <td class="table-price"><%= sell_item.item_price %></td>
+              <td class="table-price"><%= sell_item.item_total_price %></td>
             </tr>
-            <% total += sell_item.item_price %>
+            <% total += sell_item.item_total_price %>
           <% end %>
         <% end %>
       <% end %>
@@ -40,6 +42,7 @@
     <tfoot>
       <tr>
         <td class="table-total-text">合計</td>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>

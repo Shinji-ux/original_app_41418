@@ -14,8 +14,10 @@ class CustomersController < ApplicationController
   def create
     @customer = current_user.customers.new(customer_params)
     if @customer.save
+      flash[:notice] = "得意先を登録しました"
       redirect_to new_customer_path
     else
+      flash[:alert] = "得意先の登録に失敗しました"
       render :new
     end
   end

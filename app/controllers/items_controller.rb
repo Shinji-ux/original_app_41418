@@ -15,7 +15,9 @@ class ItemsController < ApplicationController
     @item = current_user.items.new(item_params)
     if @item.save
       redirect_to new_item_path
+      flash[:notice] = "商品を登録しました"
     else
+      flash[:alert] = "商品の登録に失敗しました"
       render :new
     end
   end

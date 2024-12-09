@@ -13,7 +13,7 @@ class BuysController < ApplicationController
     @buy = current_user.buys.new(buy_params.merge(supplier_id: @supplier.id))
     @categories = current_user.categories
     if @buy.save
-      redirect_to root_path, notice: 'Buy was successfully created.'
+      redirect_to root_path
     else
       @items = current_user.items
       @categories = current_user.categories

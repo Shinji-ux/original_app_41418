@@ -3,6 +3,19 @@
   <div class="section-title">
     商品の登録
   </div>
+
+  <% if flash[:notice] %>
+    <div class="flash flash-notice">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <div class="flash flash-alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
   <%= form_with model: @item, local: true do |f| %>
 
     <div class="sub-title">

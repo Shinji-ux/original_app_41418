@@ -12,10 +12,12 @@ class SuppliersController < ApplicationController
   end
 
   def create
-    @supplier = current_user.supplier.new(supplier_params)
+    @supplier = current_user.suppliers.new(supplier_params)
     if @supplier.save
+      flash[:notice] = "仕入れ先を登録しました"
       redirect_to new_supplier_path
     else
+      flash[:alert] = "仕入れ先の登録に失敗しました"
       render :new
     end
   end

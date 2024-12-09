@@ -89,6 +89,17 @@
   margin-top: 16px;
 }
 
+/* フラッシュメッセージ */
 
+.flash-notice {
+  font-size: 24px;
+  color: green;
+  text-align: center;
+}
 
+.flash-alert {
+  font-size: 24px;
+  color: red;
+  text-align: center;
+}
 

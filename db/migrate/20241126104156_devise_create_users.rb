@@ -11,6 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :address
       t.string :phone
       t.string :manager
+      t.string :invoice
       t.string :bank
       t.string :branch
       t.string :account_type

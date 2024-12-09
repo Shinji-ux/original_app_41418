@@ -37,10 +37,10 @@
     </div>
 
     <div class="form_wrap">
-      <%= f.label :password, "パスワード", class: "form_wrap_text" %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %>文字以上)</em>
-      <% end %><span class="attension">必須</span><br />
+      <%= f.label :password, "パスワード(英数混合で8文字以上)", class: "form_wrap_text" %>
+      <%# <% if @minimum_password_length %>
+      <%# <em>(<%= @minimum_password_length 文字以上)</em> %>
+      <%# <% end %><span class="attension">必須</span><br />
       <%= f.password_field :password, autocomplete: "new-password", class: "form_wrap_field" %>
     </div>
 

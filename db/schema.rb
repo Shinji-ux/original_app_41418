@@ -14,6 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_03_042655) do
   create_table "buy_items", charset: "utf8", force: :cascade do |t|
     t.integer "quantity", null: false
     t.integer "item_price"
+    t.integer "item_total_price"
     t.bigint "buy_id", null: false
     t.bigint "item_id", null: false
     t.bigint "category_id", null: false
@@ -74,6 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_03_042655) do
   create_table "sell_items", charset: "utf8", force: :cascade do |t|
     t.integer "quantity", null: false
     t.integer "item_price", null: false
+    t.integer "item_total_price", null: false
     t.bigint "sell_id", null: false
     t.bigint "item_id", null: false
     t.bigint "category_id", null: false
@@ -119,6 +121,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_03_042655) do
     t.string "address"
     t.string "phone"
     t.string "manager"
+    t.string "invoice"
     t.string "bank"
     t.string "branch"
     t.string "account_type"

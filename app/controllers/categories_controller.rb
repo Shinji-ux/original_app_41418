@@ -10,8 +10,10 @@ class CategoriesController < ApplicationController
   def create
     @category = current_user.categories.new(category_params)
     if @category.save
+      flash[:notice] = "カテゴリを登録しました"
       redirect_to new_category_path
     else
+      flash[:alert] = "カテゴリの登録に失敗しました"
       render :new
     end
   end

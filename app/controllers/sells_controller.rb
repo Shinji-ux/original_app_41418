@@ -13,7 +13,7 @@ class SellsController < ApplicationController
     @sell = current_user.sells.new(sell_params.merge(customer_id: @customer.id))
     @categories = current_user.categories
     if @sell.save
-      redirect_to root_path, notice: 'Sell was successfully created.'
+      redirect_to root_path
     else
       @items = current_user.items
       @categories = current_user.categories
@@ -86,6 +86,6 @@ class SellsController < ApplicationController
 
   private 
   def sell_params
-    params.require(:sell).permit(:transaction_date, :total_price, sell_items_attributes: [:id, :item_price, :quantity, :category_id, :item_id, :destroy]).merge(user_id: current_user.id)
+    params.require(:sell).permit(:transaction_date, :total_price, sell_items_attributes: [:id, :item_price, :item_total_price, :quantity, :category_id, :item_id, :destroy]).merge(user_id: current_user.id)
   end
 end

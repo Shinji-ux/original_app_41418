@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // 合計価格を更新する関数
   function updateTotalPrice() {
     let totalPrice = 0;
-    document.querySelectorAll('.sell-item').forEach(buyItem => {
-      const itemPriceInput = buyItem.querySelector('.item-price');
-      const itemPrice = parseFloat(itemPriceInput.value) || 0;
-      totalPrice += itemPrice;
+    document.querySelectorAll('.sell-item').forEach(sellItem => {
+      const itemTotalPriceInput = sellItem.querySelector('.item-total-price');
+      const itemTotalPrice = parseFloat(itemTotalPriceInput.value) || 0;
+      totalPrice += itemTotalPrice;
     });
     document.querySelector('input[name="sell[total_price]"]').value = totalPrice;
   }
@@ -25,13 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const categoryId = event.target.value;
         const sellItem = event.target.closest('.sell-item');
         const itemSelect = sellItem.querySelector('.sell-item-select');
-        const unitSpan = sellItem.querySelector('#unit');
+        const unitSpan = sellItem.querySelector('.table-unit');
         const itemPriceInput = sellItem.querySelector('.item-price');
+        const itemTotalPriceInput = sellItem.querySelector('.item-total-price');
         const quantityInput = sellItem.querySelector('.quantity-input');
 
         itemSelect.innerHTML = '<option value="">商品を選択</option>';
         itemPriceInput.value = '';
         unitSpan.textContent = '--';
+        itemTotalPriceInput.value = '';
+        quantityInput.value = '';
         updateTotalPrice(); // 合計価格を更新
 
         if (categoryId) {
@@ -55,12 +58,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const itemId = event.target.value;
         const sellItem = event.target.closest('.sell-item');
         const itemPriceInput = sellItem.querySelector('.item-price');
-        const unitSpan = sellItem.querySelector('#unit');
+        const unitSpan = sellItem.querySelector('.table-unit');
+        const itemTotalPriceInput = sellItem.querySelector('.item-total-price');
         const quantityInput = sellItem.querySelector('.quantity-input');
         let itemPrice = 0;
 
         itemPriceInput.value = ''; // リセット
         unitSpan.textContent = '--';
+        itemTotalPriceInput.value = ''; // リセット
+        quantityInput.value = '';
         updateTotalPrice(); // 合計価格を更新
 
         if (itemId) {
@@ -69,7 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
               itemPrice = data.price;
               unitSpan.textContent = data.unit;
-              updateItemPrice(sellItem, itemPrice);
+              itemPriceInput.value = itemPrice;
+              updateItemTotalPrice(sellItem, itemPrice);
             })
             .catch(error => console.error('Error fetching item details:', error));
         }
@@ -79,24 +86,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.quantity-input').forEach(quantityInput => {
       quantityInput.addEventListener('input', event => {
         const sellItem = event.target.closest('.sell-item');
-        const itemSelect = sellItem.querySelector('.sell-item-select');
-        const itemId = itemSelect.value;
-        const itemPriceInput = sellItem.querySelector('.item-price');
-        const quantity = parseFloat(event.target.value) || 0;
+        const itemPrice = parseFloat(sellItem.querySelector('.item-price').value) || 0;
+        updateItemTotalPrice(sellItem, itemPrice);
+      });
+    });
 
-        if (itemId) {
-          fetch(`/items/${itemId}/details`)
-            .then(response => response.json())
-            .then(data => {
-              const itemPrice = data.price;
-              itemPriceInput.value = Math.round(itemPrice * quantity);
-              updateTotalPrice(); // 合計価格を更新
-            })
-            .catch(error => console.error('Error fetching item details:', error));
-        } else {
-          itemPriceInput.value = '';
-          updateTotalPrice(); // 合計価格を更新
-        }
+    // item-price に対してもイベントリスナーを追加
+    document.querySelectorAll('.item-price').forEach(itemPriceInput => {
+      itemPriceInput.addEventListener('input', event => {
+        const sellItem = event.target.closest('.sell-item');
+        const itemPrice = parseFloat(itemPriceInput.value) || 0;
+        updateItemTotalPrice(sellItem, itemPrice);
       });
     });
   }
@@ -104,8 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // フィールドセット追加
   function addNewFields() {
     const existingSellItems = document.querySelectorAll('.sell-item');
-    const newFields = existingSellItems[0].cloneNode(true); // existingBuyItemsをexistingSellItemsに修正
-    const newIndex = existingSellItems.length; // existingBuyItemsをexistingSellItemsに修正
+    const newFields = existingSellItems[0].cloneNode(true);
+    const newIndex = existingSellItems.length;
 
     newFields.querySelectorAll('input, select').forEach(input => {
       const name = input.getAttribute('name').replace(/\d+/, newIndex);
@@ -115,16 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
       input.value = '';
     });
 
+    newFields.querySelector('.table-unit').textContent = '--';
     document.getElementById('sell-item-forms').appendChild(newFields);
     initializeEvents();
   }
 
-  // アイテムの価格を更新
-  function updateItemPrice(sellItem, itemPrice) {
+  // アイテムの合計価格を更新
+  function updateItemTotalPrice(sellItem, itemPrice) {
     const quantityInput = sellItem.querySelector('.quantity-input');
-    const itemPriceInput = sellItem.querySelector('.item-price');
+    const itemTotalPriceInput = sellItem.querySelector('.item-total-price');
     const quantity = parseFloat(quantityInput.value) || 0;
-    itemPriceInput.value = Math.round(itemPrice * quantity);
+    itemTotalPriceInput.value = (itemPrice * quantity);
     updateTotalPrice(); // 合計価格を更新
   }
 });

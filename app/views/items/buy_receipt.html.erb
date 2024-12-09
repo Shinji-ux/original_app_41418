@@ -15,10 +15,12 @@
         <th>仕入れ先</th>
         <th>数量</th>
         <th>単位</th>
+        <th>単価</th>
         <th>金額</th>
       </tr>
     </thead>
     <tbody>
+      <% total_quantity = 0 %>
       <% @buy_receipts.each do |buy_receipt| %>
         <% buy_item = buy_receipt.buy_items.find_by(item_id: @item_id) %>
         <tr>
@@ -27,15 +29,18 @@
           <td class="table-quantity"><%= buy_item.quantity %></td>
           <td class="table-unit"><%= @item.unit %></td>
           <td class="table-price"><%= buy_item.item_price %></td>
+          <td class="table-price"><%= buy_item.item_total_price %></td>
         </tr>
+        <% total_quantity += buy_item.quantity %>
       <% end %>
     </tbody>
     <tfoot>
       <td class="table-total-text">合計</td>
       <td></td>
-      <td class="table-quantity"><%= @buy_receipts.joins(:buy_items).where(buy_items: { item_id: @item_id }).sum('buy_items.quantity') %></td> 
+      <td class="table-quantity"><%= total_quantity %>
       <td class="table-unit"><%= @item.unit %></td>
-      <td class="table-price"><%= @buy_receipts.joins(:buy_items).where(buy_items: { item_id: @item_id }).sum('buy_items.item_price') %></td>
+      <td></td>
+      <td class="table-price"><%= @buy_receipts.joins(:buy_items).where(buy_items: { item_id: @item_id }).sum('buy_items.item_total_price') %></td>
     </tfoot>
   </table>
 
