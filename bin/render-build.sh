@@ -2,21 +2,29 @@
 # exit on error
 set -o errexit
 
-bundle install
-bundle exec rake assets:precompile
-bundle exec rake assets:clean
-bundle exec rake db:migrate
-# apt-get update && apt-get install -y wkhtmltopdf libxrender1 libxext6 libfontconfig1
+echo "Starting build process..."
 
-set -e
+# フォントディレクトリ作成とインストール
+echo "Downloading and extracting fonts..."
+mkdir -p /app/bin/fonts
+curl -L -o /app/bin/fonts/NotoSansCJK.zip https://noto-website.storage.googleapis.com/pkgs/NotoSansCJK-Regular.ttc.zip || { echo "Font download failed"; exit 1; }
+unzip /app/bin/fonts/NotoSansCJK.zip -d /app/bin/fonts || { echo "Font extraction failed"; exit 1; }
 
-# wkhtmltopdf-binary gemのインストール
-echo "Installing wkhtmltopdf-binary..."
-gem install wkhtmltopdf-binary
-
-# 依存関係インストール
-bundle install
+# Node.js依存関係のインストール
+echo "Installing Node.js dependencies..."
 yarn install --check-files
 
-curl -L -o NotoSansCJK.zip https://noto-website.storage.googleapis.com/pkgs/NotoSansCJK-Regular.ttc.zip
-unzip NotoSansCJK.zip -d /app/bin/fonts
+# Ruby依存関係のインストール
+echo "Installing Ruby dependencies..."
+bundle install
+
+# アセットの処理
+echo "Precompiling and cleaning assets..."
+bundle exec rake assets:precompile
+bundle exec rake assets:clean
+
+# データベースマイグレーション
+echo "Running database migrations..."
+bundle exec rake db:migrate
+
+echo "Build process completed successfully."
