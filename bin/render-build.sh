@@ -3,11 +3,6 @@
 set -o errexit
 
 bundle install
-
-# 日本語フォントをインストール
-apt-get update
-apt-get install -y fonts-noto-cjk
-
 bundle exec rake assets:precompile
 bundle exec rake assets:clean
 bundle exec rake db:migrate
@@ -22,3 +17,6 @@ gem install wkhtmltopdf-binary
 # 依存関係インストール
 bundle install
 yarn install --check-files
+
+curl -L -o NotoSansCJK.zip https://noto-website.storage.googleapis.com/pkgs/NotoSansCJK-Regular.ttc.zip
+unzip NotoSansCJK.zip -d /app/bin/fonts

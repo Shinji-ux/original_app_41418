@@ -1,4 +1,4 @@
-<div style="width: 600px;"> 
+<div style="width: 600px;" font-family: 'Noto Sans CJK', 'Arial', sans-serif;> 
 
   <div style="text-align: center; font-size: 32px; margin-bottom: 32px;">
     納品書
@@ -21,11 +21,17 @@
         <td style="width: 120px;"></td>
         <td style="width: 140px;"></td>
         <td style="width: 120px;"></td>
-        <td style="font-size: 20px;"><%= @user.company %></td>
+        <td></td>
       </tr>
       <tr>
         <td></td>
         <td></td>
+        <td></td>
+        <td style="font-size: 20px;"><%= @user.company %></td>
+      </tr>
+      <tr>     
+        <td rowspan="" style="border: 1px solid black; font-size: 18px; background-color: black; color: white; text-align: center;">合計金額</td>
+        <td rowspan="" style="border: 1px solid black; font-size: 18px; text-align: right;"><%= @sell.total_price %>円</td>
         <td></td>
         <td>住所：<%= @user.city %><%= @user.address %></td>
       </tr>
