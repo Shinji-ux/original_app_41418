@@ -78,4 +78,4 @@ group :production do
 end
 
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary', '~> 0.12.6'

@@ -254,7 +254,7 @@ DEPENDENCIES
   web-console
   webdrivers
   wicked_pdf
-  wkhtmltopdf-binary
+  wkhtmltopdf-binary (~> 0.12.6)
 
 RUBY VERSION
    ruby 3.2.0p0
