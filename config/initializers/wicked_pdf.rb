@@ -1,7 +1,13 @@
 WickedPdf.configure do |config|
 
-  exe_path: Rails.env.production? ? '/usr/bin/wkhtmltopdf' : '/usr/local/bin/wkhtmltopdf'
-  config.exe_path = '/home/shinji/.rbenv/shims/wkhtmltopdf'
+
+  exe_path: if Rails.env.production?
+              '/usr/bin/wkhtmltopdf' # Render環境のパス
+            else
+              '/home/shinji/.rbenv/shims/wkhtmltopdf'
+            end
+
+  # config.exe_path = '/home/shinji/.rbenv/shims/wkhtmltopdf'
 
   # デフォルトのオプションを設定
   # config.default_options = {
