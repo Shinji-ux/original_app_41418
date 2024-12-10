@@ -86,8 +86,12 @@ class BuysController < ApplicationController
         render pdf: 'receipt', # 出力されるPDFのファイル名
                 template: 'buys/receipt', # テンプレートファイルの指定
                 layout: 'layouts/pdf',
-                encoding: 'UTF-8', # エンコーディングを指定
-                page_size: 'A5'
+                encoding: 'UTF-8',           # エンコーディング
+               enable_local_file_access: true, # ローカルファイルの読み込みを許可
+               font_path: '/opt/render/project/.fonts/NotoSansCJK-Regular.ttc',
+               custom_styles: "body { font-family: 'Noto Sans CJK', sans-serif; }",
+               page_size: 'A5'
+              #  orientation: 'Landscape'    # 横向きに設定
       end
     end
   end
@@ -108,8 +112,12 @@ class BuysController < ApplicationController
         render pdf: 'show', # 出力されるPDFのファイル名
                template: 'buys/show', # テンプレートファイルの指定
                layout: 'layouts/pdf',
-               encoding: 'UTF-8', # エンコーディングを指定
+               encoding: 'UTF-8',           # エンコーディング
+               enable_local_file_access: true, # ローカルファイルの読み込みを許可
+               font_path: '/opt/render/project/.fonts/NotoSansCJK-Regular.ttc',
+               custom_styles: "body { font-family: 'Noto Sans CJK', sans-serif; }",
                page_size: 'A5'
+              #  orientation: 'Landscape'    # 横向きに設定
       end
     end
   end

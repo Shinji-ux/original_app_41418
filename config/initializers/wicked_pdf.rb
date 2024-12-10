@@ -11,6 +11,10 @@ WickedPdf.configure do |config|
     enable_local_file_access: true, # ローカルファイルの読み込みを許可
     font_path: '/opt/render/project/.fonts/NotoSansCJK-Regular.ttc',
     custom_styles: "body { font-family: 'Noto Sans CJK', sans-serif; }",
-    orientation: 'Landscape'    # 横向きに設定
+    orientation: 'Landscape',    # 横向きに設定
+    page_size: 'A5'
   }
+
+    # 設定確認のためのログ出力
+  Rails.logger.debug "WickedPdf config: #{config.default_options.inspect}"
 end
