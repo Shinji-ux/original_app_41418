@@ -6,7 +6,7 @@ echo "Starting build process..."
 
 # フォントディレクトリ作成とインストール
 echo "Downloading fonts..."
-mkdir -p /tmp/fonts
+mkdir -p /opt/render/project/.fonts
 curl -L -o /tmp/fonts/NotoSansCJK-Regular.ttc https://noto-website.storage.googleapis.com/pkgs/NotoSansCJK-Regular.ttc || { echo "Font download failed"; exit 1; }
 
 # Node.js依存関係のインストール

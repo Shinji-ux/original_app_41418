@@ -16,6 +16,7 @@ WickedPdf.configure do |config|
   #   debug_javascripts: true,     # スクリプトのデバッグ
   #   dpi: 300                     # 出力の解像度
     enable_local_file_access: true, # ローカルファイルの読み込みを許可
+    # custom_styles: "body { font-family: 'Noto Sans CJK', sans-serif; }"
     font_path: '/tmp/fonts/NotoSansCJK-Regular.ttc' # フォントファイルのパス
   }
 end
