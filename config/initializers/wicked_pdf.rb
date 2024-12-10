@@ -1,13 +1,11 @@
 WickedPdf.configure do |config|
 
-
-  exe_path: if Rails.env.production?
-              '/usr/bin/wkhtmltopdf' # Render環境のパス
-            else
-              '/home/shinji/.rbenv/shims/wkhtmltopdf'
-            end
-
-  # config.exe_path = '/home/shinji/.rbenv/shims/wkhtmltopdf'
+  config.exe_path = if Rails.env.production?
+                      '/usr/bin/wkhtmltopdf' # Render環境のパス
+                    else
+                      '/home/shinji/.rbenv/shims/wkhtmltopdf'
+                    end
+end
 
   # デフォルトのオプションを設定
   # config.default_options = {
@@ -19,4 +17,9 @@ WickedPdf.configure do |config|
   #   debug_javascripts: true,     # スクリプトのデバッグ
   #   dpi: 300                     # 出力の解像度
   # }
-end
+
+    # exe_path: if Rails.env.production?
+  #             '/usr/bin/wkhtmltopdf' # Render環境のパス
+  #           else
+  #             '/home/shinji/.rbenv/shims/wkhtmltopdf'
+  #           end
