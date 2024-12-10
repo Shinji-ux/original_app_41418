@@ -4,12 +4,14 @@ set -o errexit
 
 echo "Starting build process..."
 
-# フォントディレクトリ作成とインストール
+# フォントディレクトリ作成
 echo "Creating font directory..."
 mkdir -p /opt/render/project/.fonts || { echo "Failed to create font directory"; exit 1; }
 
+# フォントのダウンロード
 echo "Downloading fonts..."
 curl -L -o /opt/render/project/.fonts/NotoSansCJK-Regular.ttc https://noto-website.storage.googleapis.com/pkgs/NotoSansCJK-Regular.ttc || { echo "Font download failed"; exit 1; }
+
 # Node.js依存関係のインストール
 echo "Installing Node.js dependencies..."
 yarn install --check-files
@@ -26,7 +28,5 @@ bundle exec rake assets:clean
 # データベースマイグレーション
 echo "Running database migrations..."
 bundle exec rake db:migrate
-
-ls -l /tmp/fonts/NotoSansCJK-Regular.ttc
 
 echo "Build process completed successfully."
