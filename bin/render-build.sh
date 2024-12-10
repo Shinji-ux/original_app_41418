@@ -29,4 +29,6 @@ bundle exec rake assets:clean
 echo "Running database migrations..."
 bundle exec rake db:migrate
 
+ls -l /opt/render/project/.fonts/
+
 echo "Build process completed successfully."
