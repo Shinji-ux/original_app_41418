@@ -26,7 +26,6 @@ bundle exec rake assets:clean
 echo "Running database migrations..."
 bundle exec rake db:migrate
 
-echo "Checking wkhtmltopdf version..."
-/usr/bin/wkhtmltopdf --version || { echo "wkhtmltopdf is not installed"; exit 1; }
+ls -l /tmp/fonts/NotoSansCJK-Regular.ttc
 
 echo "Build process completed successfully."
