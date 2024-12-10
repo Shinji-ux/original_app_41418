@@ -3,6 +3,11 @@
 set -o errexit
 
 bundle install
+
+# 日本語フォントをインストール
+apt-get update
+apt-get install -y fonts-noto-cjk
+
 bundle exec rake assets:precompile
 bundle exec rake assets:clean
 bundle exec rake db:migrate
