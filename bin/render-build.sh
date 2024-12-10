@@ -16,7 +16,9 @@ yarn install --check-files
 
 echo "Installing wkhtmltopdf..."
 curl -L -o wkhtmltox.deb https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
-dpkg -x wkhtmltox.deb /app/bin/wkhtmltopdf  # カスタムディレクトリにインストール
+
+# 一時ディレクトリを指定して解凍
+dpkg --path-exclude=/tmp --path-include=/tmp dpkg -x wkhtmltox.deb /app/bin/wkhtmltopdf
 
 # wkhtmltopdfのインストールパスを環境変数PATHに追加
 echo 'export PATH=$PATH:/app/bin/wkhtmltopdf/usr/local/bin' >> ~/.bashrc
