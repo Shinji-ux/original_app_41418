@@ -86,7 +86,8 @@ class BuysController < ApplicationController
         render pdf: 'receipt', # 出力されるPDFのファイル名
                 template: 'buys/receipt', # テンプレートファイルの指定
                 layout: 'layouts/pdf',
-                encoding: 'UTF-8' # エンコーディングを指定
+                encoding: 'UTF-8', # エンコーディングを指定
+                page_size: 'A5'
       end
     end
   end
@@ -107,7 +108,8 @@ class BuysController < ApplicationController
         render pdf: 'show', # 出力されるPDFのファイル名
                template: 'buys/show', # テンプレートファイルの指定
                layout: 'layouts/pdf',
-               encoding: 'UTF-8' # エンコーディングを指定
+               encoding: 'UTF-8', # エンコーディングを指定
+               page_size: 'A5'
       end
     end
   end

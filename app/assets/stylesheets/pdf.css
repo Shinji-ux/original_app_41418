@@ -48,10 +48,12 @@
   border: 1px solid black;
 }
 
+
+
 .pdf-pay-menu {
   background-color: black;
   color: white;
-  width: 100px;
+  width: 150px;
   padding: 8px;
   text-align: center;
   height: 24px;
@@ -63,6 +65,15 @@
   padding: 8px;
   height: 24px;
   font-size: 24px;
+}
+
+.monthly-menu {
+  height: 40px;
+  
+}
+
+.monthly-text {
+  font-size: 16px;
 }
 
 .pdf-header-right {

@@ -80,6 +80,16 @@ class SellsController < ApplicationController
                                   .where("transaction_date <= ?", @end_date)
                                   .order("sells.transaction_date ASC")
                                   .distinct
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: 'receipt', # 出力されるPDFのファイル名
+                template: 'sells/receipt', # テンプレートファイルの指定
+                layout: 'layouts/pdf',
+                encoding: 'UTF-8', # エンコーディングを指定
+                page_size: 'A5'
+      end
+    end
   end
 
   def show
@@ -94,7 +104,8 @@ class SellsController < ApplicationController
         render pdf: 'show', # 出力されるPDFのファイル名
                template: 'sells/show', # テンプレートファイルの指定
                layout: 'layouts/pdf',
-               encoding: 'UTF-8' # エンコーディングを指定
+               encoding: 'UTF-8', # エンコーディングを指定
+               page_size: 'A5'
       end
     end
   end

@@ -1,0 +1,88 @@
+<div style="width: 600px;"> 
+
+  <div style="text-align: center; font-size: 32px; margin-bottom: 32px;">
+    支払い明細書
+  </div>
+
+  <table style="border-collapse: collapse; margin-bottom: 32px;">
+    <tbody>
+      <tr>
+        <td style="width: 220px; border-bottom: 1px solid black; text-align: center; font-size: 24px;"><%= @supplier.company %></td>
+        <td style="width: 40px; border-bottom: 1px solid black; font-size: 18px;">御中</td>
+        <td style="width: 160px;"></td>
+        <td style="text-align: right; font-size: 18px;">作成日：<%= Date.today %></td>
+      </tr>
+    </tbody>
+  <table>
+
+  <table style="border-collapse: collapse; margin-bottom: 32px;">
+    <tbody>
+      <tr>
+        <td rowspan="2" style="width: 120px; border: 1px solid black; font-size: 18px; background-color: black; color: white; text-align: center;">対象期間</td>
+        <td rowspan="2" style="width: 140px; border: 1px solid black; padding: 4px; text-align: center;"><%= @start_date %><br>～ <%= @end_date %></td>
+        <td style="width: 120px;"></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="font-size: 20px;"><%= @user.company %></td>
+      </tr>
+      <tr>
+        <td rowspan="2" style="border: 1px solid black; font-size: 18px; background-color: black; color: white; text-align: center;">振込予定日</td>
+        <td rowspan="2" style="border: 1px solid black; font-size: 18px; text-align: center;"><%= @pay_date %></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>住所：<%= @user.city %><%= @user.address %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>電話番号：<%= @user.phone %></td>
+      </tr>
+      <tr>
+        <td rowspan="2" style="border: 1px solid black; font-size: 18px; background-color: black; color: white; text-align: center;">合計金額</td>
+        <td rowspan="2" style="border: 1px solid black; font-size: 18px; text-align: center;"><%= @receipts.sum(&:total_price) %>円</td>
+        <td></td>
+        <td>登録番号：<%= @user.invoice %></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>担当：<%= @user.manager %></td>
+      </tr>
+    </tbody>
+  <table>
+
+
+
+  <div style="margin: 0 auto;">
+    <table style="border-collapse: collapse; width: 100%; margin: 0 auto;">
+      <thead style="background-color: black; color: white;">
+        <tr style="font-size: 18px; text-align: center;">
+          <th style="width: 120px;">取引日</th>
+          <th style="width: 180px;">金額</th>
+          <th>備考</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @receipts.each do |receipt| %>
+          <tr>
+            <td style="border: 1px solid black; text-align: center; padding: 4px;"><%= receipt.transaction_date %></td>
+            <td style="border: 1px solid black; text-align: right; padding: 4px;"><%= receipt.total_price %></td>
+            <td style="border: 1px solid black; text-align: right; padding: 4px;"></td>
+          </tr>
+        <% end %>  
+      </tbody>
+    </table>
+  </div>
+  
+</div>

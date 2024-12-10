@@ -16,10 +16,10 @@
         </div>
       </div>
       <div class="pdf-pay-content">
-        <div class="pdf-pay-menu">
+        <div class="pdf-pay-menu monthly-menu">
           対象期間
         </div>
-        <div class="pdf-pay-text">
+        <div class="pdf-pay-text monthly-text">
           <%= @start_date %> ～ <%= @end_date %>
         </div>
       </div>
@@ -49,7 +49,8 @@
         <%= @user.company %><br><br>
         住所：<%= @user.city %><%= @user.address %><br>
         電話番号：<%= @user.phone %><br>
-        担当：<%= @user.manager %>
+        担当：<%= @user.manager %><br>
+        登録番号：<%= @user.invoice %>
       </div>
     </div>
   </div>
