@@ -5,10 +5,11 @@ set -o errexit
 echo "Starting build process..."
 
 # フォントディレクトリ作成とインストール
-echo "Downloading fonts..."
-mkdir -p /opt/render/project/.fonts
-curl -L -o /tmp/fonts/NotoSansCJK-Regular.ttc https://noto-website.storage.googleapis.com/pkgs/NotoSansCJK-Regular.ttc || { echo "Font download failed"; exit 1; }
+echo "Creating font directory..."
+mkdir -p /opt/render/project/.fonts || { echo "Failed to create font directory"; exit 1; }
 
+echo "Downloading fonts..."
+curl -L -o /opt/render/project/.fonts/NotoSansCJK-Regular.ttc https://noto-website.storage.googleapis.com/pkgs/NotoSansCJK-Regular.ttc || { echo "Font download failed"; exit 1; }
 # Node.js依存関係のインストール
 echo "Installing Node.js dependencies..."
 yarn install --check-files
