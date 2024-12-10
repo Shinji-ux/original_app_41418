@@ -18,11 +18,3 @@ WickedPdf.configure do |config|
   #   font_path: '/app/bin/fonts/NotoSansCJK-Regular.ttc',  # 解凍したフォントファイルのパス
   # }
 end
-
-
-
-    # exe_path: if Rails.env.production?
-  #             '/usr/bin/wkhtmltopdf' # Render環境のパス
-  #           else
-  #             '/home/shinji/.rbenv/shims/wkhtmltopdf'
-  #           end
