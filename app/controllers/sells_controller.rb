@@ -84,12 +84,12 @@ class SellsController < ApplicationController
       format.html
       format.pdf do
         render pdf: 'receipt', # 出力されるPDFのファイル名
-                template: 'sells/receipt', # テンプレートファイルの指定
-                # layout: 'layouts/pdf',
-                # encoding: 'UTF-8',           # エンコーディング
+               template: 'sells/receipt', # テンプレートファイルの指定
                enable_local_file_access: true, # ローカルファイルの読み込みを許可
                page_size: 'A5',
-                orientation: 'Landscape'    # 横向きに設定
+               footer: { font_name: 'IPAexGothic' } # カスタムフォントを指定               
+               #  enable_internal_file_access: true,
+               #  orientation: 'Landscape'    # 横向きに設定
       end
     end
   end
@@ -106,10 +106,10 @@ class SellsController < ApplicationController
         render pdf: 'show', # 出力されるPDFのファイル名
                template: 'sells/show', # テンプレートファイルの指定
                enable_local_file_access: true, # ローカルファイルの読み込みを許可
-               page_size: 'A4'
+               page_size: 'A5',
                footer: { font_name: 'IPAexGothic' } # カスタムフォントを指定               
-              #  enable_internal_file_access: true,
-              #  orientation: 'Landscape'    # 横向きに設定
+               #  enable_internal_file_access: true,
+               #  orientation: 'Landscape'    # 横向きに設定
       end
     end
   end
