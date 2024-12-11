@@ -2,106 +2,94 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <style>
-      @font-face {
-  font-family: 'IPAexGothic';
-  src: asset-url('ipaexg.ttf') format('truetype');
-}
-
-body {
-  font-family: 'IPAexGothic', sans-serif;
-}
-    </style>
+      <style>
+        @font-face { font-family: 'IPAexGothic'; src: asset-url('ipaexg.ttf') format('truetype'); }
+        body { font-family: 'IPAexGothic', sans-serif; }
+      </style>
   </head>
   <body>
+    <div style="width: 600px;"> 
+      
+      <div style="text-align: center; font-size: 32px; margin-bottom: 32px;">
+        納品書
+      </div>
 
-
-
-<div style="width: 600px;" class="pdf-body"> 
-
-
-  <div style="text-align: center; font-size: 32px; margin-bottom: 32px;">
-    納品書
-  </div>
-
-  <table style="border-collapse: collapse; margin-bottom: 32px;">
-    <tbody>
-      <tr>
-        <td style="width: 220px; border-bottom: 1px solid black; text-align: center; font-size: 24px;"><%= @customer.company %></td>
-        <td style="width: 40px; border-bottom: 1px solid black; font-size: 18px;">御中</td>
-        <td style="width: 140px;"></td>
-        <td style="text-align: right; font-size: 18px;">作成日：<%= Date.today %></td>
-      </tr>
-    </tbody>
-  <table>
-
-  <table style="border-collapse: collapse; margin-bottom: 32px;">
-    <tbody>
-      <tr>
-        <td style="width: 120px;"></td>
-        <td style="width: 140px;"></td>
-        <td style="width: 120px;"></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td style="font-size: 20px;"><%= @user.company %></td>
-      </tr>
-      <tr>     
-        <td rowspan="" style="border: 1px solid black; font-size: 18px; background-color: black; color: white; text-align: center;">合計金額</td>
-        <td rowspan="" style="border: 1px solid black; font-size: 18px; text-align: center;"><%= @sell.total_price %>円</td>
-        <td></td>
-        <td>住所：<%= @user.city %><%= @user.address %></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>電話番号：<%= @user.phone %></td>
-      </tr>
-      <tr>
-        <td rowspan="2" style="border: 1px solid black; font-size: 18px; background-color: black; color: white; text-align: center;">納品日</td>
-        <td rowspan="2" style="border: 1px solid black; font-size: 18px; text-align: center;"><%= @sell.transaction_date %></td>
-        <td></td>
-        <td>登録番号：<%= @user.invoice %></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>担当：<%= @user.manager %></td>
-      </tr>
-    </tbody>
-  <table>
-
-
-
-  <div style="margin: 0 auto;">
-    <table style="border-collapse: collapse; width: 100%; margin: 0 auto;">
-      <thead style="background-color: black; color: white;">
-        <tr style="font-size: 18px; text-align: center;">
-          <th style="border: 1px solid black; padding: 4px;">商品名</th>
-          <th style="width: 48px; border: 1px solid black; padding: 4px;">数量</th>
-          <th style="width: 48px; border: 1px solid black; padding: 4px;">単位</th>
-          <th style="width: 72px; border: 1px solid black; padding: 4px;">単価</th>
-          <th style="width: 88px; border: 1px solid black; padding: 4px;">金額</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @sell.sell_items.each do |sell_item| %>
-          <tr style="font-size: 16px;">
-            <td style="border: 1px solid black; padding: 4px;"><%= @items.find { |item| item.id == sell_item.item_id }&.item_name || "不明" %></td>
-            <td style="border: 1px solid black; text-align: center; padding: 4px;"><%= sell_item.quantity %></td>
-            <td style="border: 1px solid black; text-align: center; padding: 4px;"><%= @items.find { |item| item.id == sell_item.item_id }&.unit || "不明" %></td>
-            <td style="border: 1px solid black; text-align: right; padding: 4px;"><%= sell_item.item_price %></td>
-            <td style="border: 1px solid black; text-align: right; padding: 4px;"><%= sell_item.item_total_price %></td>
+      <table style="border-collapse: collapse; margin-bottom: 32px;">
+        <tbody>
+          <tr>
+            <td style="width: 220px; border-bottom: 1px solid black; text-align: center; font-size: 24px;"><%= @customer.company %></td>
+            <td style="width: 40px; border-bottom: 1px solid black; font-size: 18px;">御中</td>
+            <td style="width: 140px;"></td>
+            <td style="text-align: right; font-size: 18px;">作成日：<%= Date.today %></td>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  
-</div>
+        </tbody>
+      <table>
 
-</body>
+      <table style="border-collapse: collapse; margin-bottom: 32px;">
+        <tbody>
+          <tr>
+            <td style="width: 120px;"></td>
+            <td style="width: 140px;"></td>
+            <td style="width: 120px;"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="font-size: 20px;"><%= @user.company %></td>
+          </tr>
+          <tr>     
+            <td rowspan="" style="border: 1px solid black; font-size: 18px; background-color: black; color: white; text-align: center;">合計金額</td>
+            <td rowspan="" style="border: 1px solid black; font-size: 18px; text-align: center;"><%= @sell.total_price %>円</td>
+            <td></td>
+            <td>住所：<%= @user.city %><%= @user.address %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>電話番号：<%= @user.phone %></td>
+          </tr>
+          <tr>
+            <td rowspan="2" style="border: 1px solid black; font-size: 18px; background-color: black; color: white; text-align: center;">納品日</td>
+            <td rowspan="2" style="border: 1px solid black; font-size: 18px; text-align: center;"><%= @sell.transaction_date %></td>
+            <td></td>
+            <td>登録番号：<%= @user.invoice %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>担当：<%= @user.manager %></td>
+          </tr>
+        </tbody>
+      <table>
+
+
+
+      <div style="margin: 0 auto;">
+        <table style="border-collapse: collapse; width: 100%; margin: 0 auto;">
+          <thead style="background-color: black; color: white;">
+            <tr style="font-size: 18px; text-align: center;">
+              <th style="border: 1px solid black; padding: 4px;">商品名</th>
+              <th style="width: 48px; border: 1px solid black; padding: 4px;">数量</th>
+              <th style="width: 48px; border: 1px solid black; padding: 4px;">単位</th>
+              <th style="width: 72px; border: 1px solid black; padding: 4px;">単価</th>
+              <th style="width: 88px; border: 1px solid black; padding: 4px;">金額</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @sell.sell_items.each do |sell_item| %>
+              <tr style="font-size: 16px;">
+                <td style="border: 1px solid black; padding: 4px;"><%= @items.find { |item| item.id == sell_item.item_id }&.item_name || "不明" %></td>
+                <td style="border: 1px solid black; text-align: center; padding: 4px;"><%= sell_item.quantity %></td>
+                <td style="border: 1px solid black; text-align: center; padding: 4px;"><%= @items.find { |item| item.id == sell_item.item_id }&.unit || "不明" %></td>
+                <td style="border: 1px solid black; text-align: right; padding: 4px;"><%= sell_item.item_price %></td>
+                <td style="border: 1px solid black; text-align: right; padding: 4px;"><%= sell_item.item_total_price %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
 </html>

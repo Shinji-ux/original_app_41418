@@ -4,9 +4,9 @@ set -o errexit
 
 echo "Starting build process..."
 
-フォントディレクトリ作成
-echo "Creating font directory..."
-mkdir -p /opt/render/project/.fonts || { echo "Failed to create font directory"; exit 1; }
+# フォントディレクトリ作成
+# echo "Creating font directory..."
+# mkdir -p /opt/render/project/.fonts || { echo "Failed to create font directory"; exit 1; }
 
 # NoToSansCJKのダウンロード
 # echo "Downloading fonts..."
