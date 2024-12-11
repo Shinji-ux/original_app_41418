@@ -74,5 +74,16 @@
     padding: 24px 8px 0 8px;
   }
 
+  .section-title {
+    text-align: center;
+    height: 48px;
+    font-size: 28px;
+  }
+  
+  .sub-title {
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+
 }
 
