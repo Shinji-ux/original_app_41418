@@ -1,10 +1,12 @@
 <div class="table_container">
   <div class="section-title">
+    得意先別の集計
   </div>
 
   <div class="sub-title">
-    <%= @customer.company %>の集計<br>
+    <%= @customer.company %>への納品<br>
     <%= @start_date %> ～ <%= @end_date %>
+  </div>
 
   <table class="table-bordered">
     <thead>
@@ -31,5 +33,3 @@
     <%= link_to  '前のページに戻る', sells_search_path %>
   </div>
 </div>
-
-PDF

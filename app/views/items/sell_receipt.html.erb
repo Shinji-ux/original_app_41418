@@ -20,6 +20,7 @@
       </tr>
     </thead>
     <tbody>
+      <% total_quantity = 0 %>
       <% @sell_receipts.each do |sell_receipt| %>
         <% sell_item = sell_receipt.sell_items.find_by(item_id: @item_id) %>
         <tr>
@@ -30,12 +31,13 @@
           <td class="table-price"><%= sell_item.item_price %></td>
           <td class="table-price"><%= sell_item.item_total_price %></td>
         </tr>
+        <% total_quantity += sell_item.quantity %>
       <% end %>
     </tbody>
     <tfoot>
       <td class="table-total-text">合計</td>
       <td></td>
-      <td class="table-quantity"><%= @sell_receipts.joins(:sell_items).where(sell_items: { item_id: @item_id }).sum('sell_items.quantity') %></td>
+      <td class="table-quantity"><%= total_quantity %></td>
       <td class="table-unit"><%= @item.unit %></td>
       <td></td>
       <td class="table-price"><%= @sell_receipts.joins(:sell_items).where(sell_items: { item_id: @item_id }).sum('sell_items.item_total_price') %></td>
