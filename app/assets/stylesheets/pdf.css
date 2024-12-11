@@ -11,7 +11,7 @@ body {
 
 @font-face {
   font-family: 'IPAexGothic';
-  src: url('file:///opt/render/project/.fonts/ipaexg.ttf') format('truetype');
+  src: asset-url('ipaexg.ttf') format('truetype');
 }
 
 body {

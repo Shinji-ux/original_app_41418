@@ -13,12 +13,12 @@ mkdir -p /opt/render/project/.fonts || { echo "Failed to create font directory";
 # curl -L -o /opt/render/project/.fonts/NotoSansCJK-Regular.ttc https://noto-website.storage.googleapis.com/pkgs/NotoSansCJK-Regular.ttc || { echo "Font download failed"; exit 1; }
 
 # IPAexフォントのダウンロードと配置
-echo "Downloading IPAexGothic font..."
-curl -L -o /opt/render/project/.fonts/ipaexg.ttf https://ipafont.ipa.go.jp/ipafont/IPAexfont/IPAexGothic00401.zip || { echo "Font download failed"; exit 1; }
+# echo "Downloading IPAexGothic font..."
+# curl -L -o /opt/render/project/.fonts/ipaexg.ttf https://ipafont.ipa.go.jp/ipafont/IPAexfont/IPAexGothic00401.zip || { echo "Font download failed"; exit 1; }
 
 # ZIPファイルを解凍
-echo "Extracting IPAexGothic font..."
-unzip -o /opt/render/project/.fonts/IPAexGothic00401.zip -d /opt/render/project/.fonts || { echo "Font extraction failed"; exit 1; }
+# echo "Extracting IPAexGothic font..."
+# unzip -o /opt/render/project/.fonts/IPAexGothic00401.zip -d /opt/render/project/.fonts || { echo "Font extraction failed"; exit 1; }
 
 # Node.js依存関係のインストール
 echo "Installing Node.js dependencies..."
