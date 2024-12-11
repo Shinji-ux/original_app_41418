@@ -107,6 +107,9 @@ class SellsController < ApplicationController
                template: 'sells/show', # テンプレートファイルの指定
                enable_local_file_access: true, # ローカルファイルの読み込みを許可
                page_size: 'A4'
+  #              footer: {
+  #   font_name: 'IPAexGothic' # カスタムフォントを指定
+  # }
               #  encoding: 'UTF-8',           # エンコーディング
               #  layout: 'layouts/pdf',
               #  enable_internal_file_access: true,

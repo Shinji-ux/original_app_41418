@@ -3,7 +3,14 @@
   <head>
     <meta charset="UTF-8">
     <style>
-      @import url('<%= Rails.root.join("app/assets/stylesheets/pdf.css") %>');
+      @font-face {
+  font-family: 'IPAexGothic';
+  src: asset-url('ipaexg.ttf') format('truetype');
+}
+
+body {
+  font-family: 'IPAexGothic', sans-serif;
+}
     </style>
   </head>
   <body>
@@ -22,7 +29,7 @@
       <tr>
         <td style="width: 220px; border-bottom: 1px solid black; text-align: center; font-size: 24px;"><%= @customer.company %></td>
         <td style="width: 40px; border-bottom: 1px solid black; font-size: 18px;">御中</td>
-        <td style="width: 160px;"></td>
+        <td style="width: 140px;"></td>
         <td style="text-align: right; font-size: 18px;">作成日：<%= Date.today %></td>
       </tr>
     </tbody>
@@ -44,7 +51,7 @@
       </tr>
       <tr>     
         <td rowspan="" style="border: 1px solid black; font-size: 18px; background-color: black; color: white; text-align: center;">合計金額</td>
-        <td rowspan="" style="border: 1px solid black; font-size: 18px; text-align: right;"><%= @sell.total_price %>円</td>
+        <td rowspan="" style="border: 1px solid black; font-size: 18px; text-align: center;"><%= @sell.total_price %>円</td>
         <td></td>
         <td>住所：<%= @user.city %><%= @user.address %></td>
       </tr>
@@ -82,7 +89,7 @@
       </thead>
       <tbody>
         <% @sell.sell_items.each do |sell_item| %>
-          <tr style="font-size: 18px;">
+          <tr style="font-size: 16px;">
             <td style="border: 1px solid black; padding: 4px;"><%= @items.find { |item| item.id == sell_item.item_id }&.item_name || "不明" %></td>
             <td style="border: 1px solid black; text-align: center; padding: 4px;"><%= sell_item.quantity %></td>
             <td style="border: 1px solid black; text-align: center; padding: 4px;"><%= @items.find { |item| item.id == sell_item.item_id }&.unit || "不明" %></td>
