@@ -113,8 +113,8 @@ class BuysController < ApplicationController
                layout: 'layouts/pdf',
                enable_local_file_access: true, # ローカルファイルの読み込みを許可
                page_size: 'A5',
-               footer: { font_name: 'IPAexGothic' } # カスタムフォントを指定               
-               #  enable_internal_file_access: true,
+               footer: { font_name: 'IPAexGothic' }, # カスタムフォントを指定               
+               enable_internal_file_access: true
                #  orientation: 'Landscape'    # 横向きに設定
       end
     end

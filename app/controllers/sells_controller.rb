@@ -94,6 +94,10 @@ class SellsController < ApplicationController
     end
   end
 
+  def order_index
+    @sells = current_user.sells.order("sells.transaction_date DESC")
+  end
+
   def show
     @user = current_user
     @sell = current_user.sells.find(params[:id])
@@ -112,10 +116,6 @@ class SellsController < ApplicationController
                #  orientation: 'Landscape'    # 横向きに設定
       end
     end
-  end
-
-  def order_index
-    @sells = current_user.sells.order("sells.transaction_date DESC")
   end
 
   private 
