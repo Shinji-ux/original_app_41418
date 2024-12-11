@@ -110,8 +110,8 @@ class SellsController < ApplicationController
         render pdf: 'show', # 出力されるPDFのファイル名
                template: 'sells/show', # テンプレートファイルの指定
                enable_local_file_access: true, # ローカルファイルの読み込みを許可
-               page_size: 'A5',
-               footer: { font_name: 'Noto Sans JP' } # カスタムフォントを指定               
+               page_size: 'A5'
+              #  body: { font_name: 'Noto Sans JP' },
                #  enable_internal_file_access: true,
                #  orientation: 'Landscape'    # 横向きに設定
       end

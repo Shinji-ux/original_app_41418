@@ -112,9 +112,8 @@ class BuysController < ApplicationController
                template: 'buys/show', # テンプレートファイルの指定
                layout: 'layouts/pdf',
                enable_local_file_access: true, # ローカルファイルの読み込みを許可
-               page_size: 'A5',
-               footer: { font_name: 'Noto Sans JP' }, # カスタムフォントを指定               
-               enable_internal_file_access: true
+               page_size: 'A5',               
+              #  enable_internal_file_access: true
                #  orientation: 'Landscape'    # 横向きに設定
       end
     end
