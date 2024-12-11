@@ -87,9 +87,8 @@ class BuysController < ApplicationController
                 template: 'buys/receipt', # テンプレートファイルの指定
                 layout: 'layouts/pdf',
                 enable_local_file_access: true, # ローカルファイルの読み込みを許可
-                page_size: 'A5',
-                footer: { font_name: 'IPAexGothic' } # カスタムフォントを指定               
-                #  enable_internal_file_access: true,
+                enable_internal_file_access: true,
+                page_size: 'A5'
                 #  orientation: 'Landscape'    # 横向きに設定
       end
     end
@@ -110,10 +109,9 @@ class BuysController < ApplicationController
       format.pdf do
         render pdf: 'show', # 出力されるPDFのファイル名
                template: 'buys/show', # テンプレートファイルの指定
-               layout: 'layouts/pdf',
                enable_local_file_access: true, # ローカルファイルの読み込みを許可
+               enable_internal_file_access: true,
                page_size: 'A5'
-              #  enable_internal_file_access: true
                #  orientation: 'Landscape'    # 横向きに設定
       end
     end
