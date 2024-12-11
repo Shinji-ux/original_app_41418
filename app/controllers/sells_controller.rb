@@ -110,8 +110,7 @@ class SellsController < ApplicationController
                footer: {
     font_name: 'IPAexGothic' # カスタムフォントを指定
   }
-              #  encoding: 'UTF-8',           # エンコーディング
-              #  layout: 'layouts/pdf',
+              
               #  enable_internal_file_access: true,
               #  orientation: 'Landscape'    # 横向きに設定
       end
