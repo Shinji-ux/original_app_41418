@@ -32,6 +32,7 @@
 .add-form {
   margin-top: 16px;
   padding: 8px;
+  font-size: 16px;
 }
 
 .btn_wrap {
@@ -53,13 +54,10 @@
   margin-bottom: 16px;
 }
 
-.box-side {
-  display: flex;
-}
-
 .box-center {
   padding: 10px;
   margin: 0 auto;
+  border-radius: 8px;
 }
 
 .box-wrap {
@@ -71,24 +69,15 @@
   font-size: 20px;
 }
 
-.box-pull {
-  width: 200px;
-  height: 40px;
-}
-
-.box-calender{
-  width: 200px;
-  height: 40px;
-}
-
-
-.box-search{
+.box-content {
   width: 200px;
   height: 40px;
 }
 
 .box-wrap-btn {
-  margin-top: 40px;
+  margin-top: 48px;
   text-align: center;
 }
+
+
 

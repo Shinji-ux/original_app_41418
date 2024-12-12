@@ -80,3 +80,4 @@ end
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary', '~> 0.12.6'
 gem 'kaminari'
+gem 'kaminari-i18n'

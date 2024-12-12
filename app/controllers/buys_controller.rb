@@ -1,7 +1,7 @@
 class BuysController < ApplicationController
   def order_index
     @buys = current_user.buys.order("buys.transaction_date DESC")
-                             .page(params[:page]).per(30)
+                             .page(params[:page]).per(20)
   end
 
   def new

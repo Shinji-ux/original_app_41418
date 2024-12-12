@@ -6,26 +6,26 @@
     <%= form_with url: sells_receipt_path(format: :pdf), method: :get, html: { target: '_blank' }, local: true do %>
       <div class="box-wrap">
         <%= label_tag :customer_id, "得意先", class: "box-label" %><br>
-        <%= select_tag :customer_id, options_from_collection_for_select(@customers, :id, :company, params[:supplier_id]), prompt: "得意先を選択", class: "box-pull" %>
+        <%= select_tag :customer_id, options_from_collection_for_select(@customers, :id, :company, params[:supplier_id]), prompt: "得意先を選択", class: "box-content" %>
       </div>
 
       <div class="box-wrap">
         <%= label_tag :start_date, "開始日", class: "box-label" %><br>
-        <%= date_field_tag :start_date, params[:start_date], class: "box-calender" %>
+        <%= date_field_tag :start_date, params[:start_date], class: "box-content" %>
       </div>
 
       <div class="box-wrap">
         <%= label_tag :end_date, "終了日", class: "box-label" %><br>
-        <%= date_field_tag :end_date, params[:end_date], class: "box-calender" %>
+        <%= date_field_tag :end_date, params[:end_date], class: "box-content" %>
       </div>
 
       <div class="box-wrap">
         <%= label_tag :end_date, "支払い期日", class: "box-label" %><br>
-        <%= date_field_tag :pay_date, params[:pay_date], class: "box-calender" %>
+        <%= date_field_tag :pay_date, params[:pay_date], class: "box-content" %>
       </div>
 
       <div class="box-wrap-btn">
-        <%= submit_tag "作成", class: "box-search" %>
+        <%= submit_tag "作成", class: "box-content" %>
       </div>
     <% end %>
   </div>

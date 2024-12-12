@@ -6,26 +6,27 @@
     <%= form_with url: buys_search_result_path, method: :get, local: true do %>
       <div class="box-wrap">
         <%= label_tag :supplier_id, "仕入れ先", class: "box-label" %><br>
-        <%= select_tag :supplier_id, options_from_collection_for_select(@suppliers, :id, :company, params[:supplier_id]), prompt: "仕入れ先を選択", class: "box-pull" %>
+        <%= select_tag :supplier_id, options_from_collection_for_select(@suppliers, :id, :company, params[:supplier_id]), prompt: "仕入れ先を選択", class: "box-content" %>
       </div>
 
       <div class="box-wrap">
         <%= label_tag :start_date, "開始日", class: "box-label" %><br>
-        <%= date_field_tag :start_date, params[:start_date], class: "box-calender" %>
+        <%= date_field_tag :start_date, params[:start_date], class: "box-content" %>
       </div>
 
       <div class="box-wrap">
         <%= label_tag :end_date, "終了日", class: "box-label" %><br>
-        <%= date_field_tag :end_date, params[:end_date], class: "box-calender" %>
+        <%= date_field_tag :end_date, params[:end_date], class: "box-content" %>
       </div>
 
       <div class="box-wrap-btn">
-        <%= submit_tag "検索", class: "box-search" %>
+        <%= submit_tag "検索", class: "box-content" %>
       </div>
     <% end %>
-  </div>
 
-  <div class="back", style="text-align:center">
-    <%= link_to  '前のページに戻る', root_path %>
+
+    <div class="back">
+      <%= link_to  '前のページに戻る', root_path %>
+    </div>
   </div>
 </div>
