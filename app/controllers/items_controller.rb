@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = current_user.items.order("items.category_id ASC")
-                                .order("items.item_name ASC")
+    @items = current_user.items.order("items.item_name ASC")
+    @categories = current_user.categories
   end
   
   def new

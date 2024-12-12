@@ -3,6 +3,16 @@
     商品の一覧
   </div>
 
+  <div>
+    <label for="category-select">カテゴリで絞り込む:</label>
+    <select id="category-select">
+      <option value="all">すべてのカテゴリ</option>
+      <% @categories.each do |category| %>
+        <option value="<%= category.category %>"><%= category.category %></option>
+      <% end %>
+    </select>
+  </div>
+
   <table class="table-bordered">
     <thead>
       <tr>
@@ -14,7 +24,7 @@
         <th>削除</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="item-table-body">
       <% @items.each do |item| %>
         <tr>
           <td class="table-name"><%= item.category.category %></td>
@@ -32,3 +42,26 @@
     <%= link_to  '前のページに戻る', root_path %>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const categorySelect = document.getElementById('category-select');
+    const tableBody = document.getElementById('item-table-body');
+    const rows = tableBody.getElementsByTagName('tr');
+
+    categorySelect.addEventListener('change', () => {
+      const selectedCategory = categorySelect.value;
+
+      // テーブルの行をループし、カテゴリに基づいて表示/非表示を切り替える
+      for (let i = 0; i < rows.length; i++) {
+        const categoryCell = rows[i].getElementsByTagName('td')[0];
+        const category = categoryCell.textContent || categoryCell.innerText;
+        if (selectedCategory === 'all' || category === selectedCategory) {
+          rows[i].style.display = '';
+        } else {
+          rows[i].style.display = 'none';
+        }
+      }
+    });
+  });
+</script>

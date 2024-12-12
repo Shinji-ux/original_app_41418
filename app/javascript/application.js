@@ -3,7 +3,6 @@
 import "controllers"
 import 'category_sell'
 import 'category_buy'
-import 'buy_edit'
 import Rails from "@rails/ujs"
 
 
