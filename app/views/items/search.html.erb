@@ -2,8 +2,15 @@
   <div class="section-title">
     商品別の集計
   </div>
+  <div>
+    <label for="search-switch">検索モード:</label>
+    <input type="radio" id="buy-search-radio" name="search-switch" value="buy" checked>
+    <label for="buy-search-radio">仕入れ検索</label>
+    <input type="radio" id="sell-search-radio" name="search-switch" value="sell">
+    <label for="sell-search-radio">販売検索</label>
+  </div>
 
-  <div class="box-side">
+  <div id="buy-search" class="buy-search">
     <div class="box-center">
       <div class="sub-title">
         仕入れから検索
@@ -29,7 +36,9 @@
         </div>
       <% end %>
     </div>
+  </div>
 
+  <div id="sell-search" class="sell-search">
     <div class="box-center">
       <div class="sub-title">
         販売から検索
@@ -62,3 +71,30 @@
     <%= link_to  '前のページに戻る', root_path %>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const buyRadio = document.getElementById('buy-search-radio');
+    const sellRadio = document.getElementById('sell-search-radio');
+    const buySearchSection = document.getElementById('buy-search');
+    const sellSearchSection = document.getElementById('sell-search');
+
+    // 初期表示はbuy-searchを表示
+    buySearchSection.style.display = 'block';
+    sellSearchSection.style.display = 'none';
+
+    const toggleSections = () => {
+      if (buyRadio.checked) {
+        buySearchSection.style.display = 'block';
+        sellSearchSection.style.display = 'none';
+      } else if (sellRadio.checked) {
+        buySearchSection.style.display = 'none';
+        sellSearchSection.style.display = 'block';
+      }
+    };
+
+    // ラジオボタンの変更イベントにリスナーを追加
+    buyRadio.addEventListener('change', toggleSections);
+    sellRadio.addEventListener('change', toggleSections);
+  });
+</script>
