@@ -1,4 +1,8 @@
 class SellsController < ApplicationController
+  def order_index
+    @sells = current_user.sells.order("sells.transaction_date DESC")
+                               .page(params[:page]).per(30)
+  end
 
   def new
     @customer = current_user.customers.find(params[:customer_id])
@@ -93,10 +97,6 @@ class SellsController < ApplicationController
     end
   end
 
-  def order_index
-    @sells = current_user.sells.order("sells.transaction_date DESC")
-  end
-
   def show
     @user = current_user
     @sell = current_user.sells.find(params[:id])
@@ -118,6 +118,7 @@ class SellsController < ApplicationController
 
   private 
   def sell_params
-    params.require(:sell).permit(:transaction_date, :total_price, sell_items_attributes: [:id, :item_price, :item_total_price, :quantity, :category_id, :item_id, :destroy]).merge(user_id: current_user.id)
+    params.require(:sell).permit(:transaction_date, :total_price, sell_items_attributes: [:id, :item_price, :item_total_price, :quantity, :category_id, :item_id, :destroy])
+                         .merge(user_id: current_user.id)
   end
 end

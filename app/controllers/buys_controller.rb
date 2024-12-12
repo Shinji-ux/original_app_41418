@@ -1,4 +1,8 @@
 class BuysController < ApplicationController
+  def order_index
+    @buys = current_user.buys.order("buys.transaction_date DESC")
+                             .page(params[:page]).per(30)
+  end
 
   def new
     @supplier = current_user.suppliers.find(params[:supplier_id])
@@ -94,10 +98,6 @@ class BuysController < ApplicationController
     end
   end
 
-  def order_index
-    @buys = current_user.buys.order("buys.transaction_date DESC")
-  end
-
   def show
     @user = current_user
     @buy = current_user.buys.find(params[:id])
@@ -119,7 +119,8 @@ class BuysController < ApplicationController
 
   private 
   def buy_params
-    params.require(:buy).permit(:transaction_date, :total_price, buy_items_attributes: [:id, :item_price, :item_total_price, :quantity, :category_id, :item_id, :destroy]).merge(user_id: current_user.id)
+    params.require(:buy).permit(:transaction_date, :total_price, buy_items_attributes: [:id, :item_price, :item_total_price, :quantity, :category_id, :item_id, :destroy])
+                        .merge(user_id: current_user.id)
   end
 
 end

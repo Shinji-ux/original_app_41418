@@ -7,8 +7,6 @@
     <%= @customer.company %>への納品
   </div>
 
-
-
   <%= form_with(model: [@customer, @sell], local: true) do |f| %>
     <div>
       <%= f.label :transaction_date, "納品日" %>
@@ -58,3 +56,64 @@
   </div>
 </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // すべての quantity フィールドにイベントリスナーを追加
+    document.querySelectorAll('.quantity-edit').forEach(input => {
+      input.addEventListener('input', updateItemTotalPriceFromQuantity);
+    });
+
+    // すべての item_price フィールドにイベントリスナーを追加
+    document.querySelectorAll('.item-price-edit').forEach(input => {
+      input.addEventListener('input', updateItemTotalPriceFromPrice);
+    });
+
+    // すべての item_total_price フィールドにイベントリスナーを追加
+    document.querySelectorAll('.item-total-price-edit').forEach(input => {
+      input.addEventListener('input', updateTotalPrice);
+    });
+
+    function updateItemTotalPriceFromQuantity(event) {
+      const input = event.target;
+      const index = input.dataset.id;
+      const itemPriceInput = document.querySelector(`.item-price-edit[data-id="${index}"]`);
+      const itemTotalPriceInput = document.querySelector(`.item-total-price-edit[data-id="${index}"]`);
+      const quantity = parseInt(input.value || 0, 10);
+      const itemPrice = parseInt(itemPriceInput.value || 0, 10);
+
+      // item_total_priceを計算し設定
+      const itemTotalPrice = quantity * itemPrice;
+      itemTotalPriceInput.value = itemTotalPrice;
+
+      // 合計価格を更新
+      updateTotalPrice();
+    }
+
+    function updateItemTotalPriceFromPrice(event) {
+      const input = event.target;
+      const index = input.dataset.id;
+      const quantityInput = document.querySelector(`.quantity-edit[data-id="${index}"]`);
+      const itemTotalPriceInput = document.querySelector(`.item-total-price-edit[data-id="${index}"]`);
+      const quantity = parseInt(quantityInput.value || 0, 10);
+      const itemPrice = parseInt(input.value || 0, 10);
+
+      // item_total_priceを計算し設定
+      const itemTotalPrice = quantity * itemPrice;
+      itemTotalPriceInput.value = itemTotalPrice;
+
+      // 合計価格を更新
+      updateTotalPrice();
+    }
+
+    function updateTotalPrice() {
+      // すべての item_total_price を合計し設定
+      const total = Array.from(document.querySelectorAll('.item-total-price-edit')).reduce((sum, input) => {
+        return sum + parseInt(input.value || 0, 10);
+      }, 0);
+
+      document.getElementById('total_price_edit').value = total;
+    }
+
+  });
+</script>

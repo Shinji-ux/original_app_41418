@@ -3,7 +3,7 @@
     得意先の登録
   </div>
 
-  <div>
+  <div class="sub-title">
     <input type="radio" id="input-registration-radio" name="registration-method" value="input" checked>
     <label for="input-registration-radio">直接入力で登録</label>
     <input type="radio" id="csv-registration-radio" name="registration-method" value="csv">
@@ -13,7 +13,7 @@
   <div id="input-registration" class="input-registration">
     <%= form_with model: @customer, local: true do |f| %>
       <div class="sub-title">
-        得意先基本情報
+        基本情報
       </div>
       <div class="form_wrap">
         <%= f.label :company, '得意先会社名', class: "form_wrap_text" %>
@@ -66,9 +66,6 @@
   </div>
 
   <div id="csv-registration" class="csv-registration">
-    <div class="sub-title">
-        CSVで登録
-    </div>
     <%= form_with(url: import_customers_path, local: true, multipart: true) do |form| %>
       <div class="form-group">
         <%= form.file_field :file %>
