@@ -1,3 +1,38 @@
+# アプリケーション名
+original_app_41418
+
+# アプリケーション概要
+
+# URL
+https://original-app-41418.onrender.com/
+
+# テスト用アカウント
+
+# 利用方法
+
+# アプリケーションを作成した背景
+
+# 実装した機能についての画像やGIF、およびその説明
+
+# 実装予定の機能
+
+# データベース設計
+
+# 画面遷移図
+
+# 開発環境
+
+# ローカルでの動作方法
+
+# 工夫したポイント
+
+# 改善点
+
+# 制作時間
+
+
+
+
 # README
 
 ## usersテーブル
@@ -25,12 +60,6 @@
 - has_many :buys, through: :suppliers
 - has_many :customers
 - has_many :sells, through: :customers
-
-## profilesテーブル
-
-| Column         | Type   | Options     |
-|----------------|--------|-------------|
-
 
 
 ## categoriesテーブル
