@@ -26,7 +26,7 @@
   <div id="csv-registration" class="csv-registration">
     <%= form_with(url: import_categories_path, local: true, multipart: true) do |form| %>
       <div class="form-group">
-        <%= form.file_field :file %>
+        <%= form.file_field :file, required: true %>
       </div>
       <div class="actions">
         <%= form.submit "インポート" %>

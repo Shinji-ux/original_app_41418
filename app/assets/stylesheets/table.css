@@ -26,12 +26,11 @@
 .table-day {
   text-align: center;
   width: 100px;
-  text-align: right;
 }
 
 .table-quantity {
   width: 64px;
-  text-align: right;
+  text-align: center;
 }
 
 .quantity-input {
