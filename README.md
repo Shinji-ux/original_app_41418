@@ -24,6 +24,8 @@ https://original-app-41418.onrender.com/
 
 # データベース設計
 
+![ER図](https://github.com/user-attachments/assets/67764238-9e13-43b5-8940-65b7ddc4d5fd)
+
 # 画面遷移図
 
 # 開発環境
