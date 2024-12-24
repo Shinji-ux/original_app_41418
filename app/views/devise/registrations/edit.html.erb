@@ -1,6 +1,6 @@
 <div class="input_container">
   <div class="section-title">
-    マイページの編集
+    マイページを編集
   </div>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -62,7 +62,7 @@
     </div>
     
     <div class="form_wrap">
-      <%= f.label :name, '名義人', class: "form_wrap_text" %><br>
+      <%= f.label :name, '口座名義', class: "form_wrap_text" %><br>
       <%= f.text_field :name, class: "form_wrap_field" %>
     </div>
 
@@ -75,23 +75,6 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
-
-    <!--
-    <div class="form_wrap">
-      <%= f.label :password, class: "form_wrap_text" %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "new-password", class: "form_wrap_field" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %>
-    </div>
-
-    <div class="form_wrap">
-      <%= f.label :password_confirmation, class: "form_wrap_text" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form_wrap_field" %>
-    </div>
-
-    -->
 
     <div class="form_wrap">
       <%= f.label :current_password, '現在のパスワード', class: "form_wrap_text" %><br />

@@ -8,6 +8,10 @@ https://original-app-41418.onrender.com/
 
 # テスト用アカウント
 
+・メールアドレス：test@test.com
+
+・パスワード：test1234
+
 # 利用方法
 
 # アプリケーションを作成した背景
