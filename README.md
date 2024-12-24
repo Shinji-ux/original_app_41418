@@ -127,7 +127,7 @@ https://original-app-41418.onrender.com/
 | company            | string | null: false               |
 | city               | string |                           |
 | address            | string |                           |
-| phone              | string |                           |
+| phone              | string | null: false               |
 | manager            | string |                           |
 | bank               | string |                           |
 | branch             | string |                           |
@@ -185,7 +185,7 @@ https://original-app-41418.onrender.com/
 | company      | string     | null: false                    |
 | city         | string     |                                |
 | address      | string     |                                |
-| phone        | string     |                                |
+| phone        | string     | null: false                    |
 | user         | references | null: false, foreign_key: true |
 | bank         | string     |                                |
 | branch       | string     |                                |
@@ -237,7 +237,7 @@ https://original-app-41418.onrender.com/
 | company      | string     | null: false                    |
 | city         | string     |                                |
 | address      | string     |                                |
-| phone        | string     |                                |
+| phone        | string     | null: false                    |
 | user         | references | null: false, foreign_key: true |
 | bank         | string     |                                |
 | branch       | string     |                                |

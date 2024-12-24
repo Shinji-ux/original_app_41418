@@ -3,10 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  # PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i
-  # validates_format_of :password, with: PASSWORD_REGEX
   
-  validates :phone, format: { with: /\A0\d{9,10}\z/, message: "must be a valid phone number" }
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,}\z/i
+  validates_format_of :password, with: PASSWORD_REGEX
+
+  validates :company, presence: true
+  validates :phone, presence: true, format: { with: /\A0\d{9,10}\z/, message: "must be a valid phone number" }
 
   has_one :profile
   has_many :categories
