@@ -28,6 +28,8 @@ https://original-app-41418.onrender.com/
 
 # 画面遷移図
 
+![flow](https://github.com/user-attachments/assets/323e2e71-46fd-41bd-9d55-037ea4c9f95f)
+
 # 開発環境
 
 # ローカルでの動作方法
