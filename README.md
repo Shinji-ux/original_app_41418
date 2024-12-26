@@ -71,7 +71,8 @@ https://original-app-41418.onrender.com/
 
 # 実装予定の機能
 ・金額表示を3桁ごとのカンマ区切りにする。  
-・消費税の表示機能。
+・消費税の表示。
+・取引履歴をCSVファイルに出力。
 
 
 # データベース設計
@@ -84,15 +85,15 @@ https://original-app-41418.onrender.com/
 
 # 開発環境
 ・フロントエンド  
-  HTML, CSS, JavaScript  
+    HTML, CSS, JavaScript  
 ・バックエンド  
-  Ruby, mySQL  
+    Ruby, mySQL  
 ・インフラ  
-  Ruby on Rails  
+    Ruby on Rails  
 ・テスト  
-  RSpec  
+    RSpec  
 ・テキストエディタ  
-  Visual Studio Code  
+    Visual Studio Code  
 
 # ローカルでの動作方法
 以下のコマンドを順に実行。  
@@ -109,14 +110,9 @@ https://original-app-41418.onrender.com/
 # 改善点
 ・商品、取引記録をCSVから取り込めない（現状、CSVファイルへのcategory_idなどの記述を間違えると、他のユーザーのテーブルに取り込まれてしまう）
 
-
-
-
-
 # 制作時間
 約150時間
 
-# README
 
 ## usersテーブル
 
@@ -152,7 +148,7 @@ https://original-app-41418.onrender.com/
 | category | string     | null: false                    |
 | user     | references | null: false, foreign_key: true |
 
-# Associations
+### Associations
 
 - belongs_to :user
 - has_many :items
