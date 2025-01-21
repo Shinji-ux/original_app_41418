@@ -57,16 +57,16 @@ https://original-app-41418.onrender.com/
 # 実装した機能についての画像やGIF、およびその説明
 
 ### 取引先の登録（CSVファイルからの一括登録）
-![b129935e55517c0580a755ae3aa257ca](https://github.com/user-attachments/assets/4f9fcad4-af88-474e-b255-634297f32e66)
+https://github.com/user-attachments/assets/4f9fcad4-af88-474e-b255-634297f32e66
 
 ### 納品書の作成
-![kuku](https://github.com/user-attachments/assets/14ca2c19-a79a-462e-aae4-edf5ae06b5ac)
+https://github.com/user-attachments/assets/14ca2c19-a79a-462e-aae4-edf5ae06b5ac
 
 ### カテゴリ別集計
-![kuku2](https://github.com/user-attachments/assets/9e437e85-ba7c-449c-85c8-d52bf6c7dfca)
+https://github.com/user-attachments/assets/9e437e85-ba7c-449c-85c8-d52bf6c7dfca
 
 ### 帳票印刷
-![kuku1](https://github.com/user-attachments/assets/bdab35b7-9b25-4582-b3cd-dd2b1fe34da2)
+https://github.com/user-attachments/assets/bdab35b7-9b25-4582-b3cd-dd2b1fe34da2
 
 
 # 実装予定の機能
@@ -77,11 +77,11 @@ https://original-app-41418.onrender.com/
 
 # データベース設計
 
-![データベース設計](https://github.com/user-attachments/assets/67764238-9e13-43b5-8940-65b7ddc4d5fd)
+https://github.com/user-attachments/assets/67764238-9e13-43b5-8940-65b7ddc4d5fd
 
 # 画面遷移図
 
-![画面遷移図](https://github.com/user-attachments/assets/323e2e71-46fd-41bd-9d55-037ea4c9f95f)
+https://github.com/user-attachments/assets/323e2e71-46fd-41bd-9d55-037ea4c9f95f
 
 # 開発環境
 ・フロントエンド  
