@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   get 'categories/sell_receipt', to: 'categories#sell_receipt'
 
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   resources :users, only: :show
 
   resources :categories do

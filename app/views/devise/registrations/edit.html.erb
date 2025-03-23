@@ -27,7 +27,7 @@
 
     <div class="form_wrap">
       <%= f.label :phone, "電話番号", class: "form_wrap_text" %><br />
-      <%= f.text_field :phone, autofocus: true, autocomplete: "phone", class: "form_wrap_field" %>
+      <%= f.text_field :phone, autofocus: true, autocomplete: "pahone", class: "form_wrap_field" %>
     </div>
 
     <div class="form_wrap">
@@ -66,20 +66,9 @@
       <%= f.text_field :name, class: "form_wrap_field" %>
     </div>
 
-      <div class="form_wrap">
-      <%= f.label :email, 'メールアドレス(本人確認用)', class: "form_wrap_text" %>
-      <span class="attension">必須</span><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form_wrap_field" %>
-    </div>
-
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
-
-    <div class="form_wrap">
-      <%= f.label :current_password, '現在のパスワード', class: "form_wrap_text" %><br />
-      <%= f.password_field :current_password, autocomplete: "current-password", class: "form_wrap_field" %>
-    </div>
 
     <div class="box-wrap-btn">
       <%= f.submit "更新", class: "box-content" %>

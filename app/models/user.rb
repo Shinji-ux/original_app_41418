@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,}\z/i
-  validates_format_of :password, with: PASSWORD_REGEX
+  validates_format_of :password, with: PASSWORD_REGEX, on: :create
 
+  validates :email, presence: true, on: :create
   validates :company, presence: true
   validates :phone, presence: true, format: { with: /\A0\d{9,10}\z/, message: "must be a valid phone number" }
 
